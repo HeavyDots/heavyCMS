@@ -19,7 +19,6 @@
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "schmunk42/yii2-giiant": "*",
-        "lajax/yii2-translate-manager": "1.*",
         "dmstr/yii2-adminlte-asset": "2.*"
     },
     "require-dev": {

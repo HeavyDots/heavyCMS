@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3a7efb36ed88cdd23f99b56e0d370474",
-    "content-hash": "fc5c896e8d2621801f893b4df25c3810",
+    "hash": "840e424dc7391aec1e4485c144c3319e",
+    "content-hash": "f1e2f173a9b7de469dc8e466f51f1cb5",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -176,31 +176,6 @@
                 "jquery",
                 "library"
             ]
-        },
-        {
-            "name": "bower-asset/jquery-ui",
-            "version": "1.11.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/components/jqueryui.git",
-                "reference": "c34f8dbf3ba57b3784b93f26119f436c0e8288e1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/components/jqueryui/zipball/c34f8dbf3ba57b3784b93f26119f436c0e8288e1",
-                "reference": "c34f8dbf3ba57b3784b93f26119f436c0e8288e1",
-                "shasum": ""
-            },
-            "require": {
-                "bower-asset/jquery": ">=1.6"
-            },
-            "type": "bower-asset-library",
-            "extra": {
-                "bower-asset-main": [
-                    "jquery-ui.js"
-                ],
-                "bower-asset-ignore": []
-            }
         },
         {
             "name": "bower-asset/jquery.inputmask",
@@ -664,52 +639,6 @@
             "time": "2013-11-30 08:25:19"
         },
         {
-            "name": "lajax/yii2-translate-manager",
-            "version": "1.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/lajax/yii2-translate-manager.git",
-                "reference": "22ff28b2d8c09cf541436c3bd9abdb6e5b908500"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/lajax/yii2-translate-manager/zipball/22ff28b2d8c09cf541436c3bd9abdb6e5b908500",
-                "reference": "22ff28b2d8c09cf541436c3bd9abdb6e5b908500",
-                "shasum": ""
-            },
-            "require": {
-                "phpspec/php-diff": ">=1.0.2",
-                "yiisoft/yii2": "*",
-                "yiisoft/yii2-bootstrap": "*",
-                "yiisoft/yii2-jui": "*"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "lajax\\translatemanager\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Lajos Molnar",
-                    "email": "lajax.m@gmail.com"
-                }
-            ],
-            "description": "Online Translate",
-            "keywords": [
-                "extension",
-                "language",
-                "module",
-                "translate",
-                "yii2"
-            ],
-            "time": "2015-09-01 14:45:57"
-        },
-        {
             "name": "phpspec/php-diff",
             "version": "v1.0.2",
             "source": {
@@ -1137,56 +1066,6 @@
             "time": "2015-05-10 22:09:31"
         },
         {
-            "name": "yiisoft/yii2-jui",
-            "version": "2.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/yiisoft/yii2-jui.git",
-                "reference": "ce16f29cca654702c2ee500ccad9657a2d2e6a09"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-jui/zipball/ce16f29cca654702c2ee500ccad9657a2d2e6a09",
-                "reference": "ce16f29cca654702c2ee500ccad9657a2d2e6a09",
-                "shasum": ""
-            },
-            "require": {
-                "bower-asset/jquery-ui": "1.11.*@stable",
-                "yiisoft/yii2": ">=2.0.4"
-            },
-            "type": "yii2-extension",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                },
-                "asset-installer-paths": {
-                    "npm-asset-library": "vendor/npm",
-                    "bower-asset-library": "vendor/bower"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "yii\\jui\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Qiang Xue",
-                    "email": "qiang.xue@gmail.com"
-                }
-            ],
-            "description": "The Jquery UI extension for the Yii framework",
-            "keywords": [
-                "jQuery UI",
-                "yii2"
-            ],
-            "time": "2015-05-10 22:09:43"
-        },
-        {
             "name": "yiisoft/yii2-swiftmailer",
             "version": "2.0.4",
             "source": {
@@ -1239,6 +1118,320 @@
     ],
     "packages-dev": [
         {
+            "name": "bower-asset/animate.css",
+            "version": "3.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/daneden/animate.css.git",
+                "reference": "3e61b0c35c8f7083a06c4e6fecc00c3ebc852f0b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/daneden/animate.css/zipball/3e61b0c35c8f7083a06c4e6fecc00c3ebc852f0b",
+                "reference": "3e61b0c35c8f7083a06c4e6fecc00c3ebc852f0b",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "./animate.css",
+                "bower-asset-ignore": [
+                    ".*",
+                    "src",
+                    "*.yml",
+                    "Gemfile",
+                    "Gemfile.lock",
+                    "*.md"
+                ]
+            }
+        },
+        {
+            "name": "bower-asset/bootstrap-confirmation2",
+            "version": "v2.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mistic100/Bootstrap-Confirmation.git",
+                "reference": "a0983463491ff8aae50ac32eff1d58c54719ff88"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mistic100/Bootstrap-Confirmation/zipball/a0983463491ff8aae50ac32eff1d58c54719ff88",
+                "reference": "a0983463491ff8aae50ac32eff1d58c54719ff88",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/bootstrap": ">=3.2.0"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "bootstrap-confirmation.js",
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "node_modules",
+                    "bower_components",
+                    "test",
+                    "tests"
+                ]
+            },
+            "license": [
+                "Apache"
+            ],
+            "description": "Bootstrap plugin for on-place confirm boxes using Popover",
+            "keywords": [
+                "confirmation",
+                "popup"
+            ]
+        },
+        {
+            "name": "bower-asset/jquery-cookie",
+            "version": "v1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/carhartl/jquery-cookie.git",
+                "reference": "7f88a4e631aba8a8c688fd8999ce6b9bcfd50718"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/carhartl/jquery-cookie/zipball/7f88a4e631aba8a8c688fd8999ce6b9bcfd50718",
+                "reference": "7f88a4e631aba8a8c688fd8999ce6b9bcfd50718",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.2"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "./jquery.cookie.js"
+                ],
+                "bower-asset-ignore": [
+                    "test",
+                    ".*",
+                    "*.json",
+                    "*.md",
+                    "*.txt",
+                    "Gruntfile.js"
+                ]
+            }
+        },
+        {
+            "name": "bower-asset/jquery-form",
+            "version": "3.51",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/malsup/form.git",
+                "reference": "6bf24a5f6d8be65f4e5491863180c09356d9dadd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/malsup/form/zipball/6bf24a5f6d8be65f4e5491863180c09356d9dadd",
+                "reference": "6bf24a5f6d8be65f4e5491863180c09356d9dadd",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.5"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "jquery.form.js",
+                "bower-asset-ignore": [
+                    "README.md",
+                    "composer.json",
+                    "form.jquery.json",
+                    "package.json"
+                ]
+            }
+        },
+        {
+            "name": "bower-asset/jquery-mousewheel",
+            "version": "3.1.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jquery/jquery-mousewheel.git",
+                "reference": "67289b6b2aa0066d7d78a5807f520387135ffb22"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jquery/jquery-mousewheel/zipball/67289b6b2aa0066d7d78a5807f520387135ffb22",
+                "reference": "67289b6b2aa0066d7d78a5807f520387135ffb22",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.2.2"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "./jquery.mousewheel.js",
+                "bower-asset-ignore": [
+                    "*.json",
+                    "*.markdown",
+                    "*.txt",
+                    ".*",
+                    "!LICENSE.txt",
+                    "Gruntfile.js",
+                    "test"
+                ]
+            }
+        },
+        {
+            "name": "bower-asset/jquery-ui",
+            "version": "1.11.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/components/jqueryui.git",
+                "reference": "c34f8dbf3ba57b3784b93f26119f436c0e8288e1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/components/jqueryui/zipball/c34f8dbf3ba57b3784b93f26119f436c0e8288e1",
+                "reference": "c34f8dbf3ba57b3784b93f26119f436c0e8288e1",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.6"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "jquery-ui.js"
+                ],
+                "bower-asset-ignore": []
+            }
+        },
+        {
+            "name": "bower-asset/jquery.easing",
+            "version": "v1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jozefizso/bower-jquery-easing.git",
+                "reference": "7ddc8b25d24c78bbae8d00a3ae43bf3f274ec8b5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jozefizso/bower-jquery-easing/zipball/7ddc8b25d24c78bbae8d00a3ae43bf3f274ec8b5",
+                "reference": "7ddc8b25d24c78bbae8d00a3ae43bf3f274ec8b5",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.2.1"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "js/jquery.easing.js",
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "node_modules",
+                    "bower_components",
+                    "test",
+                    "tests"
+                ]
+            },
+            "description": "jQuery Easing plugin",
+            "keywords": [
+                "easing",
+                "jquery",
+                "jquery plugin"
+            ]
+        },
+        {
+            "name": "bower-asset/jquery.scrollTo",
+            "version": "2.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/flesler/jquery.scrollTo.git",
+                "reference": "d33ae4515be21a76bb7907c94dd8a0ca0de7e49b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/flesler/jquery.scrollTo/zipball/d33ae4515be21a76bb7907c94dd8a0ca0de7e49b",
+                "reference": "d33ae4515be21a76bb7907c94dd8a0ca0de7e49b",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.8"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "./jquery.scrollTo.js"
+                ],
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "demo",
+                    "tests",
+                    "CHANGELOG",
+                    "README.md",
+                    "composer.json",
+                    "package.json"
+                ]
+            },
+            "description": "Lightweight, cross-browser and highly customizable animated scrolling with jQuery",
+            "keywords": [
+                "anchors",
+                "animated",
+                "animation",
+                "browser",
+                "jquery",
+                "links",
+                "scroll",
+                "scrolling"
+            ]
+        },
+        {
+            "name": "bower-asset/scroll-to-top",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/geniuscarrier/scrollToTop.git",
+                "reference": "b689f7345e825e66965ace26f918f4af4bad812e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/geniuscarrier/scrollToTop/zipball/b689f7345e825e66965ace26f918f4af4bad812e",
+                "reference": "b689f7345e825e66965ace26f918f4af4bad812e",
+                "shasum": ""
+            },
+            "type": "bower-asset-library"
+        },
+        {
+            "name": "bower-asset/semantic",
+            "version": "2.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Semantic-Org/Semantic-UI.git",
+                "reference": "1cdfbd8bb69baa623fe6e524755b83c018b247ab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Semantic-Org/Semantic-UI/zipball/1cdfbd8bb69baa623fe6e524755b83c018b247ab",
+                "reference": "1cdfbd8bb69baa623fe6e524755b83c018b247ab",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.8"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "src/semantic.less",
+                    "dist/semantic.js"
+                ],
+                "bower-asset-ignore": [
+                    "src/site",
+                    "test"
+                ]
+            },
+            "license": [
+                "http://semantic-ui.mit-license.org/"
+            ],
+            "description": "Semantic empowers designers and developers by creating a shared vocabulary for UI.",
+            "keywords": [
+                "css3",
+                "framework",
+                "semantic",
+                "ui"
+            ]
+        },
+        {
             "name": "fzaninotto/faker",
             "version": "v1.5.0",
             "source": {
@@ -1289,6 +1482,242 @@
                 "fixtures"
             ],
             "time": "2015-05-29 06:29:14"
+        },
+        {
+            "name": "uran1980/yii2-bootstrap-confirmation",
+            "version": "0.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/uran1980/yii2-bootstrap-confirmation.git",
+                "reference": "7bf2bd54c92c5a935acb0fb758075fc4f2d606a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/uran1980/yii2-bootstrap-confirmation/zipball/7bf2bd54c92c5a935acb0fb758075fc4f2d606a9",
+                "reference": "7bf2bd54c92c5a935acb0fb758075fc4f2d606a9",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/bootstrap-confirmation2": "*",
+                "yiisoft/yii2": "~2"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "uran1980\\yii\\bootstrapConfirmation\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivan Yakovlev",
+                    "email": "uran1980@gmail.com",
+                    "homepage": "https://github.com/uran1980",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Bootstrap plugin for on-place confirm boxes using Popover for Yii2",
+            "homepage": "https://github.com/uran1980/yii2-bootstrap-confirmation",
+            "keywords": [
+                "bootstrap",
+                "confirmation",
+                "yii2"
+            ],
+            "time": "2015-03-07 00:00:00"
+        },
+        {
+            "name": "uran1980/yii2-chosen-select",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/uran1980/yii2-chosen-select.git",
+                "reference": "624f955935421e3dda4fd3461714c77efeb44912"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/uran1980/yii2-chosen-select/zipball/624f955935421e3dda4fd3461714c77efeb44912",
+                "reference": "624f955935421e3dda4fd3461714c77efeb44912",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "~2"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "uran1980\\yii\\widgets\\chosen\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivan Yakovlev",
+                    "email": "uran1980@gmail.com",
+                    "homepage": "https://github.com/uran1980",
+                    "role": "Developer"
+                }
+            ],
+            "description": "An Yii2 chosen select extension based on Chosen jQuery plugin.",
+            "homepage": "https://github.com/uran1980/yii2-chosen-select",
+            "keywords": [
+                "chosen",
+                "javascript",
+                "jquery plugin",
+                "yii2",
+                "yii2-chosen-select"
+            ],
+            "time": "2015-03-07 00:00:00"
+        },
+        {
+            "name": "uran1980/yii2-igrowl-widget",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/uran1980/yii2-igrowl-widget.git",
+                "reference": "f34250de38e49abeb52f8a56f06356d41bbdca3f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/uran1980/yii2-igrowl-widget/zipball/f34250de38e49abeb52f8a56f06356d41bbdca3f",
+                "reference": "f34250de38e49abeb52f8a56f06356d41bbdca3f",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/animate.css": "*",
+                "yiisoft/yii2": "~2"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "uran1980\\yii\\widgets\\igrowl\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivan Yakovlev",
+                    "email": "uran1980@gmail.com",
+                    "homepage": "https://github.com/uran1980",
+                    "role": "Developer"
+                }
+            ],
+            "description": "An Yii2 igrowl widget based on iGrowl jQuery plugin.",
+            "homepage": "https://github.com/uran1980/yii2-igrowl-widget",
+            "keywords": [
+                "iGrowl",
+                "widgets",
+                "yii2",
+                "yii2-igrowl-widget"
+            ],
+            "time": "2015-03-07 00:00:00"
+        },
+        {
+            "name": "uran1980/yii2-jquery-essential",
+            "version": "0.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/uran1980/yii2-jquery-essential.git",
+                "reference": "b1e6d8d2f550bb95e7c8b1e61ef626cb06511be9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/uran1980/yii2-jquery-essential/zipball/b1e6d8d2f550bb95e7c8b1e61ef626cb06511be9",
+                "reference": "b1e6d8d2f550bb95e7c8b1e61ef626cb06511be9",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery-cookie": "*",
+                "bower-asset/jquery-form": "*",
+                "bower-asset/jquery-mousewheel": "*",
+                "bower-asset/jquery.easing": "*",
+                "bower-asset/jquery.scrollto": "*",
+                "yiisoft/yii2": "~2"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "uran1980\\yii\\assets\\jQueryEssential\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivan Yakovlev",
+                    "email": "uran1980@gmail.com",
+                    "homepage": "https://github.com/uran1980",
+                    "role": "Developer"
+                }
+            ],
+            "description": "An Yii2 jQuery Essential assets component.",
+            "homepage": "https://github.com/uran1980/yii2-jquery-essential",
+            "keywords": [
+                "assets",
+                "jQuery Cookie",
+                "jQuery Easing",
+                "jQuery Essential Plugins",
+                "jQuery MouseWheel",
+                "jQuery Scroll To",
+                "yii2",
+                "yii2-jquery-essential"
+            ],
+            "time": "2015-03-14 21:40:00"
+        },
+        {
+            "name": "uran1980/yii2-scroll-to-top",
+            "version": "0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/uran1980/yii2-scroll-to-top.git",
+                "reference": "43d8a4c5aaad0a486ddc35f4d4c8b13a37d414ca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/uran1980/yii2-scroll-to-top/zipball/43d8a4c5aaad0a486ddc35f4d4c8b13a37d414ca",
+                "reference": "43d8a4c5aaad0a486ddc35f4d4c8b13a37d414ca",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/scroll-to-top": "*",
+                "yiisoft/yii2": "~2"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "uran1980\\yii\\widgets\\scrollToTop\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivan Yakovlev",
+                    "email": "uran1980@gmail.com",
+                    "homepage": "https://github.com/uran1980",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Scroll-to-top button widget for Yii2",
+            "homepage": "https://github.com/uran1980/yii2-scroll-to-top",
+            "keywords": [
+                "scrollToTop",
+                "widgets",
+                "yii2"
+            ],
+            "time": "2015-03-07 00:00:00"
         },
         {
             "name": "yiisoft/yii2-codeception",
@@ -1428,6 +1857,151 @@
                 "yii2"
             ],
             "time": "2015-03-01 06:22:44"
+        },
+        {
+            "name": "yiisoft/yii2-jui",
+            "version": "2.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/yii2-jui.git",
+                "reference": "ce16f29cca654702c2ee500ccad9657a2d2e6a09"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-jui/zipball/ce16f29cca654702c2ee500ccad9657a2d2e6a09",
+                "reference": "ce16f29cca654702c2ee500ccad9657a2d2e6a09",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery-ui": "1.11.*@stable",
+                "yiisoft/yii2": ">=2.0.4"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                },
+                "asset-installer-paths": {
+                    "npm-asset-library": "vendor/npm",
+                    "bower-asset-library": "vendor/bower"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "yii\\jui\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Qiang Xue",
+                    "email": "qiang.xue@gmail.com"
+                }
+            ],
+            "description": "The Jquery UI extension for the Yii framework",
+            "keywords": [
+                "jQuery UI",
+                "yii2"
+            ],
+            "time": "2015-05-10 22:09:43"
+        },
+        {
+            "name": "zelenin/yii2-i18n-module",
+            "version": "0.1.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zelenin/yii2-i18n-module.git",
+                "reference": "2ad2d55e507f3bcf43948492e18dd72dcb6467f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zelenin/yii2-i18n-module/zipball/2ad2d55e507f3bcf43948492e18dd72dcb6467f3",
+                "reference": "2ad2d55e507f3bcf43948492e18dd72dcb6467f3",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "~2",
+                "zelenin/yii2-semantic-ui": "*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "bootstrap": "Zelenin\\yii\\modules\\I18n\\Bootstrap"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zelenin\\yii\\modules\\I18n\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aleksandr Zelenin",
+                    "email": "aleksandr@zelenin.me",
+                    "homepage": "http://zelenin.me",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Yii2 i18n (internalization) module makes the translation of your application so simple",
+            "homepage": "https://github.com/zelenin/yii2-i18n-module",
+            "keywords": [
+                "i18n",
+                "translation",
+                "translations",
+                "yii2"
+            ],
+            "time": "2015-03-07 00:00:00"
+        },
+        {
+            "name": "zelenin/yii2-semantic-ui",
+            "version": "2.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zelenin/yii2-semantic-ui.git",
+                "reference": "f3fb77fa896fcf409ba57999b9af77659f58998f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zelenin/yii2-semantic-ui/zipball/f3fb77fa896fcf409ba57999b9af77659f58998f",
+                "reference": "f3fb77fa896fcf409ba57999b9af77659f58998f",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/semantic": "~2",
+                "yiisoft/yii2": "~2"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "Zelenin\\yii\\SemanticUI\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aleksandr Zelenin",
+                    "email": "aleksandr@zelenin.me",
+                    "homepage": "http://zelenin.me",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Semantic UI extension for Yii2",
+            "homepage": "https://github.com/zelenin/yii2-semantic-ui",
+            "keywords": [
+                "semantic",
+                "semantic ui",
+                "widgets",
+                "yii2"
+            ],
+            "time": "2015-09-06 21:01:14"
         }
     ],
     "aliases": [],
