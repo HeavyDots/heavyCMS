@@ -28,6 +28,16 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'i18n' => [
+            'translations' => [
+                '*' => [
+                    'class' => yii\i18n\DbMessageSource::className(),
+                    'sourceLanguage' => 'en-US',
+                    'sourceMessageTable' => '{{%source_message}}',
+                    'messageTable' => '{{%translated_message}}',
+                ],
+            ],
+        ],
     ],
     'params' => $params,
 ];

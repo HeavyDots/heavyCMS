@@ -11,6 +11,7 @@ class MultiLingualUrlRule extends UrlRule
         if ($this->pattern !== null) {
             $this->pattern = '<language>/' . $this->pattern;
         }
+
         parent::init();
     }
 }
