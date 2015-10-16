@@ -11,9 +11,7 @@ class MultiLingualController extends \yii\web\Controller
 
     public function init()
     {
-        // Create dropdown for languages
         // This URL is not valid http://admin.heavycms.dev/es-ES/ Fix It
-        çfsd
         $languageGet = isset($_GET['language']) ? $_GET['language'] : null;
         if (isset($languageGet)) {
             $this->languageIsNotSupported = !$this->isLanguageGetSupported($languageGet);
@@ -35,7 +33,7 @@ class MultiLingualController extends \yii\web\Controller
     }
 
     private function isLanguageGetSupported($languageGet){
-        return in_array($languageGet, Yii::$app->params['supportedLanguages']);
+        return in_array($languageGet, array_keys(Yii::$app->params['supportedLanguages']));
     }
 
     private function isLanguageGetTheDefaultLanguage(){

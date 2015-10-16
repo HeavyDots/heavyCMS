@@ -9,7 +9,7 @@ class MultiLingualUrlManager extends UrlManager
     public function createUrl($params)
     {
         if ($this->selectedLanguageIsNotTheDefalutLanguage()
-            && $this->isSelectedLanguagetSupported())
+            && $this->isSelectedLanguageSupported())
         {
             $params['language'] = Yii::$app->language;
         }
@@ -20,7 +20,7 @@ class MultiLingualUrlManager extends UrlManager
         return Yii::$app->language!=Yii::$app->params['appDefaultLanguage'];
     }
 
-    private function isSelectedLanguagetSupported(){
-        return in_array(Yii::$app->language, Yii::$app->params['supportedLanguages']);
+    private function isSelectedLanguageSupported(){
+        return in_array(Yii::$app->language, array_keys(Yii::$app->params['supportedLanguages']));
     }
 }

@@ -3,9 +3,12 @@ namespace backend\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+use yii\data\ActiveDataProvider;
 use common\components\MultiLingualController;
 use common\models\LoginForm;
-use yii\filters\VerbFilter;
+use backend\models\SourceMessage;
+use backend\models\SourceMessageSearch;
 
 /**
  * Site controller
@@ -26,7 +29,7 @@ class SiteController extends MultiLingualController
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index', 'about-us', 'translate-frontend'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -56,6 +59,19 @@ class SiteController extends MultiLingualController
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    public function actionTranslateFrontend(){
+        // Create translation field on grid to allow translation to multiple languages
+        asdf
+        $sourceMessageSearch = new SourceMessageSearch;
+        $sourceMessageProvider = $sourceMessageSearch->search($_GET);
+        return $this->render('translate-frontend', compact('sourceMessageProvider',
+                                                            'sourceMessageSearch'));
+    }
+
+    public function actionAboutUs(){
+        return $this->render('about-us');
     }
 
     public function actionLogin()

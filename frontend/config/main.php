@@ -33,8 +33,13 @@ return [
                 '*' => [
                     'class' => yii\i18n\DbMessageSource::className(),
                     'sourceLanguage' => 'en-US',
+                    'forceTranslation' => true,
                     'sourceMessageTable' => '{{%source_message}}',
                     'messageTable' => '{{%translated_message}}',
+                    /*'on missingTranslation' => ['common\components\TranslationEventHandler',
+                                                'handleMissingTranslation'
+                                                ],*/
+
                 ],
             ],
         ],

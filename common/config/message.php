@@ -5,7 +5,7 @@ return [
     'sourcePath' => __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..',
     // array, required, list of language codes that the extracted messages
     // should be translated to. For example, ['zh-CN', 'de'].
-    'languages' => ['es-ES'],
+    'languages' => ['en-US','es-ES'],
     // string, the name of the function for translating messages.
     // Defaults to 'Yii::t'. This is used as a mark to find the messages to be
     // translated. You may use a string for single function name or an array for
@@ -43,7 +43,6 @@ return [
         '/vendor',
         '/environments',
     ],
-    'forceTranslation' => true,
 
     // 'php' output format is for saving messages to php files.
     // 'format' => 'php',
@@ -59,6 +58,7 @@ return [
     'translations' => [
         '*' => [
             'class' => yii\i18n\DbMessageSource::className(),
+            'forceTranslation' => true,
         ],
     ],
     // 'db' output format is for saving messages to database.
