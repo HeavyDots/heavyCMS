@@ -12,6 +12,31 @@ $this->title = Yii::t('backend/views', 'Translate Frontend');
         'filterModel' => $sourceMessageSearch,
         'columns' => [
             [
+                'attribute' => 'message',
+                'format' => 'raw',
+                'contentOptions' => [
+                    'class' => 'source-message',
+                ]
+            ],
+            [
+                'label' => Yii::t('backend', 'Message Translations'),
+                'format' => 'raw',
+                'headerOptions' => [
+                    'width' => '400',
+                ],
+/*                'contentOptions' => [
+                    'class' => 'translation-tabs tabs-mini',
+                ],*/
+                'value' => function ($model, $key, $index, $column) {
+                    return $this->render('_message-tabs', [
+                        'model'     => $model,
+                        'key'       => $key,
+                        'index'     => $index,
+                        'column'    => $column,
+                    ]);
+                },
+            ],
+            [
                 'attribute' => 'category',
                 'filter' => Html::activeDropDownList($sourceMessageSearch, 'category',
                                     SourceMessage::getAllCategoriesAsArray(),
@@ -21,14 +46,9 @@ $this->title = Yii::t('backend/views', 'Translate Frontend');
                                     ]
                                 ),
             ],
-            'message',
-            [
-                'label' => Yii::t('backend', 'Message Translations'),
-                'value' => function($model){
-                        $translatedMessages = $model->translatedMessages;
-                    return 'hole';
-                }
-            ]
         ]
 
-    ]);?>
+    ]);
+    // Create submit button
+    sdf
+?>

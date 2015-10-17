@@ -22,4 +22,10 @@ class SourceMessage extends BaseSourceMessage
 
         return $categoriesArray;
     }
+
+    public function getTranslationFor($language){
+        return $this->getTranslatedMessages()
+                    ->andWhere(['language' => $language])
+                    ->one();
+    }
 }

@@ -20,11 +20,16 @@ class LanguageDropdown extends Widget{
             $this->supportedLanguages[$localeId]['name'] = $languageName;
             $this->supportedLanguages[$localeId]['url'] = Url::toRoute(Yii::$app->controller->getRoute());
         }
-        Yii::$app->language = $currentLanguage;
+        $this->returnToCurrentLanguage($currentLanguage);
+
         return $this->render('_language-dropdown', ['supportedLanguages'=>$this->supportedLanguages]);
     }
 
     private function changeLanguageToCreateUrlWithUrlManager($localeId){
         Yii::$app->language = $localeId;
+    }
+
+    private function returnToCurrentLanguage($currentLanguage){
+        Yii::$app->language = $currentLanguage;
     }
 }

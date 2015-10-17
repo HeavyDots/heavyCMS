@@ -62,8 +62,6 @@ class SiteController extends MultiLingualController
     }
 
     public function actionTranslateFrontend(){
-        // Create translation field on grid to allow translation to multiple languages
-        asdf
         $sourceMessageSearch = new SourceMessageSearch;
         $sourceMessageProvider = $sourceMessageSearch->search($_GET);
         return $this->render('translate-frontend', compact('sourceMessageProvider',
