@@ -1,15 +1,20 @@
 <?php
-
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\grid\ActionColumn;
+use dmstr\widgets\Alert;
 use backend\models\SourceMessage;
 
 $this->title = Yii::t('backend/views', 'Translate Frontend');
 ?>
 
+<?= Alert::widget(); ?>
+
 <?= GridView::widget([
         'dataProvider' => $sourceMessageProvider,
         'filterModel' => $sourceMessageSearch,
+        'id' => 'translate-frontend-grid',
+        'tableOptions' => ['class' => 'table table-striped table-bordered box box-primary'],
         'columns' => [
             [
                 'attribute' => 'message',
@@ -38,6 +43,9 @@ $this->title = Yii::t('backend/views', 'Translate Frontend');
             ],
             [
                 'attribute' => 'category',
+                'contentOptions' => [
+                    'class' => 'text-center',
+                ],
                 'filter' => Html::activeDropDownList($sourceMessageSearch, 'category',
                                     SourceMessage::getAllCategoriesAsArray(),
                                     [
@@ -46,9 +54,21 @@ $this->title = Yii::t('backend/views', 'Translate Frontend');
                                     ]
                                 ),
             ],
+            [
+                'class' => ActionColumn::className(),
+                'template' => '{save}',
+                'buttons' => [
+                    'save' => function ($url, $sourceMessageSearch, $key) {
+                        return Html::a('<i class="glyphicon glyphicon-floppy-disk"></i> ' . Yii::t('backend', 'Save'), '#', [
+                            'class'                 => 'btn btn-success btn-translation-save',
+                            'title'                 => Yii::t('backend', 'Save'),
+                        ]);
+                    },
+                ],
+            ],
         ]
 
     ]);
     // Create submit button
-    sdf
+
 ?>

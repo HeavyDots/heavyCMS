@@ -10,6 +10,7 @@ use common\models\LoginForm;
 use backend\models\SourceMessage;
 use backend\models\SourceMessageSearch;
 
+
 /**
  * Site controller
  */
@@ -29,7 +30,9 @@ class SiteController extends MultiLingualController
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'about-us', 'translate-frontend'],
+                        'actions' => ['logout', 'index', 'about-us',
+                                      'translate-frontend', 'save-translation',
+                                      'slider-index', 'slider-create'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -39,6 +42,7 @@ class SiteController extends MultiLingualController
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'logout' => ['post'],
+                    'save-translation' => ['post'],
                 ],
             ],
         ];
@@ -66,6 +70,23 @@ class SiteController extends MultiLingualController
         $sourceMessageProvider = $sourceMessageSearch->search($_GET);
         return $this->render('translate-frontend', compact('sourceMessageProvider',
                                                             'sourceMessageSearch'));
+    }
+
+    public function actionSaveTranslation($id){
+        $sourceMessage = SourceMessage::findOne($id);
+        $sourceMessage->initTranslatedMessages();
+
+        if ( SourceMessage::loadMultiple($sourceMessage->translatedMessages, Yii::$app->getRequest()->post())
+             && SourceMessage::validateMultiple($sourceMessage->translatedMessages) )
+        {
+            $sourceMessage->saveTranslatedMessages();
+            Yii::$app->session->setFlash('success', Yii::t('backend', 'Translations saved successfully'));
+        }
+        else{
+            Yii::$app->session->setFlash('error', Yii::t('backend', 'Error saving translation'));
+        }
+
+        return $this->redirect(['translate-frontend']);
     }
 
     public function actionAboutUs(){

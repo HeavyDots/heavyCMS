@@ -1,0 +1,4 @@
+/* Translate Frontend */
+#translate-frontend-grid table tr td{
+    vertical-align: middle;
+}

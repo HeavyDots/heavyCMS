@@ -28,4 +28,30 @@ class SourceMessage extends BaseSourceMessage
                     ->andWhere(['language' => $language])
                     ->one();
     }
+
+    /* Relations https://github.com/uran1980/yii2-translate-panel/blob/master/models/SourceMessage.php */
+
+    public function initTranslatedMessages()
+    {
+        $translatedMessages = [];
+        foreach (array_keys(Yii::$app->params['frontendLanguages']) as $language) {
+            $translation = $this->getTranslationFor($language);
+            if (!isset($translation)) {
+                $translatedMessage             = new TranslatedMessage;
+                $translatedMessage->language   = $language;
+                $translatedMessages[$language] = $translatedMessage;
+            } else {
+                $translatedMessages[$language] = $translation;
+            }
+        }
+        $this->populateRelation('translatedMessages', $translatedMessages);
+    }
+
+    public function saveTranslatedMessages()
+    {
+        foreach ($this->translatedMessages as $translatedMessage) {
+            $this->link('translatedMessages', $translatedMessage);
+            $translatedMessage->save();
+        }
+    }
 }
