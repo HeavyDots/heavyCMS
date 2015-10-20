@@ -3,7 +3,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\grid\ActionColumn;
 use dmstr\widgets\Alert;
-use common\models\Slider;
+use backend\models\Slider;
 
 $this->title = Yii::t('backend/views', 'Manage Sliders');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend/views', 'Manage Sliders'), 'url' => ['index']];
@@ -18,26 +18,26 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('backend/views', 'Manage Sli
                     ]); ?>
 
 <?= GridView::widget([
-        'dataProvider' => $sliderProvider,
-        'filterModel' => $sliderSearch,
-        'id' => 'manage-sliders-grid',
-        'tableOptions' => ['class' => 'table table-striped table-bordered box box-primary'],
-        'columns' => [
-            'name',
-            'created_by',
-            'created_at',
-            'updated_at',
-            [
-                'class' => ActionColumn::className(),
-                'template' => '{edit}',
-                'buttons' => [
-                    'edit' => function ($url, $sliderSearch, $key){
-                        return 'hola';
-                    }
-                ]
-
-            ],
-        ]
-    ]);
+    'dataProvider' => $sliderProvider,
+    'filterModel' => $sliderSearch,
+    'id' => 'manage-sliders-grid',
+    'tableOptions' => ['class' => 'table table-striped table-bordered box box-primary'],
+    'columns' => [
+        [
+            'attribute' => 'name',
+            'format' => 'raw',
+            'value' => function($slider){
+                return Html::a($slider->name, ['update', 'id'=>$slider->id]);
+            }
+        ],
+        'created_by',
+        'created_at',
+        'updated_at',
+        [
+            'class' => ActionColumn::className(),
+            'template' => '{update}',
+        ],
+    ]
+]);
 
 ?>

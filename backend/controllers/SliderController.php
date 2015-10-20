@@ -5,8 +5,10 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
+use yii\web\UploadedFile;
+
 use common\components\MultiLingualController;
-use common\models\Slider;
+use backend\models\Slider;
 use common\models\SliderSearch;
 
 class SliderController extends MultiLingualController{
@@ -18,7 +20,7 @@ class SliderController extends MultiLingualController{
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'create'],
+                        'actions' => ['index', 'create', 'update'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -27,7 +29,7 @@ class SliderController extends MultiLingualController{
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'update' => ['post'],
+                    //'update' => ['post'],
                 ],
             ],
         ];
@@ -50,12 +52,25 @@ class SliderController extends MultiLingualController{
     }
 
     public function actionCreate(){
-        //var_dump($_POST);die;
         $slider = new Slider;
         if ($slider->load($_POST) && $slider->save()) {
+            $slider->uploadedImages = UploadedFile::getInstances($slider, 'uploadedImages');
+            $slider->saveImagesOnDisk();
+            Yii::$app->session->setFlash('success', Yii::t('backend', 'Slider created successfully'));
             return $this->redirect(['index']);
         }
         return $this->render('create', compact('slider'));
+    }
+
+    public function actionUpdate($id){
+        $slider = Slider::findOne($id);
+        if ($slider->load($_POST) && $slider->save()) {
+            $slidesImagesOrderArray = explode(',', $_POST['sliderImagesOrder']);
+            $slider->reorderSliderImages($slidesImagesOrderArray);
+            Yii::$app->session->setFlash('success', Yii::t('backend', 'Slider updated successfully'));
+            return $this->redirect(['index']);
+        }
+        return $this->render('update', compact('slider'));
     }
 }
 ?>

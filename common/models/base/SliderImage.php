@@ -9,7 +9,7 @@ use Yii;
  *
  * @property integer $slider_id
  * @property string $file_name
- * @property string $position
+ * @property string $sort_order
  * @property integer $is_active
  * @property integer $created_by
  * @property integer $updated_by
@@ -39,8 +39,8 @@ class SliderImage extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['slider_id', 'file_name', 'created_by', 'updated_by', 'created_at', 'updated_at'], 'required'],
-            [['slider_id', 'position', 'is_active', 'created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
+            [['slider_id', 'file_name'], 'required'],
+            [['slider_id', 'sort_order', 'is_active', 'created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
             [['file_name'], 'string', 'max' => 255]
         ];
     }
@@ -53,7 +53,7 @@ class SliderImage extends \yii\db\ActiveRecord
         return [
             'slider_id' => Yii::t('backend', 'Slider ID'),
             'file_name' => Yii::t('backend', 'File Name'),
-            'position' => Yii::t('backend', 'Position'),
+            'sort_order' => Yii::t('backend', 'Sort Order'),
             'is_active' => Yii::t('backend', 'Is Active'),
             'created_by' => Yii::t('backend', 'Created By'),
             'updated_by' => Yii::t('backend', 'Updated By'),

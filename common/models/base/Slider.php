@@ -40,7 +40,8 @@ class Slider extends \yii\db\ActiveRecord
         return [
             [['name'], 'required'],
             [['created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
-            [['name', 'slug'], 'string', 'max' => 255]
+            [['name', 'slug'], 'string', 'max' => 255],
+            [['name'], 'unique']
         ];
     }
 

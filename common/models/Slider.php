@@ -6,7 +6,7 @@ use Yii;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\behaviors\BlameableBehavior;
-use \common\models\base\Slider as BaseSlider;
+use common\models\base\Slider as BaseSlider;
 
 /**
  * This is the model class for table "slider".
