@@ -1,31 +1,36 @@
 <?php
+/*TODO: Add possibility of deactivate/activate Gallery image, and delete Gallery image. Deactivate is a Must Have feature, delete is a Good To Have feature */
+/*TODO: Delete debug data: $gallery->getImageNextPosition(); and 'hideInput' => false,*/
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use kartik\file\FileInput;
 use kartik\sortinput\SortableInput;
 ?>
 
-<div class="col-md-12">
+<?=
+    $gallery->getImageNextPosition();
+?>
+<div class="gallery-form">
     <div class="box box-primary">
         <div class="box-header with-border">
-            <h3 class="box-title"><?= Yii::t('backend/views', 'Fill Slider Data') ?></h3>
+            <h3 class="box-title"><?= Yii::t('backend/views', 'Fill Gallery Data') ?></h3>
         </div>
         <?php $form = ActiveForm::begin([
-                'id' => 'slider',
+                'id' => 'gallery',
                 'enableClientValidation' => true,
                 'errorSummaryCssClass' => 'error-summary alert alert-error',
                 'options' => ['enctype'=>'multipart/form-data'],
             ]);
         ?>
         <div class="box-body col-md-6">
-            <?= $form->field($slider, 'name')->textInput(['maxlength' => true]) ?>
-            <?php if (!$slider->isNewRecord): ?>
-                <div id="slider-images-sortable">
+            <?= $form->field($gallery, 'name')->textInput(['maxlength' => true]) ?>
+            <?php if (!$gallery->isNewRecord): ?>
+                <div id="gallery-images-sortable">
                 <?=
                     SortableInput::widget([
-                        'name' => 'sliderImagesOrder',
-                        'items' => $slider->getSliderImagesForSortableWidget(),
-                        'value' => $slider->getOrderOfSliderImagesForSortableWidget(),
+                        'name' => 'galleryImagesOrder',
+                        'items' => $gallery->getGalleryImagesForSortableWidget(),
+                        'value' => $gallery->getOrderOfGalleryImagesForSortableWidget(),
                         'hideInput' => false,
                         'sortableOptions' => [
                             'type' => 'grid',
@@ -37,8 +42,8 @@ use kartik\sortinput\SortableInput;
         </div>
         <div class="col-md-12">
             <?=
-                $form->field($slider, 'uploadedImages[]')->widget(FileInput::classname(), [
-                    'options' => ['multiple' => true],
+                $form->field($gallery, 'uploadedImages[]')->widget(FileInput::classname(), [
+                    'options' => ['multiple' => true, 'accept' => 'image/*'],
                     'pluginOptions' => [
                         'previewFileType' => 'any',
                         'showCaption' => false,
@@ -52,9 +57,9 @@ use kartik\sortinput\SortableInput;
         <div class="box-footer">
             <?= Html::submitButton(
                     '<span class="glyphicon glyphicon-check"></span> ' .
-                    ($slider->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Save')),
+                    ($gallery->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Save')),
                     [
-                        'id' => 'save-' . $slider->formName(),
+                        'id' => 'save-' . $gallery->formName(),
                         'class' => 'btn btn-success'
                     ]
                 );

@@ -5,7 +5,7 @@ namespace common\models\base;
 use Yii;
 
 /**
- * This is the base-model class for table "slider".
+ * This is the base-model class for table "gallery".
  *
  * @property integer $id
  * @property string $name
@@ -17,9 +17,9 @@ use Yii;
  *
  * @property \common\models\User $createdBy
  * @property \common\models\User $updatedBy
- * @property \common\models\SliderImage[] $sliderImages
+ * @property \common\models\GalleryImage[] $galleryImages
  */
-class Slider extends \yii\db\ActiveRecord
+class Gallery extends \yii\db\ActiveRecord
 {
 
 
@@ -29,7 +29,7 @@ class Slider extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'slider';
+        return 'gallery';
     }
 
     /**
@@ -80,9 +80,9 @@ class Slider extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getSliderImages()
+    public function getGalleryImages()
     {
-        return $this->hasMany(\common\models\SliderImage::className(), ['slider_id' => 'id']);
+        return $this->hasMany(\common\models\GalleryImage::className(), ['gallery_id' => 'id']);
     }
 
 

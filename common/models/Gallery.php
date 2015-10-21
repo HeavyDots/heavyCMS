@@ -6,12 +6,12 @@ use Yii;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\behaviors\BlameableBehavior;
-use common\models\base\Slider as BaseSlider;
+use common\models\base\Gallery as BaseGallery;
 
 /**
- * This is the model class for table "slider".
+ * This is the model class for table "gallery".
  */
-class Slider extends BaseSlider
+class Gallery extends BaseGallery
 {
     public function behaviors()
     {

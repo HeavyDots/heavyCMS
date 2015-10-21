@@ -1,3 +1,7 @@
+<?php
+use yii\helpers\Html;
+?>
+
 <aside class="main-sidebar">
 
     <section class="sidebar">
@@ -5,10 +9,12 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
+                <?= Html::img(Yii::$app->user->identity->userProfile->getFullUrlAvatar(),
+                                ['class'=> 'img-circle',
+                                 'alt' => Yii::$app->user->identity->fullName]) ?>
             </div>
             <div class="pull-left info">
-                <p>Alexander Pierce</p>
+                <p><?= Yii::$app->user->identity->fullName ?></p>
 
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -25,9 +31,9 @@
                         'url' => ['site/translate-frontend']
                     ],
                     [
-                        'label' => Yii::t('theme/menu', 'Manage Sliders'),
+                        'label' => Yii::t('theme/menu', 'Manage Image Galleries'),
                         'icon' => 'fa fa-ellipsis-h fa-lg',
-                        'url' => ['slider/index']
+                        'url' => ['gallery/index']
                     ],
                     [
                         'label' => Yii::t('theme/menu', 'Manage Blog'),
@@ -37,7 +43,7 @@
                     [
                         'label' => Yii::t('theme/menu', 'Global Configuration'),
                         'icon' => 'fa fa-globe fa-lg',
-                        'url' => ['site/global-configuration']
+                        'url' => ['global-configuration/index']
                     ],
                 ],
             ]

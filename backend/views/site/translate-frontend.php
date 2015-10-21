@@ -6,6 +6,7 @@ use dmstr\widgets\Alert;
 use backend\models\SourceMessage;
 
 $this->title = Yii::t('backend/views', 'Translate Frontend');
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <?= Alert::widget(); ?>
@@ -29,9 +30,6 @@ $this->title = Yii::t('backend/views', 'Translate Frontend');
                 'headerOptions' => [
                     'width' => '400',
                 ],
-/*                'contentOptions' => [
-                    'class' => 'translation-tabs tabs-mini',
-                ],*/
                 'value' => function ($model, $key, $index, $column) {
                     return $this->render('_message-tabs', [
                         'model'     => $model,

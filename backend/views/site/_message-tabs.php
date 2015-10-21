@@ -1,5 +1,5 @@
 <?php
-/* TODO: Make Yii Form for translation-save-form */
+/* TODO: Convert Html form "translation-save-form" to Yii Form */
 
 use yii\helpers\Html;
 use yii\helpers\Url;

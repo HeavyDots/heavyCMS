@@ -228,36 +228,33 @@ use backend\widgets\LanguageDropdown;
 
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
-                        <span class="hidden-xs">Alexander Pierce</span>
+                        <?= Html::img(Yii::$app->user->identity->userProfile->getFullUrlAvatar(),
+                                ['class'=> 'user-image',
+                                 'alt' => Yii::$app->user->identity->fullName]) ?>
+                        <span class="hidden-xs"><?= Yii::$app->user->identity->fullName ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle"
-                                 alt="User Image"/>
+                            <?= Html::img(Yii::$app->user->identity->userProfile->getFullUrlAvatar(),
+                                ['class'=> 'img-circle',
+                                 'alt' => Yii::$app->user->identity->fullName]) ?>
 
                             <p>
-                                Alexander Pierce - Web Developer
+                                <?= Yii::$app->user->identity->fullName ?>
                                 <small>Member since Nov. 2012</small>
                             </p>
-                        </li>
-                        <!-- Menu Body -->
-                        <li class="user-body">
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Followers</a>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Sales</a>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Friends</a>
-                            </div>
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                <?=
+                                    Html::a(
+                                        Yii::t('backend', 'Profile'),
+                                        ['site/user-profile'],
+                                        ['class' => 'btn btn-default btn-flat']
+                                        );
+                                ?>
                             </div>
                             <div class="pull-right">
                                 <?= Html::a(

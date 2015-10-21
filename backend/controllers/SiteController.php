@@ -5,8 +5,11 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
+use yii\web\UploadedFile;
+
 use common\components\MultiLingualController;
 use common\models\LoginForm;
+use common\models\UserProfile;
 use backend\models\SourceMessage;
 use backend\models\SourceMessageSearch;
 
@@ -32,7 +35,7 @@ class SiteController extends MultiLingualController
                     [
                         'actions' => ['logout', 'index', 'about-us',
                                       'translate-frontend', 'save-translation',
-                                      'slider-index', 'slider-create'],
+                                      'user-profile'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -74,6 +77,9 @@ class SiteController extends MultiLingualController
 
     public function actionSaveTranslation($id){
         $sourceMessage = SourceMessage::findOne($id);
+        if (!isset($sourceMessage)) {
+            throw new HttpException(404, Yii::t('backend/view','The requested page does not exist.'));
+        }
         $sourceMessage->initTranslatedMessages();
 
         if ( SourceMessage::loadMultiple($sourceMessage->translatedMessages, Yii::$app->getRequest()->post())
@@ -87,6 +93,25 @@ class SiteController extends MultiLingualController
         }
 
         return $this->redirect(['translate-frontend']);
+    }
+
+    public function actionUserProfile(){
+        $userProfile = Yii::$app->user->identity->userProfile;
+        $userProfile = isset($userProfile) ? $userProfile : new UserProfile;
+        $userProfile->user_id = Yii::$app->user->id;
+
+        if ($userProfile->load($_POST)&&$userProfile->save()){
+            $userProfile->uploadedAvatar = UploadedFile::getInstance($userProfile, 'uploadedAvatar');
+
+            if($userProfile->saveAvatarToDisk()){
+                Yii::$app->session->setFlash('success', Yii::t('backend', 'Profile updated successfully'));
+            }
+            else{
+                Yii::$app->session->setFlash('error', Yii::t('backend', 'There was some error uploading your avatar Image'));
+            }
+            return $this->refresh();
+        }
+        return $this->render('user-profile', compact('userProfile'));
     }
 
     public function actionAboutUs(){

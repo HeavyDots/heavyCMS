@@ -3,13 +3,34 @@
     vertical-align: middle;
 }
 
-/*Update Slider*/
-#slider-images-sortable li{
+/* Update Slider */
+#gallery-images-sortable li{
     width: 100px;
     height: 100px;
 }
 
-#slider-images-sortable li img{
+#gallery-images-sortable li img{
     width: 80px;
     height: 80px;
+}
+
+/* Edit User Profile */
+.user-avatar-upload{
+    padding: 0;
+}
+.user-avatar-upload .file-preview-frame,.user-avatar-upload .file-preview-frame:hover {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    text-align: center;
+}
+.user-avatar-upload .file-input {
+    display: table-cell;
+    text-align: center;
+}
+
+.user-avatar-upload .file-input img {
+    width: auto;
+    height: 160px;
 }

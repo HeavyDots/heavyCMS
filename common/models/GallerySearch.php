@@ -5,12 +5,12 @@ namespace common\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Slider;
+use common\models\Gallery;
 
 /**
-* SliderSearch represents the model behind the search form about `common\models\Slider`.
+* GallerySearch represents the model behind the search form about `common\models\Gallery`.
 */
-class SliderSearch extends Slider
+class GallerySearch extends Gallery
 {
 /**
 * @inheritdoc
@@ -41,7 +41,7 @@ return Model::scenarios();
 */
 public function search($params)
 {
-$query = Slider::find();
+$query = Gallery::find();
 
 $dataProvider = new ActiveDataProvider([
 'query' => $query,

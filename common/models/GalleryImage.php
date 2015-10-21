@@ -5,14 +5,14 @@ namespace common\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\behaviors\BlameableBehavior;
-use common\models\base\SliderImage as BaseSliderImage;
+use common\models\base\GalleryImage as BaseGalleryImage;
 
 /**
- * This is the model class for table "slider_image".
+ * This is the model class for table "gallery_image".
  */
-class SliderImage extends BaseSliderImage
+class GalleryImage extends BaseGalleryImage
 {
-    protected $uploadDirectory = 'sliders/';
+    protected $uploadDirectory = 'galleries/';
     protected $uploadFullDirectory;
     protected $uploadURL;
 

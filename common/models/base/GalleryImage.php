@@ -5,9 +5,9 @@ namespace common\models\base;
 use Yii;
 
 /**
- * This is the base-model class for table "slider_image".
+ * This is the base-model class for table "gallery_image".
  *
- * @property integer $slider_id
+ * @property integer $gallery_id
  * @property string $file_name
  * @property string $sort_order
  * @property integer $is_active
@@ -16,11 +16,11 @@ use Yii;
  * @property string $created_at
  * @property string $updated_at
  *
- * @property \common\models\Slider $slider
+ * @property \common\models\Gallery $gallery
  * @property \common\models\User $createdBy
  * @property \common\models\User $updatedBy
  */
-class SliderImage extends \yii\db\ActiveRecord
+class GalleryImage extends \yii\db\ActiveRecord
 {
 
 
@@ -30,7 +30,7 @@ class SliderImage extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'slider_image';
+        return 'gallery_image';
     }
 
     /**
@@ -39,8 +39,8 @@ class SliderImage extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['slider_id', 'file_name'], 'required'],
-            [['slider_id', 'sort_order', 'is_active', 'created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
+            [['gallery_id', 'file_name'], 'required'],
+            [['gallery_id', 'sort_order', 'is_active', 'created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
             [['file_name'], 'string', 'max' => 255]
         ];
     }
@@ -51,7 +51,7 @@ class SliderImage extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'slider_id' => Yii::t('backend', 'Slider ID'),
+            'gallery_id' => Yii::t('backend', 'Gallery ID'),
             'file_name' => Yii::t('backend', 'File Name'),
             'sort_order' => Yii::t('backend', 'Sort Order'),
             'is_active' => Yii::t('backend', 'Is Active'),
@@ -65,9 +65,9 @@ class SliderImage extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getSlider()
+    public function getGallery()
     {
-        return $this->hasOne(\common\models\Slider::className(), ['id' => 'slider_id']);
+        return $this->hasOne(\common\models\Gallery::className(), ['id' => 'gallery_id']);
     }
 
     /**
