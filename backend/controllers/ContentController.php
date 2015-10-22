@@ -9,13 +9,13 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
 use common\components\MultiLingualController;
-use common\models\GlobalConfiguration;
-use common\models\GlobalConfigurationSearch;
+use common\models\Content;
+use common\models\ContentSearch;
 
 /**
- * GlobalConfigurationController implements the CRUD actions for GlobalConfiguration model.
+ * ContentController implements the CRUD actions for Content model.
  */
-class GlobalConfigurationController extends MultiLingualController
+class ContentController extends MultiLingualController
 {
 
     public function behaviors()
@@ -51,44 +51,44 @@ class GlobalConfigurationController extends MultiLingualController
 
 	public function actionIndex()
 	{
-		$globalConfigurationSearch  = new GlobalConfigurationSearch;
-		$globalConfigurationProvider = $globalConfigurationSearch->search($_GET);
+		$contentSearch  = new ContentSearch;
+		$contentProvider = $contentSearch->search($_GET);
 
-		return $this->render('index', compact('globalConfigurationSearch', 'globalConfigurationProvider'));
+		return $this->render('index', compact('contentSearch', 'contentProvider'));
 	}
 
 	public function actionCreate()
 	{
-		$globalConfiguration = new GlobalConfiguration;
+		$content = new Content;
 
-        if ($globalConfiguration->load($_POST) && $globalConfiguration->save()) {
-            Yii::$app->session->setFlash('success', Yii::t('backend', 'New Configuration created successfully'));
+        if ($content->load($_POST) && $content->save()) {
+            Yii::$app->session->setFlash('success', Yii::t('backend', 'New Page created successfully'));
             return $this->redirect(['index']);
         }
 
-        return $this->render('create', compact('globalConfiguration'));
+        return $this->render('create', compact('content'));
 	}
 
 	public function actionUpdate($id)
 	{
-		$globalConfiguration = $this->findGlobalConfiguration($id);
-        if ($globalConfiguration->load($_POST) && $globalConfiguration->save()) {
-            Yii::$app->session->setFlash('success', Yii::t('backend', 'Configuration updated successfully'));
+		$content = $this->findContent($id);
+        if ($content->load($_POST) && $content->save()) {
+            Yii::$app->session->setFlash('success', Yii::t('backend', 'Page updated successfully'));
             return $this->redirect(['index']);
         }
 
-        return $this->render('create', compact('globalConfiguration'));
+        return $this->render('create', compact('content'));
 
 	}
 
-	protected function findGlobalConfiguration($id)
+	protected function findContent($id)
 	{
-        $globalConfiguration = GlobalConfiguration::findOne($id);
-        if (!isset($globalConfiguration)) {
+        $content = Content::findOne($id);
+        if (!isset($content)) {
             throw new HttpException(404, Yii::t('backend/view','The requested page does not exist.'));
         }
 
-        return $globalConfiguration;
+        return $content;
 
 	}
 }

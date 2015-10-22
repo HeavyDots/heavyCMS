@@ -26,17 +26,27 @@ use yii\helpers\Html;
                 'items' => [
                     ['label' => Yii::t('theme/menu', 'Menu'), 'options' => ['class' => 'header']],
                     [
+                        'label' => Yii::t('theme/menu', 'Pages'),
+                        'icon' => 'fa fa-files-o fa-lg',
+                        'url' => ['flat-page/index']
+                    ],
+                    [
+                        'label' => Yii::t('theme/menu', 'Content'),
+                        'icon' => 'fa fa-indent fa-lg',
+                        'url' => ['content/index']
+                    ],
+                    [
                         'label' => Yii::t('theme/menu', 'Translate Frontend'),
                         'icon' => 'fa fa-language fa-lg',
                         'url' => ['site/translate-frontend']
                     ],
                     [
-                        'label' => Yii::t('theme/menu', 'Manage Image Galleries'),
+                        'label' => Yii::t('theme/menu', 'Image Galleries'),
                         'icon' => 'fa fa-ellipsis-h fa-lg',
                         'url' => ['gallery/index']
                     ],
                     [
-                        'label' => Yii::t('theme/menu', 'Manage Blog'),
+                        'label' => Yii::t('theme/menu', 'Blog'),
                         'icon' => 'fa fa-book fa-lg',
                         'url' => ['site/blog']
                     ],

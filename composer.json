@@ -21,7 +21,8 @@
         "schmunk42/yii2-giiant": "*",
         "dmstr/yii2-adminlte-asset": "2.*",
         "kartik-v/yii2-widget-fileinput": "@dev",
-        "kartik-v/yii2-sortable-input": "*"
+        "kartik-v/yii2-sortable-input": "*",
+        "2amigos/yii2-translateable-behavior": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

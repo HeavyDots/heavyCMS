@@ -1,18 +1,20 @@
 <?php
+
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\grid\ActionColumn;
 use dmstr\widgets\Alert;
 
-$this->title = Yii::t('backend/views', 'Manage Image Galleries');
-$this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index']];
+
+$this->title = Yii::t('backend', 'Contents');
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <?= Alert::widget() ?>
 
 <p class="pull-left">
     <?= Html::a('<i class="glyphicon glyphicon-plus"></i> ' .
-        Yii::t('backend/views', 'Add New Gallery'),
+        Yii::t('backend/views', 'Add New Content'),
         'create', [
                 'class' => 'btn btn-primary',
     ]); ?>
@@ -21,19 +23,18 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index']];
 <div class="clearfix"></div>
 
 <?= GridView::widget([
-    'dataProvider' => $galleryProvider,
-    'filterModel' => $gallerySearch,
-    'id' => 'manage-galleries-grid',
+    'dataProvider' => $contentProvider,
+    'filterModel' => $contentSearch,
+    'id' => 'content-grid',
     'tableOptions' => ['class' => 'table table-striped table-bordered box box-primary'],
     'columns' => [
         [
             'attribute' => 'name',
             'format' => 'raw',
-            'value' => function($gallery){
-                return Html::a($gallery->name, ['update', 'id'=>$gallery->id]);
+            'value' => function($content){
+                return Html::a($content->name, ['update', 'id'=>$content->id]);
             }
         ],
-        'created_by',
         'created_at:datetime',
         'updated_at:datetime',
         [
@@ -42,5 +43,4 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index']];
         ],
     ]
 ]);
-
 ?>

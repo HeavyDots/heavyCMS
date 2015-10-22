@@ -4,7 +4,6 @@ namespace backend\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
-use yii\data\ActiveDataProvider;
 use yii\web\UploadedFile;
 use yii\web\HttpException;
 

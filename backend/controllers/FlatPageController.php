@@ -9,13 +9,13 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
 use common\components\MultiLingualController;
-use common\models\GlobalConfiguration;
-use common\models\GlobalConfigurationSearch;
+use common\models\FlatPage;
+use common\models\FlatPageSearch;
 
 /**
- * GlobalConfigurationController implements the CRUD actions for GlobalConfiguration model.
+ * FlatPageController implements the CRUD actions for FlatPage model.
  */
-class GlobalConfigurationController extends MultiLingualController
+class FlatPageController extends MultiLingualController
 {
 
     public function behaviors()
@@ -51,44 +51,44 @@ class GlobalConfigurationController extends MultiLingualController
 
 	public function actionIndex()
 	{
-		$globalConfigurationSearch  = new GlobalConfigurationSearch;
-		$globalConfigurationProvider = $globalConfigurationSearch->search($_GET);
+		$flatPageSearch  = new FlatPageSearch;
+		$flatPageProvider = $flatPageSearch->search($_GET);
 
-		return $this->render('index', compact('globalConfigurationSearch', 'globalConfigurationProvider'));
+		return $this->render('index', compact('flatPageSearch', 'flatPageProvider'));
 	}
 
 	public function actionCreate()
 	{
-		$globalConfiguration = new GlobalConfiguration;
+		$flatPage = new FlatPage;
 
-        if ($globalConfiguration->load($_POST) && $globalConfiguration->save()) {
-            Yii::$app->session->setFlash('success', Yii::t('backend', 'New Configuration created successfully'));
+        if ($flatPage->load($_POST) && $flatPage->save()) {
+            Yii::$app->session->setFlash('success', Yii::t('backend', 'New Page created successfully'));
             return $this->redirect(['index']);
         }
 
-        return $this->render('create', compact('globalConfiguration'));
+        return $this->render('create', compact('flatPage'));
 	}
 
 	public function actionUpdate($id)
 	{
-		$globalConfiguration = $this->findGlobalConfiguration($id);
-        if ($globalConfiguration->load($_POST) && $globalConfiguration->save()) {
-            Yii::$app->session->setFlash('success', Yii::t('backend', 'Configuration updated successfully'));
+		$flatPage = $this->findFlatPage($id);
+        if ($flatPage->load($_POST) && $flatPage->save()) {
+            Yii::$app->session->setFlash('success', Yii::t('backend', 'Page updated successfully'));
             return $this->redirect(['index']);
         }
 
-        return $this->render('create', compact('globalConfiguration'));
+        return $this->render('create', compact('flatPage'));
 
 	}
 
-	protected function findGlobalConfiguration($id)
+	protected function findFlatPage($id)
 	{
-        $globalConfiguration = GlobalConfiguration::findOne($id);
-        if (!isset($globalConfiguration)) {
+        $flatPage = FlatPage::findOne($id);
+        if (!isset($flatPage)) {
             throw new HttpException(404, Yii::t('backend/view','The requested page does not exist.'));
         }
 
-        return $globalConfiguration;
+        return $flatPage;
 
 	}
 }
