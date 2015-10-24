@@ -14,7 +14,7 @@ class Content extends BaseContent
 {
     public function behaviors()
     {
-        return [
+        $newBehaviors = [
             'timestamp' => [
                 'class' => TimestampBehavior::className(),
             ],
@@ -22,5 +22,16 @@ class Content extends BaseContent
             'class' => BlameableBehavior::className(),
             ],
         ];
+        return array_merge(parent::behaviors(), $newBehaviors);
+    }
+
+    public function saveTranslationsPOST($translationsPOST){
+        foreach ($translationsPOST as $language => $fields) {
+            foreach ($fields as $fieldName => $fieldValue) {
+                $this->setLanguage($language);
+                $this->{$fieldName} = $fieldValue;
+                $this->saveTranslation();
+            }
+        }
     }
 }

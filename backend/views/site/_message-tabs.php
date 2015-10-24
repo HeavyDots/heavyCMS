@@ -1,5 +1,6 @@
 <?php
 /* TODO: Convert Html form "translation-save-form" to Yii Form */
+/* TODO: Use LanguageTabs Widget */
 
 use yii\helpers\Html;
 use yii\helpers\Url;

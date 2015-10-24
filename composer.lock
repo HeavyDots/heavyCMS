@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "91f05c1d34b2ff57a9e42d920b8731be",
-    "content-hash": "ca692c42b49915af31b10c6eb3415d59",
+    "hash": "d16812de382fea984f689f7fec8ffb3c",
+    "content-hash": "9fa2848d5207dd1833e7975e5a036474",
     "packages": [
         {
             "name": "2amigos/yii2-translateable-behavior",
@@ -138,6 +138,78 @@
                 "responsive",
                 "web"
             ]
+        },
+        {
+            "name": "bower-asset/codemirror",
+            "version": "5.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codemirror/CodeMirror.git",
+                "reference": "300e65942c0f93f37f80cab26f6b79bc0ad7001b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codemirror/CodeMirror/zipball/300e65942c0f93f37f80cab26f6b79bc0ad7001b",
+                "reference": "300e65942c0f93f37f80cab26f6b79bc0ad7001b",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "lib/codemirror.js",
+                    "lib/codemirror.css"
+                ],
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "node_modules",
+                    "components",
+                    "bin",
+                    "demo",
+                    "doc",
+                    "test",
+                    "index.html",
+                    "package.json",
+                    "mode/*/*test.js",
+                    "mode/*/*.html"
+                ]
+            }
+        },
+        {
+            "name": "bower-asset/font-awesome",
+            "version": "v4.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FortAwesome/Font-Awesome.git",
+                "reference": "e554555d73a44e0a7d11b0361ad7a5325a5f551c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/e554555d73a44e0a7d11b0361ad7a5325a5f551c",
+                "reference": "e554555d73a44e0a7d11b0361ad7a5325a5f551c",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "less/font-awesome.less",
+                    "scss/font-awesome.scss"
+                ],
+                "bower-asset-ignore": [
+                    "*/.*",
+                    "*.json",
+                    "src",
+                    "*.yml",
+                    "Gemfile",
+                    "Gemfile.lock",
+                    "*.md"
+                ]
+            },
+            "license": [
+                "OFL-1.1",
+                "MIT",
+                "CC-BY-3.0"
+            ],
+            "description": "Font Awesome"
         },
         {
             "name": "bower-asset/fontawesome",
@@ -299,6 +371,43 @@
                     "package.json"
                 ]
             }
+        },
+        {
+            "name": "bower-asset/summernote",
+            "version": "v0.6.16",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/summernote/summernote.git",
+                "reference": "4a988eebc69b783f649e16e44511bea5afa73df8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/summernote/summernote/zipball/4a988eebc69b783f649e16e44511bea5afa73df8",
+                "reference": "4a988eebc69b783f649e16e44511bea5afa73df8",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/bootstrap": ">=3.0.1",
+                "bower-asset/font-awesome": ">=4.2.0",
+                "bower-asset/jquery": ">=1.9.0"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "./dist/summernote.js",
+                    "./dist/summernote.css"
+                ],
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "node_modules",
+                    "bower_components",
+                    "test",
+                    "tests"
+                ]
+            },
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "bower-asset/typeahead.js",
@@ -1396,6 +1505,60 @@
                 "yii2"
             ],
             "time": "2015-05-10 22:12:32"
+        },
+        {
+            "name": "zelenin/yii2-summernote-widget",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zelenin/yii2-summernote-widget.git",
+                "reference": "f71a683c42b371bb55b641a4f241fd468b19d444"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zelenin/yii2-summernote-widget/zipball/f71a683c42b371bb55b641a4f241fd468b19d444",
+                "reference": "f71a683c42b371bb55b641a4f241fd468b19d444",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/codemirror": "5.*@stable",
+                "bower-asset/font-awesome": "4.*@stable",
+                "bower-asset/summernote": "0.*@stable",
+                "yiisoft/yii2": "~2"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "asset-installer-paths": {
+                    "npm-asset-library": "vendor/npm",
+                    "bower-asset-library": "vendor/bower"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zelenin\\yii\\widgets\\Summernote\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aleksandr Zelenin",
+                    "email": "aleksandr@zelenin.me",
+                    "homepage": "http://zelenin.me",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Yii2 Summernote widget. Super simple WYSIWYG editor on Bootstrap",
+            "homepage": "https://github.com/zelenin/yii2-summernote-widget",
+            "keywords": [
+                "summernote",
+                "widget",
+                "wysiwyg",
+                "yii2"
+            ],
+            "time": "2015-03-27 07:55:47"
         }
     ],
     "packages-dev": [
@@ -2705,7 +2868,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "kartik-v/yii2-widget-fileinput": 20
+        "kartik-v/yii2-widget-fileinput": 20,
+        "zelenin/yii2-summernote-widget": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

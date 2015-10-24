@@ -1,5 +1,7 @@
 <?php
 
+/* TODO: Create new backend index page */
+
 /* @var $this yii\web\View */
 $this->title = Yii::t('view', 'My Yii Applicationsss');
 ?>

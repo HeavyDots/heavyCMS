@@ -1,11 +1,11 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\bootstrap\Tabs;
+
+use backend\widgets\LanguageTabs;
 
 use common\models\FlatPage;
-// Create multilingual form for flat page (title, meta_description, anchor)
-// Create multilingual form for content (text)
-fsd
 ?>
 
 <div class="content-form">
@@ -22,6 +22,14 @@ fsd
         <div class="box-body col-md-6">
             <?= $form->field($content, 'flat_page_id')->dropDownList(FlatPage::getMappedArray()) ?>
             <?= $form->field($content, 'name')->textInput(['maxlength' => true]) ?>
+            <?=
+                LanguageTabs::widget([
+                    'model' => $content,
+                    'fieldName' => 'text',
+                    'numberOfRows' => 10,
+                    'isHTMLEditor' => true,
+                ]);
+            ?>
         </div>
          <?php echo $form->errorSummary($content); ?>
         <div class="clearfix"></div>

@@ -60,9 +60,9 @@ class ContentController extends MultiLingualController
 	public function actionCreate()
 	{
 		$content = new Content;
-
         if ($content->load($_POST) && $content->save()) {
-            Yii::$app->session->setFlash('success', Yii::t('backend', 'New Page created successfully'));
+            $content->saveTranslationsPOST($_POST['Translations']);
+            Yii::$app->session->setFlash('success', Yii::t('backend', "New Content {$content->name} created successfully"));
             return $this->redirect(['index']);
         }
 
@@ -73,11 +73,12 @@ class ContentController extends MultiLingualController
 	{
 		$content = $this->findContent($id);
         if ($content->load($_POST) && $content->save()) {
-            Yii::$app->session->setFlash('success', Yii::t('backend', 'Page updated successfully'));
+            $content->saveTranslationsPOST($_POST['Translations']);
+            Yii::$app->session->setFlash('success', Yii::t('backend', "Content {$content->name} updated successfully"));
             return $this->redirect(['index']);
         }
 
-        return $this->render('create', compact('content'));
+        return $this->render('update', compact('content'));
 
 	}
 

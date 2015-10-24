@@ -14,6 +14,8 @@ use backend\models\SourceMessage;
 use backend\models\SourceMessageSearch;
 
 
+/* TODO: Add robots.txt on backend to deny access to all spiders*/
+
 /**
  * Site controller
  */

@@ -41,7 +41,7 @@ class FlatPageLang extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['flat_page_id', 'language', 'title', 'meta_description', 'anchor', 'created_by', 'updated_by', 'created_at', 'updated_at'], 'required'],
+            [['flat_page_id', 'language', 'title', 'meta_description', 'anchor'], 'required'],
             [['flat_page_id', 'created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
             [['language'], 'string', 'max' => 6],
             [['title', 'meta_description', 'anchor'], 'string', 'max' => 255]

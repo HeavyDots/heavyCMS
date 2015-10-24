@@ -4,7 +4,7 @@ use yii\grid\GridView;
 use yii\grid\ActionColumn;
 use dmstr\widgets\Alert;
 
-$this->title = Yii::t('backend/views', 'Manage Image Galleries');
+$this->title = Yii::t('backend/views', 'Galleries');
 $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index']];
 ?>
 

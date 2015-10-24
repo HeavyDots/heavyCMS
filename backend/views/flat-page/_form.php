@@ -1,6 +1,9 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\bootstrap\Tabs;
+
+use backend\widgets\LanguageTabs;
 ?>
 
 <div class="flat-page-form">
@@ -16,6 +19,25 @@ use yii\bootstrap\ActiveForm;
         ?>
         <div class="box-body col-md-6">
             <?= $form->field($flatPage, 'name')->textInput(['maxlength' => true]) ?>
+            <?=
+                LanguageTabs::widget([
+                    'model' => $flatPage,
+                    'fieldName' => 'title',
+                ]);
+            ?>
+            <?=
+                LanguageTabs::widget([
+                    'model' => $flatPage,
+                    'fieldName' => 'meta_description',
+                    'numberOfRows' => 2,
+                ]);
+            ?>
+            <?=
+                LanguageTabs::widget([
+                    'model' => $flatPage,
+                    'fieldName' => 'anchor',
+                ]);
+            ?>
         </div>
         <div class="clearfix"></div>
         <div class="box-footer">
