@@ -9,13 +9,13 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
 use common\components\MultiLingualController;
-use common\models\GlobalConfiguration;
-use common\models\GlobalConfigurationSearch;
+use common\models\BlogPost;
+use common\models\BlogPostSearch;
 
 /**
- * GlobalConfigurationController implements the CRUD actions for GlobalConfiguration model.
+ * BlogPostController implements the CRUD actions for BlogPost model.
  */
-class GlobalConfigurationController extends MultiLingualController
+class BlogPostController extends MultiLingualController
 {
 
     public function behaviors()
@@ -51,44 +51,45 @@ class GlobalConfigurationController extends MultiLingualController
 
 	public function actionIndex()
 	{
-		$globalConfigurationSearch  = new GlobalConfigurationSearch;
-		$globalConfigurationProvider = $globalConfigurationSearch->search($_GET);
+		$blogPostSearch  = new BlogPostSearch;
+		$blogPostProvider = $blogPostSearch->search($_GET);
 
-		return $this->render('index', compact('globalConfigurationSearch', 'globalConfigurationProvider'));
+		return $this->render('index', compact('blogPostSearch', 'blogPostProvider'));
 	}
 
 	public function actionCreate()
 	{
-		$globalConfiguration = new GlobalConfiguration;
-
-        if ($globalConfiguration->load($_POST) && $globalConfiguration->save()) {
-            Yii::$app->session->setFlash('success', Yii::t('backend', 'New Configuration created successfully'));
+		$blogPost = new BlogPost;
+        if ($blogPost->load($_POST) && $blogPost->save()) {
+            $blogPost->saveTranslationsPOST($_POST['Translations']);
+            Yii::$app->session->setFlash('success', Yii::t('backend', "New BlogPost {$blogPost->title} created successfully"));
             return $this->redirect(['index']);
         }
 
-        return $this->render('create', compact('globalConfiguration'));
+        return $this->render('create', compact('blogPost'));
 	}
 
 	public function actionUpdate($id)
 	{
-		$globalConfiguration = $this->findGlobalConfiguration($id);
-        if ($globalConfiguration->load($_POST) && $globalConfiguration->save()) {
-            Yii::$app->session->setFlash('success', Yii::t('backend', 'Configuration updated successfully'));
+		$blogPost = $this->findBlogPost($id);
+        if ($blogPost->load($_POST) && $blogPost->save()) {
+            $blogPost->saveTranslationsPOST($_POST['Translations']);
+            Yii::$app->session->setFlash('success', Yii::t('backend', "BlogPost {$blogPost->title} updated successfully"));
             return $this->redirect(['index']);
         }
 
-        return $this->render('update', compact('globalConfiguration'));
+        return $this->render('update', compact('blogPost'));
 
 	}
 
-	protected function findGlobalConfiguration($id)
+	protected function findBlogPost($id)
 	{
-        $globalConfiguration = GlobalConfiguration::findOne($id);
-        if (!isset($globalConfiguration)) {
+        $blogPost = BlogPost::findOne($id);
+        if (!isset($blogPost)) {
             throw new HttpException(404, Yii::t('backend/view','The requested page does not exist.'));
         }
 
-        return $globalConfiguration;
+        return $blogPost;
 
 	}
 }

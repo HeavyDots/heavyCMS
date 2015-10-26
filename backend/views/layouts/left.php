@@ -48,7 +48,7 @@ use yii\helpers\Html;
                     [
                         'label' => Yii::t('theme/menu', 'Blog'),
                         'icon' => 'fa fa-book fa-lg',
-                        'url' => ['site/blog']
+                        'url' => ['blog-post/index']
                     ],
                     [
                         'label' => Yii::t('theme/menu', 'Global Configuration'),

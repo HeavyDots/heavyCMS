@@ -6,12 +6,15 @@ use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\behaviors\BlameableBehavior;
 use \common\models\base\Content as BaseContent;
+use common\models\traits\Translation;
 
 /**
  * This is the model class for table "content".
  */
 class Content extends BaseContent
 {
+    use Translation;
+
     public function behaviors()
     {
         $newBehaviors = [
@@ -23,15 +26,5 @@ class Content extends BaseContent
             ],
         ];
         return array_merge(parent::behaviors(), $newBehaviors);
-    }
-
-    public function saveTranslationsPOST($translationsPOST){
-        foreach ($translationsPOST as $language => $fields) {
-            foreach ($fields as $fieldName => $fieldValue) {
-                $this->setLanguage($language);
-                $this->{$fieldName} = $fieldValue;
-                $this->saveTranslation();
-            }
-        }
     }
 }

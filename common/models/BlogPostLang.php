@@ -3,22 +3,23 @@
 namespace common\models;
 
 use Yii;
-use yii\helpers\ArrayHelper;
+use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\behaviors\BlameableBehavior;
-use \common\models\base\FlatPage as BaseFlatPage;
-use common\models\traits\Translation;
+use \common\models\base\BlogPostLang as BaseBlogPostLang;
 
 /**
- * This is the model class for table "flat_page".
+ * This is the model class for table "blog_post_lang".
  */
-class FlatPage extends BaseFlatPage
+class BlogPostLang extends BaseBlogPostLang
 {
-    use Translation;
-
     public function behaviors()
     {
         $newBehaviors = [
+            [
+                'class' => SluggableBehavior::className(),
+                'attribute' => 'title',
+            ],
             'timestamp' => [
                 'class' => TimestampBehavior::className(),
             ],
@@ -27,14 +28,5 @@ class FlatPage extends BaseFlatPage
             ],
         ];
         return array_merge(parent::behaviors(), $newBehaviors);
-    }
-
-    public static function getMappedArray(){
-        $models = self::find()->asArray()->all();
-        return ArrayHelper::map($models, 'id', 'name');
-    }
-
-    public function __toString(){
-        return $this->name;
     }
 }

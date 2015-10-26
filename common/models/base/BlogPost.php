@@ -6,21 +6,19 @@ use Yii;
 use dosamigos\translateable\TranslateableBehavior;
 
 /**
- * This is the base-model class for table "content".
+ * This is the base-model class for table "blog_post".
  *
  * @property integer $id
- * @property integer $flat_page_id
- * @property string $name
+ * @property integer $is_published
  * @property integer $created_by
  * @property integer $updated_by
- * @property string $created_at
- * @property string $updated_at
+ * @property integer $created_at
+ * @property integer $updated_at
  *
  * @property \common\models\User $createdBy
  * @property \common\models\User $updatedBy
- * @property \common\models\FlatPage $flatPage
  */
-class Content extends \yii\db\ActiveRecord
+class BlogPost extends \yii\db\ActiveRecord
 {
 
 
@@ -30,7 +28,7 @@ class Content extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'content';
+        return 'blog_post';
     }
     /**
      * @inheritdoc
@@ -43,6 +41,9 @@ class Content extends \yii\db\ActiveRecord
                 // in case you renamed your relation, you can setup its name
                 // 'relation' => 'translations',
                 'translationAttributes' => [
+                    'slug',
+                    'title',
+                    'meta_description',
                     'text',
                 ]
             ],
@@ -55,10 +56,7 @@ class Content extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['flat_page_id', 'name'], 'required'],
-            [['flat_page_id', 'created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
-            [['name'], 'string', 'max' => 255],
-            [['name'], 'unique']
+            [['is_published'], 'integer'],
         ];
     }
 
@@ -69,8 +67,7 @@ class Content extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('models', 'ID'),
-            'flat_page_id' => Yii::t('models', 'Flat Page ID'),
-            'name' => Yii::t('models', 'Name'),
+            'is_published' => Yii::t('models', 'Is Published'),
             'created_by' => Yii::t('models', 'Created By'),
             'updated_by' => Yii::t('models', 'Updated By'),
             'created_at' => Yii::t('models', 'Created At'),
@@ -97,17 +94,9 @@ class Content extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getFlatPage()
-    {
-        return $this->hasOne(\common\models\FlatPage::className(), ['id' => 'flat_page_id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
     public function getTranslations()
     {
-        return $this->hasMany(\common\models\ContentLang::className(), ['content_id' => 'id']);
+        return $this->hasMany(\common\models\BlogPostLang::className(), ['blog_post_id' => 'id']);
     }
 
 

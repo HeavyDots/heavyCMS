@@ -3,16 +3,15 @@
 namespace common\models;
 
 use Yii;
-use yii\helpers\ArrayHelper;
 use yii\behaviors\TimestampBehavior;
 use yii\behaviors\BlameableBehavior;
-use \common\models\base\FlatPage as BaseFlatPage;
+use \common\models\base\BlogPost as BaseBlogPost;
 use common\models\traits\Translation;
 
 /**
- * This is the model class for table "flat_page".
+ * This is the model class for table "blog_post".
  */
-class FlatPage extends BaseFlatPage
+class BlogPost extends BaseBlogPost
 {
     use Translation;
 
@@ -27,14 +26,5 @@ class FlatPage extends BaseFlatPage
             ],
         ];
         return array_merge(parent::behaviors(), $newBehaviors);
-    }
-
-    public static function getMappedArray(){
-        $models = self::find()->asArray()->all();
-        return ArrayHelper::map($models, 'id', 'name');
-    }
-
-    public function __toString(){
-        return $this->name;
     }
 }
