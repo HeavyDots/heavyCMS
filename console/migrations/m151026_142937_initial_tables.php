@@ -193,7 +193,7 @@ class m151026_142937_initial_tables extends Migration
               `id` int(11) NOT NULL AUTO_INCREMENT,
               `user_id` int(11) NOT NULL,
               `name` varchar(255) NOT NULL,
-              `lastname` varchar(255) NOT NULL,
+              `lastname` varchar(255) NULL,
               `avatar` varchar(255) DEFAULT NULL,
               `created_at` int(10) unsigned NOT NULL,
               `updated_at` int(10) unsigned NOT NULL,

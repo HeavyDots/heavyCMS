@@ -34,7 +34,7 @@ class UserProfile extends BaseUserProfile
                             Yii::$app->params['backendURL'],
                             Yii::$app->params['uploadDirectoryForURL'],
                             $this->avatarDirectory);
-        $this->defaultAvatar = $this->avatarURL . 'default_avatar_male.jpg';
+        $this->defaultAvatar = 'default_avatar_male.jpg';
     }
 
     public function attributeLabels(){
