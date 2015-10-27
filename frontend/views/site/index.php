@@ -1,5 +1,5 @@
 <?php
-
+use common\helpers\Translate;
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
@@ -7,6 +7,7 @@ $this->title = 'My Yii Application';
 <div class="site-index">
 
     <div class="jumbotron">
+        <?= Translate::t('aaaaaaaaaaa', 'nbbbbbbbbbbbbbbbbbb')?>
         <h1>Congratulationss! <?= Yii::t('frontend/index', 'probandoss') ?></h1>
 
         <p class="lead">You have successfully created your Yii-powered application.</p>
