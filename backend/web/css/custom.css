@@ -34,3 +34,8 @@
     width: auto;
     height: 160px;
 }
+
+/* TODO: Extract translation-tabs to a Widget Asset */
+.translation-tabs li{
+    font-weight: bold;
+}

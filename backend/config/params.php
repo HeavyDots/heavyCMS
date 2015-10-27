@@ -1,5 +1,5 @@
 <?php
-/* TODO: frontendLanguages is duplication of frontend/config/main.php => appDefaultLanguage
+/* TODO: frontendLanguages is duplication of frontend/config/params.php => supportedLanguages
    It must be deduplicated at some point
 */
 return [

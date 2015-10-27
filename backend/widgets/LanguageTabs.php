@@ -19,25 +19,30 @@ class LanguageTabs extends Widget{
     private $tabItems = [];
 
     public function init(){
-        foreach ( array_keys(Yii::$app->params['frontendLanguages']) as $language ) {
-            $this->model->setLanguage($language);
+        foreach (Yii::$app->params['frontendLanguages'] as $languageCode => $languageName ) {
+            $this->model->setLanguage($languageCode);
             $emptyTranslationMark = (!isset($this->model->{$this->fieldName})||empty($this->model->{$this->fieldName})) ? '*' : '';
 
             $this->tabItems[] = [
-                'label' => '<b>' . strtoupper($language) . "$emptyTranslationMark </b>",
-                'content' => $this->getTabContent($language),
-                'active' => ($language == Yii::$app->language),
+                'label' => $languageName . "$emptyTranslationMark",
+                'content' => $this->getTabContent($languageCode),
+                'active' => ($languageCode == Yii::$app->language),
             ];
         }
         parent::init();
     }
 
     public function run(){
-        return Html::label($this->model->getAttributeLabel($this->fieldName), $this->fieldName, ['class' => 'control-label'])
-            . Tabs::widget([
+        $label = Html::label($this->model->getAttributeLabel($this->fieldName), $this->fieldName, ['class' => 'control-label']);
+        $tabs = Tabs::widget([
             'encodeLabels' => false,
             'items' => $this->tabItems,
+            'options' => [
+                'class' => 'translation-tabs'
+            ],
         ]);
+        $content = Html::tag('div', $label.$tabs, ['class' => 'form-group']);
+        return $content;
     }
 
     private function getTabContent($language){
