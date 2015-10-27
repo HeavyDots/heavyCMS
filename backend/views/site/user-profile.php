@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'options' => ['enctype'=>'multipart/form-data'],
             ]);
         ?>
-        <div class="box-body col-md-6">
+        <div class="box-body col-md-7">
             <?= $form->field($userProfile, 'name')->textInput(['maxlength' => true]) ?>
             <?= $form->field($userProfile, 'lastname')->textInput(['maxlength' => true]) ?>
             <?= $form->field($userProfile, 'uploadedAvatar',

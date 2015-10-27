@@ -14,7 +14,7 @@ use yii\bootstrap\ActiveForm;
                 'errorSummaryCssClass' => 'error-summary alert alert-error',
             ]);
         ?>
-        <div class="box-body col-md-6">
+        <div class="box-body col-md-7">
             <?= $form->field($globalConfiguration, 'name')->textInput(['maxlength' => true]) ?>
             <?= $form->field($globalConfiguration, 'value')->textInput(['maxlength' => true]) ?>
         </div>

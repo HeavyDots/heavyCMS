@@ -17,7 +17,7 @@ use backend\widgets\LanguageTabs;
                 'errorSummaryCssClass' => 'error-summary alert alert-error',
             ]);
         ?>
-        <div class="box-body col-md-6">
+        <div class="box-body col-md-7">
             <?=
                 LanguageTabs::widget([
                     'model' => $blogPost,

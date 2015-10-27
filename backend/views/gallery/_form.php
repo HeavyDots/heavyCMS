@@ -22,7 +22,7 @@ use kartik\sortinput\SortableInput;
                 'options' => ['enctype'=>'multipart/form-data'],
             ]);
         ?>
-        <div class="box-body col-md-6">
+        <div class="box-body col-md-7">
             <?= $form->field($gallery, 'name')->textInput(['maxlength' => true]) ?>
             <?php if (!$gallery->isNewRecord): ?>
                 <div id="gallery-images-sortable">

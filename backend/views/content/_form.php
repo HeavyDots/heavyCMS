@@ -19,7 +19,7 @@ use common\models\FlatPage;
                 'errorSummaryCssClass' => 'error-summary alert alert-error',
             ]);
         ?>
-        <div class="box-body col-md-6">
+        <div class="box-body col-md-7">
             <?= $form->field($content, 'flat_page_id')->dropDownList(FlatPage::getMappedArray()) ?>
             <?= $form->field($content, 'name')->textInput(['maxlength' => true]) ?>
             <?=
