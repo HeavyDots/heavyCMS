@@ -10,6 +10,7 @@ use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
 use frontend\widgets\LanguageDropdown;
+use frontend\widgets\FlatPageList;
 
 AppAsset::register($this);
 ?>
@@ -57,7 +58,8 @@ AppAsset::register($this);
     NavBar::end();
     ?>
     <div class="container">
-    <?= LanguageDropdown::widget() ?>
+        <?= LanguageDropdown::widget() ?>
+        <?= FlatPageList::widget(['htmlClass' => 'nav navbar-nav navbar-right']) ?>
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>

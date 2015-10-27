@@ -42,6 +42,7 @@ class FlatPage extends \yii\db\ActiveRecord
                 // in case you renamed your relation, you can setup its name
                 // 'relation' => 'translations',
                 'translationAttributes' => [
+                    'slug',
                     'title',
                     'meta_description',
                     'anchor',

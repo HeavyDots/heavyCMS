@@ -115,6 +115,7 @@ class m151026_142937_initial_tables extends Migration
               `flat_page_id` int(11) NOT NULL,
               `language` varchar(6) NOT NULL,
               `title` varchar(255) NOT NULL,
+              `slug` varchar(255) NOT NULL,
               `meta_description` varchar(255) NOT NULL,
               `anchor` varchar(255) NOT NULL,
               `created_by` int(11) NOT NULL,
