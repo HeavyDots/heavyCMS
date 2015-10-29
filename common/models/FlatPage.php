@@ -34,6 +34,10 @@ class FlatPage extends BaseFlatPage
         return ArrayHelper::map($models, 'id', 'name');
     }
 
+    public function getSlugUrl(){
+        return ($this->slug=='home') ? 'index' : $this->slug;
+    }
+
     public function __toString(){
         return $this->name;
     }
