@@ -28,6 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
     'id' => 'content-grid',
     'tableOptions' => ['class' => 'table table-striped table-bordered box box-primary'],
     'columns' => [
+        'flatPage',
         [
             'attribute' => 'name',
             'format' => 'raw',
@@ -35,7 +36,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 return Html::a($content->name, ['update', 'id'=>$content->id]);
             }
         ],
-        'flatPage',
         'created_at:datetime',
         'updated_at:datetime',
         [

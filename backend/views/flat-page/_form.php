@@ -4,6 +4,10 @@ use yii\bootstrap\ActiveForm;
 use yii\bootstrap\Tabs;
 
 use backend\widgets\LanguageTabs;
+/*TODO: Autoselect other tabs of the same language when clicking on a Language Tab
+    i.e.: If we click on the title English tab the meta_description and anchor tab,
+    must be changed to English tab
+*/
 ?>
 
 <div class="flat-page-form">

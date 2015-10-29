@@ -62,7 +62,7 @@ class m151026_142937_initial_tables extends Migration
               `created_at` int(10) unsigned NOT NULL,
               `updated_at` int(10) unsigned NOT NULL,
               PRIMARY KEY (`id`),
-              UNIQUE KEY `name` (`name`),
+              UNIQUE KEY `name_flat_page_id` (`name`, `flat_page_id`),
               KEY `created_by` (`created_by`),
               KEY `updated_by` (`updated_by`),
               KEY `flat_page_id` (`flat_page_id`),

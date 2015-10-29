@@ -35,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 return Html::a($flatPage->url, ['update', 'id'=>$flatPage->id]);
             }
         ],
+        'title',
         'created_at:datetime',
         'updated_at:datetime',
         [

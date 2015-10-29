@@ -58,7 +58,10 @@ class Content extends \yii\db\ActiveRecord
             [['flat_page_id', 'name'], 'required'],
             [['flat_page_id', 'created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
             [['name'], 'string', 'max' => 255],
-            [['name'], 'unique']
+            [['name', 'flat_page_id'],
+              'unique', 'targetAttribute' => ['name', 'flat_page_id'], 
+              'message' => 'The combination of Flat Page ID and Name has already been taken.'
+            ]
         ];
     }
 

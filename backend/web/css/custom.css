@@ -2,6 +2,9 @@
 #translate-frontend-grid table tr td{
     vertical-align: middle;
 }
+.translation-save-form .nav > li > a{
+    padding: 1px 8px;
+}
 
 /* Update Slider */
 #gallery-images-sortable li{
