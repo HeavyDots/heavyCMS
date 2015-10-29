@@ -8,8 +8,9 @@ use yii\bootstrap\Tabs;
 
 $tabItems = [];
 foreach ( array_keys(Yii::$app->params['frontendLanguages']) as $language ) {
-    $translation = $model->getTranslationFor($language)->translation;
-    $emptyTranslationMark = (!isset($translation)||empty($translation)) ? '*' : '';
+    $translatedMessage = $model->getTranslationFor($language);
+    $translation = isset($translatedMessage) ? $translatedMessage->translation : '';
+    $emptyTranslationMark = empty($translation) ? '*' : '';
 
     $tabItems[] = [
         'label' => '<b>' . strtoupper($language) . "$emptyTranslationMark </b>",
