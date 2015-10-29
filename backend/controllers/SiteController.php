@@ -5,6 +5,7 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
+use yii\web\HttpException;
 use yii\web\UploadedFile;
 
 use common\components\MultiLingualController;
