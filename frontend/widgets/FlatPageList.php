@@ -19,7 +19,7 @@ class FlatPageList extends Widget{
         return Html::ul($this->flatPageList, [
                                 'class' => $this->htmlClass,
                                 'item' => function ($flatPage, $index){
-            return Html::tag('li', Html::a($flatPage->anchor, [$flatPage->slugUrl]));
+            return Html::tag('li', Html::a($flatPage->anchor, [$flatPage->url]));
         }]);
     }
 }

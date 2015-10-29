@@ -9,7 +9,7 @@ use dosamigos\translateable\TranslateableBehavior;
  * This is the base-model class for table "flat_page".
  *
  * @property integer $id
- * @property string $name
+ * @property string $url
  * @property integer $created_by
  * @property integer $updated_by
  * @property string $created_at
@@ -57,10 +57,10 @@ class FlatPage extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
+            [['url'], 'required'],
             [['created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
-            [['name'], 'string', 'max' => 255],
-            [['name'], 'unique']
+            [['url'], 'string', 'max' => 255],
+            [['url'], 'unique']
         ];
     }
 
@@ -71,7 +71,7 @@ class FlatPage extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('models', 'ID'),
-            'name' => Yii::t('models', 'Name'),
+            'url' => Yii::t('models', 'Url'),
             'created_by' => Yii::t('models', 'Created By'),
             'updated_by' => Yii::t('models', 'Updated By'),
             'created_at' => Yii::t('models', 'Created At'),

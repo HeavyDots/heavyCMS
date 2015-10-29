@@ -56,7 +56,7 @@ class m151026_142937_initial_tables extends Migration
             CREATE TABLE `content` (
               `id` int(11) NOT NULL AUTO_INCREMENT,
               `flat_page_id` int(11) NOT NULL,
-              `name` varchar(255) NOT NULL,
+              `url` varchar(255) NOT NULL,
               `created_by` int(11) NOT NULL,
               `updated_by` int(11) NOT NULL,
               `created_at` int(10) unsigned NOT NULL,

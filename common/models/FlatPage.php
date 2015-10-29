@@ -31,14 +31,10 @@ class FlatPage extends BaseFlatPage
 
     public static function getMappedArray(){
         $models = self::find()->asArray()->all();
-        return ArrayHelper::map($models, 'id', 'name');
-    }
-
-    public function getSlugUrl(){
-        return ($this->slug=='home') ? 'index' : $this->slug;
+        return ArrayHelper::map($models, 'id', 'url');
     }
 
     public function __toString(){
-        return $this->name;
+        return $this->url;
     }
 }

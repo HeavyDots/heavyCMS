@@ -18,7 +18,7 @@ use backend\widgets\LanguageTabs;
             ]);
         ?>
         <div class="box-body col-md-7">
-            <?= $form->field($flatPage, 'name')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($flatPage, 'url')->textInput(['maxlength' => true]) ?>
             <?=
                 LanguageTabs::widget([
                     'model' => $flatPage,

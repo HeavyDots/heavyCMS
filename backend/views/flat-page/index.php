@@ -29,13 +29,12 @@ $this->params['breadcrumbs'][] = $this->title;
     'tableOptions' => ['class' => 'table table-striped table-bordered box box-primary'],
     'columns' => [
         [
-            'attribute' => 'name',
+            'attribute' => 'url',
             'format' => 'raw',
             'value' => function($flatPage){
-                return Html::a($flatPage->name, ['update', 'id'=>$flatPage->id]);
+                return Html::a($flatPage->url, ['update', 'id'=>$flatPage->id]);
             }
         ],
-        'slug',
         'created_at:datetime',
         'updated_at:datetime',
         [

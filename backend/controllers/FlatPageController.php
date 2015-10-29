@@ -63,7 +63,7 @@ class FlatPageController extends MultiLingualController
 
         if ($flatPage->load($_POST) && $flatPage->save()) {
             $flatPage->saveTranslationsPOST($_POST['Translations']);
-            Yii::$app->session->setFlash('success', Yii::t('backend', "New Page {$flatPage->name} created successfully"));
+            Yii::$app->session->setFlash('success', Yii::t('backend', "New Page {$flatPage} created successfully"));
             return $this->redirect(['index']);
         }
 
@@ -75,7 +75,7 @@ class FlatPageController extends MultiLingualController
 		$flatPage = $this->findFlatPage($id);
         if ($flatPage->load($_POST) && $flatPage->save()) {
             $flatPage->saveTranslationsPOST($_POST['Translations']);
-            Yii::$app->session->setFlash('success', Yii::t('backend', "Page {$flatPage->name} updated successfully"));
+            Yii::$app->session->setFlash('success', Yii::t('backend', "Page {$flatPage} updated successfully"));
             return $this->redirect(['index']);
         }
 
