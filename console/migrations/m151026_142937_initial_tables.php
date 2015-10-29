@@ -56,7 +56,7 @@ class m151026_142937_initial_tables extends Migration
             CREATE TABLE `content` (
               `id` int(11) NOT NULL AUTO_INCREMENT,
               `flat_page_id` int(11) NOT NULL,
-              `url` varchar(255) NOT NULL,
+              `name` varchar(255) NOT NULL,
               `created_by` int(11) NOT NULL,
               `updated_by` int(11) NOT NULL,
               `created_at` int(10) unsigned NOT NULL,
@@ -95,13 +95,13 @@ class m151026_142937_initial_tables extends Migration
             DROP TABLE IF EXISTS `flat_page`;
             CREATE TABLE `flat_page` (
               `id` int(11) NOT NULL AUTO_INCREMENT,
-              `name` varchar(255) NOT NULL,
+              `url` varchar(255) NOT NULL,
               `created_by` int(11) NOT NULL,
               `updated_by` int(11) NOT NULL,
               `created_at` int(10) unsigned NOT NULL,
               `updated_at` int(10) unsigned NOT NULL,
               PRIMARY KEY (`id`),
-              UNIQUE KEY `name` (`name`),
+              UNIQUE KEY `url` (`url`),
               KEY `created_by` (`created_by`),
               KEY `updated_by` (`updated_by`),
               CONSTRAINT `flat_page_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `user` (`id`),

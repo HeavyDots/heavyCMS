@@ -9,6 +9,7 @@ use yii\bootstrap\Tabs;
 use Zelenin\yii\widgets\Summernote\Summernote;
 
 /*TODO: Associate tab fields with a form so an error can be raised and displayed */
+/*TODO: Change Summernote Bold, Italic, etc markup i.e.: "<span style="font-weight: bold;">" */
 
 class LanguageTabs extends Widget{
 
