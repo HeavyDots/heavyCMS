@@ -1,5 +1,6 @@
 <?php
 use common\helpers\Translate;
+use frontend\widgets\Gallery;
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
@@ -19,6 +20,8 @@ $this->title = 'My Yii Application';
 
         <div class="row">
             <div class="col-lg-4">
+                <?= Gallery::widget(['slug' => 'fsa', 'ulClass'=> 'ulclass', 'liClass'=>'testli', 'imgClass'=>'imgclass']) ?>
+                <?= Gallery::widget(['slug' => 'home-luxury-cars']) ?>
                 <h2>Heading</h2>
 
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et

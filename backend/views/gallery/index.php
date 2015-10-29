@@ -33,6 +33,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index']];
                 return Html::a($gallery->name, ['update', 'id'=>$gallery->id]);
             }
         ],
+        'slug',
         'created_by',
         'created_at:datetime',
         'updated_at:datetime',
