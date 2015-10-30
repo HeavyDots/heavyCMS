@@ -46,6 +46,6 @@ class Gallery extends Widget{
     }
 
     private function generateHtmlForSingleImage($galleryImage){
-        return Html::img($galleryImage->url);
+        return Html::img($galleryImage->url, ['class'=>$this->imgClass]);
     }
 }

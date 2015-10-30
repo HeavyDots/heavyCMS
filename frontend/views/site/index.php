@@ -22,6 +22,7 @@ $this->title = 'My Yii Application';
             <div class="col-lg-4">
                 <?= Gallery::widget(['slug' => 'fsa', 'ulClass'=> 'ulclass', 'liClass'=>'testli', 'imgClass'=>'imgclass']) ?>
                 <?= Gallery::widget(['slug' => 'home-luxury-cars']) ?>
+                <?= Gallery::widget(['slug' => 'tessf', 'imgClass'=>'imgclass']) ?>
                 <h2>Heading</h2>
 
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
