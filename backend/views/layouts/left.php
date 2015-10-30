@@ -36,7 +36,7 @@ use yii\helpers\Html;
                         'url' => ['content/index']
                     ],
                     [
-                        'label' => Yii::t('theme/menu', 'Translate Frontend'),
+                        'label' => Yii::t('theme/menu', 'Translate UI'),
                         'icon' => 'fa fa-language fa-lg',
                         'url' => ['site/translate-frontend']
                     ],

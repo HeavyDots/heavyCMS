@@ -24,12 +24,12 @@ class LanguageTabs extends Widget{
 
     public function init(){
         foreach ($this->translations as $index => $translation) {
-            $emptyTranslationMark = (!isset($translation->{$this->fieldName})||empty($translation->{$this->fieldName})) ? '*' : '';
             $fieldHasError = $this->fieldHasError($translation);
             $this->tabItems[] = [
-                'label' => Yii::$app->params['frontendLanguages'][$translation->language] . "$emptyTranslationMark",
+                'label' => Yii::$app->params['frontendLanguages'][$translation->language],
                 'content' => $this->getTabContent($translation, $index, $translation->language),
                 'active' => $this->isActiveTab($translation, $fieldHasError),
+                'linkOptions' => ['class' => $this->linkClass($translation, $fieldHasError)],
             ];
         }
         parent::init();
@@ -101,7 +101,18 @@ class LanguageTabs extends Widget{
         if ($fieldHasError) {
             $this->formHasErrors = true;
         }
-        return ;
+        return $fieldHasError;
+    }
+
+    private function linkClass($translation, $fieldHasError){
+        $linkClass = '';
+        if($fieldHasError){
+            $linkClass = 'text-red';
+        }
+        else if(!isset($translation->{$this->fieldName})||empty($translation->{$this->fieldName})){
+            $linkClass = 'text-muted';
+        }
+        return $linkClass;
     }
 }
 
