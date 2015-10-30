@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use Yii;
+use yii\base\Model;
 use yii\web\Controller;
 use yii\web\HttpException;
 use yii\filters\VerbFilter;
@@ -60,25 +61,32 @@ class BlogPostController extends MultiLingualController
 	public function actionCreate()
 	{
 		$blogPost = new BlogPost;
-        if ($blogPost->load($_POST) && $blogPost->save()) {
-            $blogPost->saveTranslationsPOST($_POST['Translations']);
-            Yii::$app->session->setFlash('success', Yii::t('backend', "New BlogPost {$blogPost->title} created successfully"));
-            return $this->redirect(['index']);
-        }
+        //Avoid saving an unwanted translation. It must be a bug on translatable behavior
+        $blogPost->detachBehavior('translatable');
+        $blogPost->save();
+        Yii::$app->session->setFlash('success', Yii::t('backend', "New BlogPost created successfully"));
+        return $this->redirect(['update', 'id'=>$blogPost->id]);
 
-        return $this->render('create', compact('blogPost'));
 	}
 
 	public function actionUpdate($id)
 	{
 		$blogPost = $this->findBlogPost($id);
-        if ($blogPost->load($_POST) && $blogPost->save()) {
-            $blogPost->saveTranslationsPOST($_POST['Translations']);
-            Yii::$app->session->setFlash('success', Yii::t('backend', "BlogPost {$blogPost->title} updated successfully"));
+        $translations = $blogPost->initializeTranslations();
+        Model::loadMultiple($translations, $_POST);
+        //Avoid saving an unwanted translation. It must be a bug on translatable behavior
+        $blogPost->detachBehavior('translatable');
+        if ($blogPost->load($_POST) &&
+            Model::loadMultiple($translations, $_POST) &&
+            Model::validateMultiple($translations) &&
+            $blogPost->save())
+        {
+            $blogPost->saveTranslations($translations);
+            Yii::$app->session->setFlash('success', Yii::t('backend', "BlogPost updated successfully"));
             return $this->redirect(['index']);
         }
 
-        return $this->render('update', compact('blogPost'));
+        return $this->render('update', compact('blogPost', 'translations'));
 
 	}
 

@@ -42,7 +42,11 @@ class BlogPostLang extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['slug', 'blog_post_id', 'language', 'title', 'meta_description', 'text'], 'required'],
+            [['blog_post_id', 'language'], 'required'],
+            [['blog_post_id', 'slug', 'language', 'title', 'meta_description', 'text'],
+                'required',
+                'on'=>'mainLanguage'
+            ],
             [['blog_post_id', 'created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
             [['text'], 'string'],
             [['slug', 'title', 'meta_description'], 'string', 'max' => 255],

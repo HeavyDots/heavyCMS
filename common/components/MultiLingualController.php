@@ -11,7 +11,6 @@ class MultiLingualController extends \yii\web\Controller
 
     public function init()
     {
-        // FIXME: This URL is not valid http://admin.heavycms.dev/es-ES/ Fix It
         $languageGet = isset($_GET['language']) ? $_GET['language'] : null;
         if (isset($languageGet)) {
             $this->languageIsNotSupported = !$this->isLanguageGetSupported($languageGet);

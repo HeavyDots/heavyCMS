@@ -23,25 +23,33 @@ use backend\widgets\LanguageTabs;
         ?>
         <div class="box-body col-md-7">
             <?= $form->field($flatPage, 'url')->textInput(['maxlength' => true]) ?>
-            <?=
-                LanguageTabs::widget([
-                    'model' => $flatPage,
-                    'fieldName' => 'title',
-                ]);
-            ?>
-            <?=
-                LanguageTabs::widget([
-                    'model' => $flatPage,
-                    'fieldName' => 'meta_description',
-                    'numberOfRows' => 2,
-                ]);
-            ?>
-            <?=
-                LanguageTabs::widget([
-                    'model' => $flatPage,
-                    'fieldName' => 'anchor',
-                ]);
-            ?>
+            <?php if (!$flatPage->isNewRecord): ?>
+                <?=
+                    LanguageTabs::widget([
+                        'form' => $form,
+                        'model' => $flatPage,
+                        'fieldName' => 'title',
+                        'translations' => $translations,
+                    ]);
+                ?>
+                <?=
+                    LanguageTabs::widget([
+                        'form' => $form,
+                        'model' => $flatPage,
+                        'fieldName' => 'meta_description',
+                        'translations' => $translations,
+                        'numberOfRows' => 2,
+                    ]);
+                ?>
+                <?=
+                    LanguageTabs::widget([
+                        'form' => $form,
+                        'model' => $flatPage,
+                        'fieldName' => 'anchor',
+                        'translations' => $translations,
+                    ]);
+                ?>
+            <?php endif ?>
         </div>
         <div class="clearfix"></div>
         <div class="box-footer">

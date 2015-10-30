@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use Yii;
+use yii\base\Model;
 use yii\web\Controller;
 use yii\web\HttpException;
 use yii\filters\VerbFilter;
@@ -60,10 +61,11 @@ class ContentController extends MultiLingualController
 	public function actionCreate()
 	{
 		$content = new Content;
+        //Avoid saving an unwanted translation. It must be a bug on translatable behavior
+        $content->detachBehavior('translatable');
         if ($content->load($_POST) && $content->save()) {
-            $content->saveTranslationsPOST($_POST['Translations']);
             Yii::$app->session->setFlash('success', Yii::t('backend', "New Content {$content->name} created successfully"));
-            return $this->redirect(['index']);
+            return $this->redirect(['update', 'id'=>$content->id]);
         }
 
         return $this->render('create', compact('content'));
@@ -72,13 +74,20 @@ class ContentController extends MultiLingualController
 	public function actionUpdate($id)
 	{
 		$content = $this->findContent($id);
-        if ($content->load($_POST) && $content->save()) {
-            $content->saveTranslationsPOST($_POST['Translations']);
+        $translations = $content->initializeTranslations();
+        //Avoid saving an unwanted translation. It must be a bug on translatable behavior
+        $content->detachBehavior('translatable');
+        if ($content->load($_POST) &&
+            Model::loadMultiple($translations, $_POST) &&
+            Model::validateMultiple($translations) &&
+            $content->save())
+        {
+            $content->saveTranslations($translations);
             Yii::$app->session->setFlash('success', Yii::t('backend', "Content {$content->name} updated successfully"));
             return $this->redirect(['index']);
         }
 
-        return $this->render('update', compact('content'));
+        return $this->render('update', compact('content', 'translations'));
 
 	}
 

@@ -43,6 +43,20 @@ return [
                 ],
             ],
         ],
+        /*TODO: Remove "index" on language URLs i.e.: /es-ES/index */
+        'urlManager' => [
+            'class'             => common\components\MultiLingualUrlManager::className(),
+            'enablePrettyUrl'   => true,
+            'showScriptName'    => false, // false - means that index.php will not be part of the URLs
+            'rules' => [
+                '<language>/<action>' => 'site/<action>',
+                '/' => 'site/index',
+                '<action>' => 'site/<action>',
+                '<language>/<controller>/<action>/<id>' => '<controller>/<action>',
+                '<language>/<controller>/<action>' => '<controller>/<action>',
+                '<language>/<controller>/<id>' => '<controller>',
+            ],
+        ],
     ],
     'params' => $params,
 ];

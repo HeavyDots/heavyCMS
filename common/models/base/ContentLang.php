@@ -39,7 +39,8 @@ class ContentLang extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['content_id', 'language', 'text'], 'required'],
+            [['content_id', 'language'], 'required'],
+            [['content_id', 'language', 'text'], 'required', 'on' => 'mainLanguage'],
             [['content_id', 'created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
             [['text'], 'string'],
             [['language'], 'string', 'max' => 6]

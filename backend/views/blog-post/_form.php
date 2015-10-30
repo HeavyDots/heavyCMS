@@ -18,31 +18,38 @@ use backend\widgets\LanguageTabs;
             ]);
         ?>
         <div class="box-body col-md-7">
-            <?=
-                LanguageTabs::widget([
-                    'model' => $blogPost,
-                    'fieldName' => 'title',
-                ]);
-            ?>
-            <?=
-                LanguageTabs::widget([
-                    'model' => $blogPost,
-                    'fieldName' => 'meta_description',
-                ]);
-            ?>
-            <?=
-                LanguageTabs::widget([
-                    'model' => $blogPost,
-                    'fieldName' => 'text',
-                    'numberOfRows' => 10,
-                    'isHTMLEditor' => true,
-                ]);
-            ?>
+            <?php if (!$blogPost->isNewRecord): ?>
+                <?=
+                    LanguageTabs::widget([
+                        'form' => $form,
+                        'model' => $blogPost,
+                        'fieldName' => 'title',
+                        'translations' => $translations,
+                    ]);
+                ?>
+                <?=
+                    LanguageTabs::widget([
+                        'form' => $form,
+                        'model' => $blogPost,
+                        'fieldName' => 'meta_description',
+                        'translations' => $translations,
+                    ]);
+                ?>
+                <?=
+                    LanguageTabs::widget([
+                        'form' => $form,
+                        'model' => $blogPost,
+                        'fieldName' => 'text',
+                        'translations' => $translations,
+                        'numberOfRows' => 10,
+                        'isHTMLEditor' => true,
+                    ]);
+                ?>
+            <?php endif ?>
             <?=
                 $form->field($blogPost, 'is_published')->checkbox();
             ?>
         </div>
-         <?php echo $form->errorSummary($blogPost); ?>
         <div class="clearfix"></div>
         <div class="box-footer">
             <?= Html::submitButton(

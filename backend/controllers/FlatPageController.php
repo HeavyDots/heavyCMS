@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use Yii;
+use yii\base\Model;
 use yii\web\Controller;
 use yii\web\HttpException;
 use yii\filters\VerbFilter;
@@ -60,11 +61,11 @@ class FlatPageController extends MultiLingualController
 	public function actionCreate()
 	{
 		$flatPage = new FlatPage;
-
-        if ($flatPage->load($_POST) && $flatPage->save()) {
-            $flatPage->saveTranslationsPOST($_POST['Translations']);
+        //Avoid saving an unwanted translation. It must be a bug on translatable behavior
+        $flatPage->detachBehavior('translatable');
+        if ($flatPage->load($_POST) && $flatPage->save()){
             Yii::$app->session->setFlash('success', Yii::t('backend', "New Page {$flatPage} created successfully"));
-            return $this->redirect(['index']);
+            return $this->redirect(['update', 'id' => $flatPage->id]);
         }
 
         return $this->render('create', compact('flatPage'));
@@ -73,13 +74,21 @@ class FlatPageController extends MultiLingualController
 	public function actionUpdate($id)
 	{
 		$flatPage = $this->findFlatPage($id);
-        if ($flatPage->load($_POST) && $flatPage->save()) {
-            $flatPage->saveTranslationsPOST($_POST['Translations']);
+        $translations = $flatPage->initializeTranslations();
+
+        //Avoid saving an unwanted translation. It must be a bug on translatable behavior
+        $flatPage->detachBehavior('translatable');
+        if ($flatPage->load($_POST) &&
+            Model::loadMultiple($translations, $_POST) &&
+            Model::validateMultiple($translations) &&
+            $flatPage->save())
+        {
+            $flatPage->saveTranslations($translations);
             Yii::$app->session->setFlash('success', Yii::t('backend', "Page {$flatPage} updated successfully"));
             return $this->redirect(['index']);
         }
 
-        return $this->render('update', compact('flatPage'));
+        return $this->render('update', compact('flatPage', 'translations'));
 
 	}
 

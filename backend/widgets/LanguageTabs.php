@@ -13,21 +13,23 @@ use Zelenin\yii\widgets\Summernote\Summernote;
 
 class LanguageTabs extends Widget{
 
+    public $form;
     public $model;
+    public $translations;
     public $fieldName;
     public $numberOfRows = 1;
     public $isHTMLEditor = false;
+    private $formHasErrors = false;
     private $tabItems = [];
 
     public function init(){
-        foreach (Yii::$app->params['frontendLanguages'] as $languageCode => $languageName ) {
-            $this->model->setLanguage($languageCode);
-            $emptyTranslationMark = (!isset($this->model->{$this->fieldName})||empty($this->model->{$this->fieldName})) ? '*' : '';
-
+        foreach ($this->translations as $index => $translation) {
+            $emptyTranslationMark = (!isset($translation->{$this->fieldName})||empty($translation->{$this->fieldName})) ? '*' : '';
+            $fieldHasError = $this->fieldHasError($translation);
             $this->tabItems[] = [
-                'label' => $languageName . "$emptyTranslationMark",
-                'content' => $this->getTabContent($languageCode),
-                'active' => ($languageCode == Yii::$app->language),
+                'label' => Yii::$app->params['frontendLanguages'][$translation->language] . "$emptyTranslationMark",
+                'content' => $this->getTabContent($translation, $index, $translation->language),
+                'active' => $this->isActiveTab($translation, $fieldHasError),
             ];
         }
         parent::init();
@@ -42,37 +44,64 @@ class LanguageTabs extends Widget{
                 'class' => 'translation-tabs'
             ],
         ]);
-        $content = Html::tag('div', $label.$tabs, ['class' => 'form-group']);
+        $content = Html::tag('div', $label.$tabs, ['class' => 'form-group nav-tabs-custom']);
         return $content;
     }
 
-    private function getTabContent($language){
-        $tabContent = Html::textarea("Translations[$language][$this->fieldName]",
-                        $this->model->{$this->fieldName}, [
-                            'id'    => "{$this->fieldName}-{$language}-translation",
-                            'class' => 'translation-textarea form-control',
-                            'rel'   => $language,
-                            'rows'  => $this->numberOfRows,
-                        ]);
 
-        if ($this->isHTMLEditor) {
-            $tabContent = Summernote::widget([
-                'name' => "Translations[$language][$this->fieldName]",
-                'value' => $this->model->{$this->fieldName},
-                'id'    => "{$this->fieldName}-{$language}-translation",
-                'class' => 'translation-textarea form-control',
-                'clientOptions' => [
-                    'toolbar' => [
-                            ['style', ['bold', 'italic', 'underline', 'clear']],
-                            ['font', ['strikethrough', 'superscript', 'subscript']],
-                            ['para', ['ul', 'ol', 'paragraph']],
-                            ['misc', ['codeview']],
-                    ]
-                ]
-            ]);
+    private function getTabContent($translation, $index, $language){
+        return $this->isHTMLEditor ?
+                    $this->getHTMLEditor($translation, $index, $language)
+                    :
+                    $this->getTextareaEditor($translation, $index, $language);
+    }
+
+    private function getTextareaEditor($translation, $index, $language){
+        return $this->form->field($translation,
+                                        "[{$index}]{$this->fieldName}")
+                                    ->textarea([
+                                        'id'    => "{$this->fieldName}-{$language}-translation",
+                                        'class' => 'translation-textarea form-control',
+                                        'rel'   => $language,
+                                        'rows'  => $this->numberOfRows,
+                                        ])
+                                    ->label(false);
+    }
+
+    private function getHTMLEditor($translation, $index, $language){
+        return $this->form->field($translation,
+                                "[{$index}]{$this->fieldName}")->widget(Summernote::className(), [
+                                    'clientOptions' => [
+                                        'toolbar' => [
+                                                ['style', ['bold', 'italic', 'underline', 'clear']],
+                                                ['font', ['strikethrough', 'superscript', 'subscript']],
+                                                ['para', ['ul', 'ol', 'paragraph']],
+                                                ['misc', ['codeview']],
+                                        ]
+                                    ],
+                                    'options' => [
+                                        'class' => 'translation-textarea form-control',
+                                    ]
+                                ]
+                            )
+                            ->label(false);
+    }
+
+
+    private function isActiveTab($translation, $fieldHasError){
+        $isMainLanguage = strtolower($translation->language) == strtolower(Yii::$app->params['appDefaultLanguage']);
+        $isActiveLanguage = strtolower($translation->language) == strtolower(Yii::$app->language);
+        return (($fieldHasError && $isMainLanguage) ||
+                $isActiveLanguage && !$this->formHasErrors
+               );
+    }
+
+    private function fieldHasError($translation){
+        $fieldHasError = (count($this->form->validate($translation, [$this->fieldName])) > 0);
+        if ($fieldHasError) {
+            $this->formHasErrors = true;
         }
-
-        return $tabContent;
+        return ;
     }
 }
 

@@ -15,7 +15,7 @@ class BlogPostLang extends BaseBlogPostLang
 {
     public function behaviors()
     {
-        $newBehaviors = [
+        return [
             [
                 'class' => SluggableBehavior::className(),
                 'attribute' => 'title',
@@ -27,6 +27,5 @@ class BlogPostLang extends BaseBlogPostLang
             'class' => BlameableBehavior::className(),
             ],
         ];
-        return array_merge(parent::behaviors(), $newBehaviors);
     }
 }
