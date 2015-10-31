@@ -8,7 +8,7 @@ $this->title = 'My Yii Application';
 <div class="site-index">
 
     <div class="jumbotron">
-        <?= Translate::t('aaaaaaaaaaa', 'nbbbbbbbbbbbbbbbbbb')?>
+        <?= Translate::t('index', 'texto1')?>
         <h1>Congratulationss! <?= Yii::t('frontend/index', 'probandoss') ?></h1>
 
         <p class="lead">You have successfully created your Yii-powered application.</p>

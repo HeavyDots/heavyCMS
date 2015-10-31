@@ -5,8 +5,10 @@
 return [
     'adminEmail' => 'admin@example.com',
     'supportedLanguages' => ['en-US' => 'English',
-                             'es-ES' => 'Español'],
+                             'es-ES' => 'Español',
+                             'fr-FR' => 'Français'],
     'appDefaultLanguage' => 'en-US',
     'frontendLanguages' => ['en-US' => 'English',
-                            'es-ES' => 'Español'],
+                            'es-ES' => 'Español',
+                            'fr-FR' => 'Français'],
 ];

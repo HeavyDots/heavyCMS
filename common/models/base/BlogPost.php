@@ -3,7 +3,7 @@
 namespace common\models\base;
 
 use Yii;
-use dosamigos\translateable\TranslateableBehavior;
+use common\components\TranslateableBehavior;
 
 /**
  * This is the base-model class for table "blog_post".

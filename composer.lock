@@ -4,52 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d16812de382fea984f689f7fec8ffb3c",
-    "content-hash": "9fa2848d5207dd1833e7975e5a036474",
+    "hash": "77764c9434acbb27a3b2cf0a276bdc79",
+    "content-hash": "625d405aa23df9c1cce089d30eca1fb8",
     "packages": [
-        {
-            "name": "2amigos/yii2-translateable-behavior",
-            "version": "0.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/2amigos/yii2-translateable-behavior.git",
-                "reference": "c79ab7cf9d77cf107ce060323a0b1fb1ec01c505"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/2amigos/yii2-translateable-behavior/zipball/c79ab7cf9d77cf107ce060323a0b1fb1ec01c505",
-                "reference": "c79ab7cf9d77cf107ce060323a0b1fb1ec01c505",
-                "shasum": ""
-            },
-            "require": {
-                "yiisoft/yii2": "*"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "dosamigos\\translateable\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Antonio Ramirez",
-                    "email": "ramirez.cobos@gmail.com",
-                    "homepage": "http://2amigos.us"
-                }
-            ],
-            "description": "ActiveRecord attributes translations for Yii2.",
-            "keywords": [
-                "Behavior",
-                "extension",
-                "translation",
-                "yii"
-            ],
-            "time": "2014-08-22 09:10:21"
-        },
         {
             "name": "almasaeed2010/adminlte",
             "version": "v2.3.0",

@@ -10,6 +10,7 @@ use Zelenin\yii\widgets\Summernote\Summernote;
 
 /*TODO: Associate tab fields with a form so an error can be raised and displayed */
 /*TODO: Change Summernote Bold, Italic, etc markup i.e.: "<span style="font-weight: bold;">" */
+/*TODO: Avoid to save "<p><br></p>" when Summernote has no text */
 
 class LanguageTabs extends Widget{
 
@@ -109,10 +110,17 @@ class LanguageTabs extends Widget{
         if($fieldHasError){
             $linkClass = 'text-red';
         }
-        else if(!isset($translation->{$this->fieldName})||empty($translation->{$this->fieldName})){
+        else if($this->isEmptyField($translation)){
             $linkClass = 'text-muted';
         }
         return $linkClass;
+    }
+
+    private function isEmptyField($translation){
+        return (!isset($translation->{$this->fieldName})||
+                empty($translation->{$this->fieldName}) ||
+                $translation->{$this->fieldName}=='<p><br></p>'
+                );
     }
 }
 
