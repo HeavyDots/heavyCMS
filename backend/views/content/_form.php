@@ -11,7 +11,7 @@ use common\models\FlatPage;
 <div class="content-form">
     <div class="box box-primary">
         <div class="box-header with-border">
-            <h3 class="box-title"><?= Yii::t('backend/views', 'Fill Content Data') ?></h3>
+            <h3 class="box-title"><?= Yii::t('app', 'Fill Content Data') ?></h3>
         </div>
         <?php $form = ActiveForm::begin([
                 'id' => 'content',
@@ -35,7 +35,7 @@ use common\models\FlatPage;
                 ?>
             <?php endif ?>
         </div>
-         <?php echo $form->errorSummary($content); ?>
+         <?php //echo $form->errorSummary($content); ?>
         <div class="clearfix"></div>
         <div class="box-footer">
             <?= Html::submitButton(

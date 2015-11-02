@@ -13,7 +13,7 @@ use kartik\sortinput\SortableInput;
 <div class="gallery-form">
     <div class="box box-primary">
         <div class="box-header with-border">
-            <h3 class="box-title"><?= Yii::t('backend/views', 'Fill Gallery Data') ?></h3>
+            <h3 class="box-title"><?= Yii::t('app', 'Fill Gallery Data') ?></h3>
         </div>
         <?php $form = ActiveForm::begin([
                 'id' => 'gallery',

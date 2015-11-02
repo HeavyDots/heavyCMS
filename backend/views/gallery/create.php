@@ -1,7 +1,7 @@
 <?php
 
-$this->title = Yii::t('backend/views', 'Create Gallery');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('backend/views', 'Galleries'), 'url' => ['index']];
+$this->title = Yii::t('app', 'Create Gallery');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Galleries'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

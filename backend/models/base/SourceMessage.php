@@ -3,6 +3,7 @@
 namespace backend\models\base;
 
 use Yii;
+use common\components\TranslateableBehavior;
 
 /**
  * This is the base-model class for table "source_message".
@@ -26,6 +27,20 @@ class SourceMessage extends \yii\db\ActiveRecord
         return 'source_message';
     }
 
+    public function behaviors()
+    {
+        return [
+            'translatable' => [
+                'class' => TranslateableBehavior::className(),
+                // in case you renamed your relation, you can setup its name
+                // 'relation' => 'translations',
+                'translationAttributes' => [
+                    'translation',
+                ]
+            ],
+        ];
+    }
+
     /**
      * @inheritdoc
      */
@@ -43,16 +58,16 @@ class SourceMessage extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('backend', 'ID'),
-            'category' => Yii::t('backend', 'Category'),
-            'message' => Yii::t('backend', 'Source Message'),
+            'id' => Yii::t('model', 'ID'),
+            'category' => Yii::t('model', 'Category'),
+            'message' => Yii::t('model', 'Source Message'),
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getTranslatedMessages()
+    public function getTranslations()
     {
         return $this->hasMany(\backend\models\TranslatedMessage::className(), ['id' => 'id']);
     }

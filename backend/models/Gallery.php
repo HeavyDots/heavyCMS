@@ -24,7 +24,7 @@ class Gallery extends CommonGallery
 
     public function attributeLabels(){
         $parentAttributeLabels = parent::attributeLabels();
-        $parentAttributeLabels['uploadedImages'] = Yii::t('backend', 'Upload Images');
+        $parentAttributeLabels['uploadedImages'] = Yii::t('app', 'Upload Images');
         return $parentAttributeLabels;
     }
 

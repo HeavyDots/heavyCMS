@@ -1,6 +1,6 @@
 <?php
 
-$this->title = Yii::t('backend', 'Create Configuration');
+$this->title = Yii::t('app', 'Create Configuration');
 $this->params['breadcrumbs'][] = ['label' => 'Global Configuration', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

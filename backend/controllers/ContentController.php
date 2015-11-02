@@ -64,7 +64,7 @@ class ContentController extends MultiLingualController
         //Avoid saving an unwanted translation. It must be a bug on translatable behavior
         $content->detachBehavior('translatable');
         if ($content->load($_POST) && $content->save()) {
-            Yii::$app->session->setFlash('success', Yii::t('backend', "New Content {$content->name} created successfully"));
+            Yii::$app->session->setFlash('success', Yii::t('app', "New Content {$content->name} created successfully"));
             return $this->redirect(['update', 'id'=>$content->id]);
         }
 
@@ -83,7 +83,7 @@ class ContentController extends MultiLingualController
             $content->save())
         {
             $content->saveTranslations($translations);
-            Yii::$app->session->setFlash('success', Yii::t('backend', "Content {$content->name} updated successfully"));
+            Yii::$app->session->setFlash('success', Yii::t('app', "Content {$content->name} updated successfully"));
             return $this->redirect(['index']);
         }
 
@@ -95,7 +95,7 @@ class ContentController extends MultiLingualController
 	{
         $content = Content::findOne($id);
         if (!isset($content)) {
-            throw new HttpException(404, Yii::t('backend/view','The requested page does not exist.'));
+            throw new HttpException(404, Yii::t('app','The requested page does not exist.'));
         }
 
         return $content;

@@ -79,18 +79,18 @@ class SiteController extends MultiLingualController
     public function actionSaveTranslation($id){
         $sourceMessage = SourceMessage::findOne($id);
         if (!isset($sourceMessage)) {
-            throw new HttpException(404, Yii::t('backend/view','The requested page does not exist.'));
+            throw new HttpException(404, Yii::t('app','The requested page does not exist.'));
         }
-        $sourceMessage->initTranslatedMessages();
 
-        if ( SourceMessage::loadMultiple($sourceMessage->translatedMessages, Yii::$app->getRequest()->post())
-             && SourceMessage::validateMultiple($sourceMessage->translatedMessages) )
+        $translations = $sourceMessage->initializeTranslations();
+        if ( SourceMessage::loadMultiple($translations, Yii::$app->getRequest()->post())
+             && SourceMessage::validateMultiple($translations) )
         {
-            $sourceMessage->saveTranslatedMessages();
-            Yii::$app->session->setFlash('success', Yii::t('backend', 'Translations saved successfully'));
+            $sourceMessage->saveTranslations($translations);;
+            Yii::$app->session->setFlash('success', Yii::t('app', 'Translations saved successfully'));
         }
         else{
-            Yii::$app->session->setFlash('error', Yii::t('backend', 'Error saving translation'));
+            Yii::$app->session->setFlash('error', Yii::t('app', 'Error saving translation'));
         }
 
         return $this->redirect(['translate-frontend']);
@@ -105,10 +105,10 @@ class SiteController extends MultiLingualController
             $userProfile->uploadedAvatar = UploadedFile::getInstance($userProfile, 'uploadedAvatar');
 
             if($userProfile->saveAvatarToDisk()){
-                Yii::$app->session->setFlash('success', Yii::t('backend', 'Profile updated successfully'));
+                Yii::$app->session->setFlash('success', Yii::t('app', 'Profile updated successfully'));
             }
             else{
-                Yii::$app->session->setFlash('error', Yii::t('backend', 'There was some error uploading your avatar Image'));
+                Yii::$app->session->setFlash('error', Yii::t('app', 'There was some error uploading your avatar Image'));
             }
             return $this->refresh();
         }

@@ -39,7 +39,7 @@ class UserProfile extends BaseUserProfile
 
     public function attributeLabels(){
         $parentAttributeLabels = parent::attributeLabels();
-        $parentAttributeLabels['uploadedAvatar'] = Yii::t('backend', 'Avatar');
+        $parentAttributeLabels['uploadedAvatar'] = Yii::t('app', 'Avatar');
         return $parentAttributeLabels;
     }
 

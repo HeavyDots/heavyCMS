@@ -56,7 +56,7 @@ class GalleryController extends MultiLingualController{
         if ($gallery->load($_POST) && $gallery->save()) {
             $gallery->uploadedImages = UploadedFile::getInstances($gallery, 'uploadedImages');
             $gallery->saveImagesOnDisk();
-            Yii::$app->session->setFlash('success', Yii::t('backend', "Gallery {$gallery->name} created successfully"));
+            Yii::$app->session->setFlash('success', Yii::t('app', "Gallery {$gallery->name} created successfully"));
             return $this->redirect(['index']);
         }
         return $this->render('create', compact('gallery'));
@@ -69,7 +69,7 @@ class GalleryController extends MultiLingualController{
             $gallery->reorderGalleryImages($galleryImagesOrderArray);
             $gallery->uploadedImages = UploadedFile::getInstances($gallery, 'uploadedImages');
             $gallery->saveImagesOnDisk();
-            Yii::$app->session->setFlash('success', Yii::t('backend', "Gallery {$gallery->name} updated successfully"));
+            Yii::$app->session->setFlash('success', Yii::t('app', "Gallery {$gallery->name} updated successfully"));
 
             return $this->redirect(['index']);
         }
@@ -79,7 +79,7 @@ class GalleryController extends MultiLingualController{
     protected function findGallery($id){
         $gallery = Gallery::findOne($id);
         if (!isset($gallery)) {
-            throw new HttpException(404, Yii::t('backend/view','The requested page does not exist.'));
+            throw new HttpException(404, Yii::t('app','The requested page does not exist.'));
         }
 
         return $gallery;

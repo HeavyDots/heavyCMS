@@ -62,7 +62,7 @@ class GlobalConfigurationController extends MultiLingualController
 		$globalConfiguration = new GlobalConfiguration;
 
         if ($globalConfiguration->load($_POST) && $globalConfiguration->save()) {
-            Yii::$app->session->setFlash('success', Yii::t('backend', 'New Configuration created successfully'));
+            Yii::$app->session->setFlash('success', Yii::t('app', 'New Configuration created successfully'));
             return $this->redirect(['index']);
         }
 
@@ -73,7 +73,7 @@ class GlobalConfigurationController extends MultiLingualController
 	{
 		$globalConfiguration = $this->findGlobalConfiguration($id);
         if ($globalConfiguration->load($_POST) && $globalConfiguration->save()) {
-            Yii::$app->session->setFlash('success', Yii::t('backend', 'Configuration updated successfully'));
+            Yii::$app->session->setFlash('success', Yii::t('app', 'Configuration updated successfully'));
             return $this->redirect(['index']);
         }
 
@@ -85,7 +85,7 @@ class GlobalConfigurationController extends MultiLingualController
 	{
         $globalConfiguration = GlobalConfiguration::findOne($id);
         if (!isset($globalConfiguration)) {
-            throw new HttpException(404, Yii::t('backend/view','The requested page does not exist.'));
+            throw new HttpException(404, Yii::t('app','The requested page does not exist.'));
         }
 
         return $globalConfiguration;

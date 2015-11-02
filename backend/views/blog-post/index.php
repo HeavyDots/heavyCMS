@@ -6,7 +6,7 @@ use yii\grid\ActionColumn;
 use dmstr\widgets\Alert;
 
 
-$this->title = Yii::t('backend', 'Blog Posts');
+$this->title = Yii::t('app', 'Blog Posts');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <p class="pull-left">
     <?= Html::a('<i class="glyphicon glyphicon-plus"></i> ' .
-        Yii::t('backend/views', 'Add New Blog Post'),
+        Yii::t('app', 'Add New Blog Post'),
         'create', [
                 'class' => 'btn btn-primary',
     ]); ?>

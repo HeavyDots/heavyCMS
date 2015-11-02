@@ -51,13 +51,13 @@ class Gallery extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('backend', 'ID'),
-            'name' => Yii::t('backend', 'Name'),
-            'slug' => Yii::t('backend', 'Slug'),
-            'created_by' => Yii::t('backend', 'Created By'),
-            'updated_by' => Yii::t('backend', 'Updated By'),
-            'created_at' => Yii::t('backend', 'Created At'),
-            'updated_at' => Yii::t('backend', 'Updated At'),
+            'id' => Yii::t('model', 'ID'),
+            'name' => Yii::t('model', 'Name'),
+            'slug' => Yii::t('model', 'Slug'),
+            'created_by' => Yii::t('model', 'Created By'),
+            'updated_by' => Yii::t('model', 'Updated By'),
+            'created_at' => Yii::t('model', 'Created At'),
+            'updated_at' => Yii::t('model', 'Updated At'),
         ];
     }
 

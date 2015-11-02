@@ -42,3 +42,9 @@
 .translation-tabs li{
     font-weight: bold;
 }
+
+
+/* TABs */
+.nav-tabs-custom{
+    background: none !important;
+}

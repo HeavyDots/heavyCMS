@@ -8,9 +8,8 @@ use yii\bootstrap\Tabs;
 
 use Zelenin\yii\widgets\Summernote\Summernote;
 
-/*TODO: Associate tab fields with a form so an error can be raised and displayed */
 /*TODO: Change Summernote Bold, Italic, etc markup i.e.: "<span style="font-weight: bold;">" */
-/*TODO: Avoid to save "<p><br></p>" when Summernote has no text */
+/*TODO: Allow Summernote to upload images (to use on blog posts) */
 
 class LanguageTabs extends Widget{
 
@@ -20,14 +19,16 @@ class LanguageTabs extends Widget{
     public $fieldName;
     public $numberOfRows = 1;
     public $isHTMLEditor = false;
+    public $showLaguageCodeAsLabel = false;
     private $formHasErrors = false;
     private $tabItems = [];
 
     public function init(){
         foreach ($this->translations as $index => $translation) {
             $fieldHasError = $this->fieldHasError($translation);
+            $label = $this->getLabelForTab($translation);
             $this->tabItems[] = [
-                'label' => Yii::$app->params['frontendLanguages'][$translation->language],
+                'label' => $label,
                 'content' => $this->getTabContent($translation, $index, $translation->language),
                 'active' => $this->isActiveTab($translation, $fieldHasError),
                 'linkOptions' => ['class' => $this->linkClass($translation, $fieldHasError)],
@@ -121,6 +122,13 @@ class LanguageTabs extends Widget{
                 empty($translation->{$this->fieldName}) ||
                 $translation->{$this->fieldName}=='<p><br></p>'
                 );
+    }
+
+    private function getLabelForTab($translation){
+        return $this->showLaguageCodeAsLabel ?
+                    $translation->language
+                    :
+                    Yii::$app->params['frontendLanguages'][$translation->language];
     }
 }
 

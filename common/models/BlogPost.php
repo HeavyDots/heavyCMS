@@ -1,5 +1,6 @@
 <?php
-
+/*TODO: Add category table */
+/*TODO: Allow upload images on blog posts */
 namespace common\models;
 
 use Yii;

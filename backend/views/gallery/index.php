@@ -4,7 +4,7 @@ use yii\grid\GridView;
 use yii\grid\ActionColumn;
 use dmstr\widgets\Alert;
 
-$this->title = Yii::t('backend/views', 'Galleries');
+$this->title = Yii::t('app', 'Galleries');
 $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index']];
 ?>
 
@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index']];
 
 <p class="pull-left">
     <?= Html::a('<i class="glyphicon glyphicon-plus"></i> ' .
-        Yii::t('backend/views', 'Add New Gallery'),
+        Yii::t('app', 'Add New Gallery'),
         'create', [
                 'class' => 'btn btn-primary',
     ]); ?>

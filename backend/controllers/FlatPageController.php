@@ -64,7 +64,7 @@ class FlatPageController extends MultiLingualController
         //Avoid saving an unwanted translation. It must be a bug on translatable behavior
         $flatPage->detachBehavior('translatable');
         if ($flatPage->load($_POST) && $flatPage->save()){
-            Yii::$app->session->setFlash('success', Yii::t('backend', "New Page {$flatPage} created successfully"));
+            Yii::$app->session->setFlash('success', Yii::t('app', "New Page {$flatPage} created successfully"));
             return $this->redirect(['update', 'id' => $flatPage->id]);
         }
 
@@ -84,7 +84,7 @@ class FlatPageController extends MultiLingualController
             $flatPage->save())
         {
             $flatPage->saveTranslations($translations);
-            Yii::$app->session->setFlash('success', Yii::t('backend', "Page {$flatPage} updated successfully"));
+            Yii::$app->session->setFlash('success', Yii::t('app', "Page {$flatPage} updated successfully"));
             return $this->redirect(['index']);
         }
 
@@ -96,7 +96,7 @@ class FlatPageController extends MultiLingualController
 	{
         $flatPage = FlatPage::findOne($id);
         if (!isset($flatPage)) {
-            throw new HttpException(404, Yii::t('backend/view','The requested page does not exist.'));
+            throw new HttpException(404, Yii::t('app','The requested page does not exist.'));
         }
 
         return $flatPage;

@@ -43,7 +43,7 @@ use backend\widgets\LanguageDropdown;
                             <div class="pull-left">
                                 <?=
                                     Html::a(
-                                        Yii::t('backend', 'Profile'),
+                                        Yii::t('app', 'Profile'),
                                         ['site/user-profile'],
                                         ['class' => 'btn btn-default btn-flat']
                                         );

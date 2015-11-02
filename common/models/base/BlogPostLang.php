@@ -60,17 +60,17 @@ class BlogPostLang extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('models', 'ID'),
-            'slug' => Yii::t('models', 'Slug'),
-            'blog_post_id' => Yii::t('models', 'Blog Post ID'),
-            'language' => Yii::t('models', 'Language'),
-            'title' => Yii::t('models', 'Title'),
-            'meta_description' => Yii::t('models', 'Meta Description'),
-            'text' => Yii::t('models', 'Text'),
-            'created_by' => Yii::t('models', 'Created By'),
-            'updated_by' => Yii::t('models', 'Updated By'),
-            'created_at' => Yii::t('models', 'Created At'),
-            'updated_at' => Yii::t('models', 'Updated At'),
+            'id' => Yii::t('model', 'ID'),
+            'slug' => Yii::t('model', 'Slug'),
+            'blog_post_id' => Yii::t('model', 'Blog Post ID'),
+            'language' => Yii::t('model', 'Language'),
+            'title' => Yii::t('model', 'Title'),
+            'meta_description' => Yii::t('model', 'Meta Description'),
+            'text' => Yii::t('model', 'Text'),
+            'created_by' => Yii::t('model', 'Created By'),
+            'updated_by' => Yii::t('model', 'Updated By'),
+            'created_at' => Yii::t('model', 'Created At'),
+            'updated_at' => Yii::t('model', 'Updated At'),
         ];
     }
 

@@ -64,7 +64,7 @@ class BlogPostController extends MultiLingualController
         //Avoid saving an unwanted translation. It must be a bug on translatable behavior
         $blogPost->detachBehavior('translatable');
         $blogPost->save();
-        Yii::$app->session->setFlash('success', Yii::t('backend', "New BlogPost created successfully"));
+        Yii::$app->session->setFlash('success', Yii::t('app', "New Blog Post created successfully"));
         return $this->redirect(['update', 'id'=>$blogPost->id]);
 
 	}
@@ -82,7 +82,7 @@ class BlogPostController extends MultiLingualController
             $blogPost->save())
         {
             $blogPost->saveTranslations($translations);
-            Yii::$app->session->setFlash('success', Yii::t('backend', "BlogPost updated successfully"));
+            Yii::$app->session->setFlash('success', Yii::t('app', "Blog Post updated successfully"));
             return $this->redirect(['index']);
         }
 
@@ -94,7 +94,7 @@ class BlogPostController extends MultiLingualController
 	{
         $blogPost = BlogPost::findOne($id);
         if (!isset($blogPost)) {
-            throw new HttpException(404, Yii::t('backend/view','The requested page does not exist.'));
+            throw new HttpException(404, Yii::t('app','The requested page does not exist.'));
         }
 
         return $blogPost;

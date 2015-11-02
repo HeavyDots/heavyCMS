@@ -53,14 +53,14 @@ class ContentLang extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('models', 'ID'),
-            'content_id' => Yii::t('models', 'Content ID'),
-            'language' => Yii::t('models', 'Language'),
-            'text' => Yii::t('models', 'Text'),
-            'created_by' => Yii::t('models', 'Created By'),
-            'updated_by' => Yii::t('models', 'Updated By'),
-            'created_at' => Yii::t('models', 'Created At'),
-            'updated_at' => Yii::t('models', 'Updated At'),
+            'id' => Yii::t('model', 'ID'),
+            'content_id' => Yii::t('model', 'Content ID'),
+            'language' => Yii::t('model', 'Language'),
+            'text' => Yii::t('model', 'Text'),
+            'created_by' => Yii::t('model', 'Created By'),
+            'updated_by' => Yii::t('model', 'Updated By'),
+            'created_at' => Yii::t('model', 'Created At'),
+            'updated_at' => Yii::t('model', 'Updated At'),
         ];
     }
 

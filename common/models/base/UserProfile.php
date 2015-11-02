@@ -48,13 +48,13 @@ class UserProfile extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('backend', 'ID'),
-            'user_id' => Yii::t('backend', 'User ID'),
-            'name' => Yii::t('backend', 'Name'),
-            'lastname' => Yii::t('backend', 'Lastname'),
-            'avatar' => Yii::t('backend', 'Avatar'),
-            'created_at' => Yii::t('backend', 'Created At'),
-            'updated_at' => Yii::t('backend', 'Updated Ad'),
+            'id' => Yii::t('model', 'ID'),
+            'user_id' => Yii::t('model', 'User ID'),
+            'name' => Yii::t('model', 'Name'),
+            'lastname' => Yii::t('model', 'Lastname'),
+            'avatar' => Yii::t('model', 'Avatar'),
+            'created_at' => Yii::t('model', 'Created At'),
+            'updated_at' => Yii::t('model', 'Updated At'),
         ];
     }
 

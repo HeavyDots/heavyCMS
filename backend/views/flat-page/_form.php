@@ -13,7 +13,7 @@ use backend\widgets\LanguageTabs;
 <div class="flat-page-form">
     <div class="box box-primary">
         <div class="box-header with-border">
-            <h3 class="box-title"><?= Yii::t('backend/views', 'Fill Page Data') ?></h3>
+            <h3 class="box-title"><?= Yii::t('app', 'Fill Page Data') ?></h3>
         </div>
         <?php $form = ActiveForm::begin([
                 'id' => 'flat-page',

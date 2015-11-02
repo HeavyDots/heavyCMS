@@ -55,16 +55,16 @@ class FlatPageLang extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('models', 'ID'),
-            'flat_page_id' => Yii::t('models', 'Flat Page ID'),
-            'language' => Yii::t('models', 'Language'),
-            'title' => Yii::t('models', 'Title'),
-            'meta_description' => Yii::t('models', 'Meta Description'),
-            'anchor' => Yii::t('models', 'Anchor'),
-            'created_by' => Yii::t('models', 'Created By'),
-            'updated_by' => Yii::t('models', 'Updated By'),
-            'created_at' => Yii::t('models', 'Created At'),
-            'updated_at' => Yii::t('models', 'Updated At'),
+            'id' => Yii::t('model', 'ID'),
+            'flat_page_id' => Yii::t('model', 'Flat Page ID'),
+            'language' => Yii::t('model', 'Language'),
+            'title' => Yii::t('model', 'Title'),
+            'meta_description' => Yii::t('model', 'Meta Description'),
+            'anchor' => Yii::t('model', 'Anchor'),
+            'created_by' => Yii::t('model', 'Created By'),
+            'updated_by' => Yii::t('model', 'Updated By'),
+            'created_at' => Yii::t('model', 'Created At'),
+            'updated_at' => Yii::t('model', 'Updated At'),
         ];
     }
 

@@ -24,34 +24,34 @@ use yii\helpers\Html;
             [
                 'options' => ['class' => 'sidebar-menu'],
                 'items' => [
-                    ['label' => Yii::t('theme/menu', 'Menu'), 'options' => ['class' => 'header']],
+                    ['label' => Yii::t('app', 'Menu'), 'options' => ['class' => 'header']],
                     [
-                        'label' => Yii::t('theme/menu', 'Pages'),
+                        'label' => Yii::t('app', 'Pages'),
                         'icon' => 'fa fa-files-o fa-lg',
                         'url' => ['flat-page/index']
                     ],
                     [
-                        'label' => Yii::t('theme/menu', 'Content'),
+                        'label' => Yii::t('app', 'Content'),
                         'icon' => 'fa fa-indent fa-lg',
                         'url' => ['content/index']
                     ],
                     [
-                        'label' => Yii::t('theme/menu', 'Translate UI'),
+                        'label' => Yii::t('app', 'Translate UI'),
                         'icon' => 'fa fa-language fa-lg',
                         'url' => ['site/translate-frontend']
                     ],
                     [
-                        'label' => Yii::t('theme/menu', 'Image Galleries'),
+                        'label' => Yii::t('app', 'Image Galleries'),
                         'icon' => 'fa fa-ellipsis-h fa-lg',
                         'url' => ['gallery/index']
                     ],
                     [
-                        'label' => Yii::t('theme/menu', 'Blog'),
+                        'label' => Yii::t('app', 'Blog'),
                         'icon' => 'fa fa-book fa-lg',
                         'url' => ['blog-post/index']
                     ],
                     [
-                        'label' => Yii::t('theme/menu', 'Global Configuration'),
+                        'label' => Yii::t('app', 'Global Configuration'),
                         'icon' => 'fa fa-globe fa-lg',
                         'url' => ['global-configuration/index']
                     ],

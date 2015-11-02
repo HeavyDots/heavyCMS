@@ -33,6 +33,7 @@ class TranslatedMessage extends \yii\db\ActiveRecord
     {
         return [
             [['id', 'language'], 'required'],
+            [['id', 'language'], 'required', 'on' => 'mainLanguage'],
             [['id'], 'integer'],
             [['translation'], 'string'],
             [['language'], 'string', 'max' => 255]
@@ -45,9 +46,9 @@ class TranslatedMessage extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('backend', 'ID'),
-            'language' => Yii::t('backend', 'Language'),
-            'translation' => Yii::t('backend', 'Translation'),
+            'id' => Yii::t('model', 'ID'),
+            'language' => Yii::t('model', 'Language'),
+            'translation' => Yii::t('model', 'Translation'),
         ];
     }
 

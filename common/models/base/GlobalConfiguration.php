@@ -50,14 +50,14 @@ class GlobalConfiguration extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('models', 'ID'),
-            'name' => Yii::t('models', 'Name'),
-            'slug' => Yii::t('models', 'Slug'),
-            'value' => Yii::t('models', 'Value'),
-            'created_by' => Yii::t('models', 'Created By'),
-            'updated_by' => Yii::t('models', 'Updated By'),
-            'created_at' => Yii::t('models', 'Created At'),
-            'updated_at' => Yii::t('models', 'Updated At'),
+            'id' => Yii::t('model', 'ID'),
+            'name' => Yii::t('model', 'Name'),
+            'slug' => Yii::t('model', 'Slug'),
+            'value' => Yii::t('model', 'Value'),
+            'created_by' => Yii::t('model', 'Created By'),
+            'updated_by' => Yii::t('model', 'Updated By'),
+            'created_at' => Yii::t('model', 'Created At'),
+            'updated_at' => Yii::t('model', 'Updated At'),
         ];
     }
 

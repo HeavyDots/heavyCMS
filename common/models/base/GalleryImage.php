@@ -51,14 +51,14 @@ class GalleryImage extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'gallery_id' => Yii::t('backend', 'Gallery ID'),
-            'file_name' => Yii::t('backend', 'File Name'),
-            'sort_order' => Yii::t('backend', 'Sort Order'),
-            'is_active' => Yii::t('backend', 'Is Active'),
-            'created_by' => Yii::t('backend', 'Created By'),
-            'updated_by' => Yii::t('backend', 'Updated By'),
-            'created_at' => Yii::t('backend', 'Created At'),
-            'updated_at' => Yii::t('backend', 'Updated At'),
+            'gallery_id' => Yii::t('model', 'Gallery ID'),
+            'file_name' => Yii::t('model', 'File Name'),
+            'sort_order' => Yii::t('model', 'Sort Order'),
+            'is_active' => Yii::t('model', 'Is Active'),
+            'created_by' => Yii::t('model', 'Created By'),
+            'updated_by' => Yii::t('model', 'Updated By'),
+            'created_at' => Yii::t('model', 'Created At'),
+            'updated_at' => Yii::t('model', 'Updated At'),
         ];
     }
 

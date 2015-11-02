@@ -6,7 +6,7 @@ use yii\grid\ActionColumn;
 use dmstr\widgets\Alert;
 
 
-$this->title = Yii::t('backend', 'Global Configuration');
+$this->title = Yii::t('app', 'Global Configuration');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <p class="pull-left">
     <?= Html::a('<i class="glyphicon glyphicon-plus"></i> ' .
-        Yii::t('backend/views', 'Add New Configuration'),
+        Yii::t('app', 'Add New Configuration'),
         'create', [
                 'class' => 'btn btn-primary',
     ]); ?>

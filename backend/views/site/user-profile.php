@@ -4,7 +4,7 @@ use yii\bootstrap\ActiveForm;
 use dmstr\widgets\Alert;
 use kartik\file\FileInput;
 
-$this->title = Yii::t('backend/views', 'User Profile');
+$this->title = Yii::t('app', 'User Profile');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-user-profile col-md-6">
     <div class="box box-primary">
         <div class="box-header with-border">
-            <h3 class="box-title"><?= Yii::t('backend/views', 'Edit Your Profile') ?></h3>
+            <h3 class="box-title"><?= Yii::t('app', 'Edit Your Profile') ?></h3>
         </div>
         <?php $form = ActiveForm::begin([
                 'id' => 'user-profile',

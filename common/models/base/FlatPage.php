@@ -70,12 +70,12 @@ class FlatPage extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('models', 'ID'),
-            'url' => Yii::t('models', 'Url'),
-            'created_by' => Yii::t('models', 'Created By'),
-            'updated_by' => Yii::t('models', 'Updated By'),
-            'created_at' => Yii::t('models', 'Created At'),
-            'updated_at' => Yii::t('models', 'Updated At'),
+            'id' => Yii::t('model', 'ID'),
+            'url' => Yii::t('model', 'Url'),
+            'created_by' => Yii::t('model', 'Created By'),
+            'updated_by' => Yii::t('model', 'Updated By'),
+            'created_at' => Yii::t('model', 'Created At'),
+            'updated_at' => Yii::t('model', 'Updated At'),
         ];
     }
 

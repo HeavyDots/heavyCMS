@@ -6,7 +6,7 @@ use yii\grid\ActionColumn;
 use dmstr\widgets\Alert;
 use backend\models\SourceMessage;
 
-$this->title = Yii::t('backend/views', 'Translate Frontend');
+$this->title = Yii::t('app', 'Translate UI');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]
             ],
             [
-                'label' => Yii::t('backend', 'Message Translations'),
+                'label' => Yii::t('app', 'Message Translations'),
                 'format' => 'raw',
                 'headerOptions' => [
                     'width' => '400',
@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     SourceMessage::getAllCategoriesAsArray(),
                                     [
                                         'class'=>'form-control',
-                                        'prompt' => Yii::t('backend','All')
+                                        'prompt' => Yii::t('app','All')
                                     ]
                                 ),
             ],
@@ -58,9 +58,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 'template' => '{save}',
                 'buttons' => [
                     'save' => function ($url, $sourceMessageSearch, $key) {
-                        return Html::a('<i class="glyphicon glyphicon-floppy-disk"></i> ' . Yii::t('backend', 'Save'), '#', [
+                        return Html::a('<i class="glyphicon glyphicon-floppy-disk"></i> ' . Yii::t('app', 'Save'), '#', [
                             'class'                 => 'btn btn-success btn-translation-save',
-                            'title'                 => Yii::t('backend', 'Save'),
+                            'title'                 => Yii::t('app', 'Save'),
                         ]);
                     },
                 ],
