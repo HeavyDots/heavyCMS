@@ -8,6 +8,8 @@ $this->title = Yii::t('app', 'Galleries');
 $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index']];
 ?>
 
+<?= $this->render('_content-header'); ?>
+
 <?= Alert::widget() ?>
 
 <p class="pull-left">

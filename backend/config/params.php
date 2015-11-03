@@ -7,7 +7,7 @@ return [
     'supportedLanguages' => ['en-US' => 'English',
                              'es-ES' => 'Español',
                              'fr-FR' => 'Français'],
-    'appDefaultLanguage' => 'en-US',
+    'appMainLanguage' => 'en-US',
     'frontendLanguages' => ['en-US' => 'English',
                             'es-ES' => 'Español',
                             'fr-FR' => 'Français'],

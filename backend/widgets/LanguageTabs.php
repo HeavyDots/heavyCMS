@@ -4,12 +4,12 @@ namespace backend\widgets;
 use Yii;
 use yii\base\Widget;
 use yii\helpers\Html;
+use yii\web\JsExpression;
 use yii\bootstrap\Tabs;
 
 use Zelenin\yii\widgets\Summernote\Summernote;
 
 /*TODO: Change Summernote Bold, Italic, etc markup i.e.: "<span style="font-weight: bold;">" */
-/*TODO: Allow Summernote to upload images (to use on blog posts) */
 
 class LanguageTabs extends Widget{
 
@@ -20,6 +20,8 @@ class LanguageTabs extends Widget{
     public $numberOfRows = 1;
     public $isHTMLEditor = false;
     public $showLaguageCodeAsLabel = false;
+    public $allowHTMLEditorToUploadImages = false;
+    public $uploadImageUrl = '';
     private $formHasErrors = false;
     private $tabItems = [];
 
@@ -71,27 +73,47 @@ class LanguageTabs extends Widget{
     }
 
     private function getHTMLEditor($translation, $index, $language){
-        return $this->form->field($translation,
+        $toolbar = [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['misc', ['codeview']],
+        ];
+        $toolbar = $this->allowHTMLEditorToUploadImages ? array_merge($toolbar, [['insert', ['picture']]]) : $toolbar;
+        $callbackOnImageUpload = "function(files) {
+          var editorHTML = $(this);
+          var data = new FormData();
+          data.append('fileUploaded', files[0]);
+          $.ajax({
+            url: '{$this->uploadImageUrl}',
+            method: 'POST',
+            data: data,
+            processData: false,
+            contentType: false,
+            success: function(data) {
+                var imgURL = data.url;
+                editorHTML.summernote('insertImage', imgURL);
+            }
+          });
+        }";
+        $htmlEditor = $this->form->field($translation,
                                 "[{$index}]{$this->fieldName}")->widget(Summernote::className(), [
                                     'clientOptions' => [
-                                        'toolbar' => [
-                                                ['style', ['bold', 'italic', 'underline', 'clear']],
-                                                ['font', ['strikethrough', 'superscript', 'subscript']],
-                                                ['para', ['ul', 'ol', 'paragraph']],
-                                                ['misc', ['codeview']],
-                                        ]
+                                        'toolbar' => $toolbar,
+                                        'onImageUpload' => new JsExpression($callbackOnImageUpload),
                                     ],
                                     'options' => [
-                                        'class' => 'translation-textarea form-control',
+                                        'class' => 'translation-summernote form-control',
                                     ]
                                 ]
                             )
                             ->label(false);
+        return  $htmlEditor;
     }
 
 
     private function isActiveTab($translation, $fieldHasError){
-        $isMainLanguage = strtolower($translation->language) == strtolower(Yii::$app->params['appDefaultLanguage']);
+        $isMainLanguage = strtolower($translation->language) == strtolower(Yii::$app->params['appMainLanguage']);
         $isActiveLanguage = strtolower($translation->language) == strtolower(Yii::$app->language);
         return (($fieldHasError && $isMainLanguage) ||
                 $isActiveLanguage && !$this->formHasErrors

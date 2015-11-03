@@ -61,8 +61,6 @@ class ContentController extends MultiLingualController
 	public function actionCreate()
 	{
 		$content = new Content;
-        //Avoid saving an unwanted translation. It must be a bug on translatable behavior
-        $content->detachBehavior('translatable');
         if ($content->load($_POST) && $content->save()) {
             Yii::$app->session->setFlash('success', Yii::t('app', "New Content {$content->name} created successfully"));
             return $this->redirect(['update', 'id'=>$content->id]);
@@ -75,8 +73,6 @@ class ContentController extends MultiLingualController
 	{
 		$content = $this->findContent($id);
         $translations = $content->initializeTranslations();
-        //Avoid saving an unwanted translation. It must be a bug on translatable behavior
-        $content->detachBehavior('translatable');
         if ($content->load($_POST) &&
             Model::loadMultiple($translations, $_POST) &&
             Model::validateMultiple($translations) &&

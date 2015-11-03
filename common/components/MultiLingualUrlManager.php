@@ -18,7 +18,7 @@ class MultiLingualUrlManager extends UrlManager
     }
 
     private function selectedLanguageIsNotTheDefalutLanguage(){
-        return Yii::$app->language!=Yii::$app->params['appDefaultLanguage'];
+        return Yii::$app->language!=Yii::$app->params['appMainLanguage'];
     }
 
     private function isSelectedLanguageSupported(){

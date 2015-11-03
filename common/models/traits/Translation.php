@@ -14,7 +14,7 @@ trait Translation{
         $translations = [];
         foreach (Yii::$app->params['frontendLanguages'] as $languageCode => $languageName) {
             $translation = $this->getTranslation($languageCode);
-            if ($languageCode == Yii::$app->params['appDefaultLanguage']) {
+            if ($languageCode == Yii::$app->params['appMainLanguage']) {
                 $translation->scenario = 'mainLanguage';
             }
             $translations[] = $translation;

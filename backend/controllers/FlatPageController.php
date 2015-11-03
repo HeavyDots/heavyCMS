@@ -61,8 +61,6 @@ class FlatPageController extends MultiLingualController
 	public function actionCreate()
 	{
 		$flatPage = new FlatPage;
-        //Avoid saving an unwanted translation. It must be a bug on translatable behavior
-        $flatPage->detachBehavior('translatable');
         if ($flatPage->load($_POST) && $flatPage->save()){
             Yii::$app->session->setFlash('success', Yii::t('app', "New Page {$flatPage} created successfully"));
             return $this->redirect(['update', 'id' => $flatPage->id]);
@@ -76,8 +74,6 @@ class FlatPageController extends MultiLingualController
 		$flatPage = $this->findFlatPage($id);
         $translations = $flatPage->initializeTranslations();
 
-        //Avoid saving an unwanted translation. It must be a bug on translatable behavior
-        $flatPage->detachBehavior('translatable');
         if ($flatPage->load($_POST) &&
             Model::loadMultiple($translations, $_POST) &&
             Model::validateMultiple($translations) &&

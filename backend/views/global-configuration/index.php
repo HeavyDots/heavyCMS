@@ -10,6 +10,8 @@ $this->title = Yii::t('app', 'Global Configuration');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
+<?= $this->render('_content-header'); ?>
+
 <?= Alert::widget() ?>
 
 <p class="pull-left">

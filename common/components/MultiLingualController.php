@@ -36,7 +36,7 @@ class MultiLingualController extends \yii\web\Controller
     }
 
     private function isLanguageGetTheDefaultLanguage(){
-        return $this->languageGet==Yii::$app->params['appDefaultLanguage'];
+        return $this->languageGet==Yii::$app->params['appMainLanguage'];
     }
 
     private function redirectToUrlWithNoLanguage($action){

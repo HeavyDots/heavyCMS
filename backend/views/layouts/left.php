@@ -36,13 +36,8 @@ use yii\helpers\Html;
                         'url' => ['content/index']
                     ],
                     [
-                        'label' => Yii::t('app', 'Translate UI'),
-                        'icon' => 'fa fa-language fa-lg',
-                        'url' => ['site/translate-frontend']
-                    ],
-                    [
                         'label' => Yii::t('app', 'Image Galleries'),
-                        'icon' => 'fa fa-ellipsis-h fa-lg',
+                        'icon' => 'fa fa-image fa-lg',
                         'url' => ['gallery/index']
                     ],
                     [
@@ -51,8 +46,13 @@ use yii\helpers\Html;
                         'url' => ['blog-post/index']
                     ],
                     [
+                        'label' => Yii::t('app', 'Translate UI'),
+                        'icon' => 'fa fa-language fa-lg',
+                        'url' => ['site/translate-frontend']
+                    ],
+                    [
                         'label' => Yii::t('app', 'Global Configuration'),
-                        'icon' => 'fa fa-globe fa-lg',
+                        'icon' => 'fa fa-gear fa-lg',
                         'url' => ['global-configuration/index']
                     ],
                 ],

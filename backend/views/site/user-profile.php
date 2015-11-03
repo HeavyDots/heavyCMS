@@ -26,23 +26,23 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= $form->field($userProfile, 'name')->textInput(['maxlength' => true]) ?>
             <?= $form->field($userProfile, 'lastname')->textInput(['maxlength' => true]) ?>
             <?= $form->field($userProfile, 'uploadedAvatar',
-                ['options'=>['class'=>'col-md-11 user-avatar-upload']])->widget(
-                                            FileInput::classname(),[
-                                                'options' => ['multiple' => false, 'accept' => 'image/*'],
-                                                'pluginOptions' => [
-                                                    'defaultPreviewContent' => Html::img($userProfile->getFullUrlAvatar()),
-                                                    'overwriteInitial' => true,
-                                                    'showCaption' => false,
-                                                    'showRemove' => true,
-                                                    'showUpload' => false,
-                                                    'showClose' => false,
-                                                    'browseLabel' => '',
-                                                    'removeLabel' => '',
-                                                    'removeIcon' => '<i class="glyphicon glyphicon-remove"></i>',
-                                                    'layoutTemplates' => ['main2' => '{preview} {browse} {remove}'],
-                                                    'allowedFileExtensions' => ["jpg", "png", "gif"]
-                                                    ]
-                                                ]);
+                ['options'=>['class'=>'col-md-11 image-file-upload']])->widget(
+                        FileInput::classname(),[
+                            'options' => ['multiple' => false, 'accept' => 'image/*'],
+                            'pluginOptions' => [
+                                'defaultPreviewContent' => Html::img($userProfile->getFullUrlAvatar()),
+                                'overwriteInitial' => true,
+                                'showCaption' => false,
+                                'showRemove' => true,
+                                'showUpload' => false,
+                                'showClose' => false,
+                                'browseLabel' => '',
+                                'removeLabel' => '',
+                                'removeIcon' => '<i class="glyphicon glyphicon-remove"></i>',
+                                'layoutTemplates' => ['main2' => '{preview} {browse} {remove}'],
+                                'allowedFileExtensions' => ["jpg", "png", "gif"]
+                                ]
+                            ]);
             ?>
         </div>
         <div class="clearfix"></div>

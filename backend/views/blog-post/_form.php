@@ -1,7 +1,9 @@
 <?php
+use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\bootstrap\Tabs;
+use kartik\file\FileInput;
 
 use backend\widgets\LanguageTabs;
 ?>
@@ -15,6 +17,7 @@ use backend\widgets\LanguageTabs;
                 'id' => 'blog-post',
                 'enableClientValidation' => true,
                 'errorSummaryCssClass' => 'error-summary alert alert-error',
+                'options' => ['enctype'=>'multipart/form-data'],
             ]);
         ?>
         <div class="box-body col-md-7">
@@ -43,11 +46,32 @@ use backend\widgets\LanguageTabs;
                         'translations' => $translations,
                         'numberOfRows' => 10,
                         'isHTMLEditor' => true,
+                        'allowHTMLEditorToUploadImages' => true,
+                        'uploadImageUrl' => Url::toRoute(['/blog-post/upload-image', 'blogPostId' => $blogPost->id]),
                     ]);
                 ?>
             <?php endif ?>
             <?=
                 $form->field($blogPost, 'is_published')->checkbox();
+            ?>
+            <?= $form->field($blogPost, 'uploadedFeaturedImage',
+                ['options'=>['class'=>'col-md-11 image-file-upload']])->widget(
+                    FileInput::classname(),[
+                        'options' => ['multiple' => false, 'accept' => 'image/*'],
+                        'pluginOptions' => [
+                            'defaultPreviewContent' => Html::img($blogPost->getFullUrlFeaturedImage()),
+                            'overwriteInitial' => true,
+                            'showCaption' => false,
+                            'showRemove' => true,
+                            'showUpload' => false,
+                            'showClose' => false,
+                            'browseLabel' => '',
+                            'removeLabel' => '',
+                            'removeIcon' => '<i class="glyphicon glyphicon-remove"></i>',
+                            'layoutTemplates' => ['main2' => '{preview} {browse} {remove}'],
+                            'allowedFileExtensions' => ["jpg", "png", "gif"]
+                            ]
+                        ]);
             ?>
         </div>
         <div class="clearfix"></div>

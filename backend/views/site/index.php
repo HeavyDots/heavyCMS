@@ -1,138 +1,77 @@
 <?php
-
-/* TODO: Create new backend index page */
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 $this->title = 'HeavyCMS';
 ?>
 <div class="site-index">
-
-    <div class="jumbotron">
-        <h1><?= Yii::t('app', 'Welcome to HeavyCMS') ?></h1>
-        <h2>(<?= Yii::t('app' ,'easy, fast, flexible') ?>)</h2>
-    </div>
-
-
-
-
-<div class="row">
-    <div class="col-lg-3 col-xs-6">
-      <!-- small box -->
-      <div class="small-box bg-aqua">
-        <div class="inner">
-          <h3>150</h3>
-
-          <p>New Orders</p>
+  <div class="body-content">
+    <div class="row">
+      <div class="jumbotron">
+        <h1><?= Html::encode(Yii::t('app', 'Welcome to HeavyCMS')); ?></h1>
+        <h2>(<?= Html::encode(Yii::t('app', 'easy, fast, flexible')); ?>)</h2>
+      </div>
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-aqua">
+          <div class="inner">
+            <h3><?= Html::encode(Yii::t('app', 'Step 1')); ?></h3>
+            <p><?= Html::encode(Yii::t('app', 'Add Pages')); ?></p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-files-o"></i>
+          </div>
+          <?= Html::a(Yii::t('app', 'Create your own Pages').' <i class="fa fa-arrow-circle-right"></i>',
+                          $url = 'flat-page/index',
+                          ['class' => 'small-box-footer']);
+          ?>
+          </div>
+      </div>
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-green">
+          <div class="inner">
+            <h3><?= Html::encode(Yii::t('app', 'Step 2')); ?></h3>
+            <p><?= Html::encode(Yii::t('app', 'Add Content')); ?></p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-indent"></i>
+          </div>
+          <?= Html::a(Yii::t('app', 'Create great Content').' <i class="fa fa-arrow-circle-right"></i>',
+                          $url = 'content/index',
+                          ['class' => 'small-box-footer']);
+          ?>
         </div>
-        <div class="icon">
-          <i class="fa fa-shopping-cart"></i>
+      </div>
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-yellow">
+          <div class="inner">
+            <h3><?= Html::encode(Yii::t('app', 'Step 3')); ?></h3>
+            <p><?= Html::encode(Yii::t('app', 'Add Images')); ?></p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-image"></i>
+          </div>
+          <?= Html::a(Yii::t('app', 'Upload awesome Images').' <i class="fa fa-arrow-circle-right"></i>',
+                          $url = 'gallery/index',
+                          ['class' => 'small-box-footer']);
+          ?>
         </div>
-        <a href="#" class="small-box-footer">
-          More info <i class="fa fa-arrow-circle-right"></i>
-        </a>
+      </div>
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-red">
+          <div class="inner">
+            <h3><?= Html::encode(Yii::t('app', 'Step 4')); ?></h3>
+            <p><?= Html::encode(Yii::t('app', 'Add Blog Posts')); ?></p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-book"></i>
+          </div>
+          <?= Html::a(Yii::t('app', 'Write interesting Blog Posts').' <i class="fa fa-arrow-circle-right"></i>',
+                          $url = 'blog-post/index',
+                          ['class' => 'small-box-footer']);
+          ?>
+        </div>
       </div>
     </div>
-    <!-- ./col -->
-    <div class="col-lg-3 col-xs-6">
-      <!-- small box -->
-      <div class="small-box bg-green">
-        <div class="inner">
-          <h3>53<sup style="font-size: 20px">%</sup></h3>
 
-          <p>Bounce Rate</p>
-        </div>
-        <div class="icon">
-          <i class="ion ion-stats-bars"></i>
-        </div>
-        <a href="#" class="small-box-footer">
-          More info <i class="fa fa-arrow-circle-right"></i>
-        </a>
-      </div>
-    </div>
-    <!-- ./col -->
-    <div class="col-lg-3 col-xs-6">
-      <!-- small box -->
-      <div class="small-box bg-yellow">
-        <div class="inner">
-          <h3>44</h3>
-
-          <p>User Registrations</p>
-        </div>
-        <div class="icon">
-          <i class="ion ion-person-add"></i>
-        </div>
-        <a href="#" class="small-box-footer">
-          More info <i class="fa fa-arrow-circle-right"></i>
-        </a>
-      </div>
-    </div>
-    <!-- ./col -->
-    <div class="col-lg-3 col-xs-6">
-      <!-- small box -->
-      <div class="small-box bg-red">
-        <div class="inner">
-          <h3>65</h3>
-
-          <p>Unique Visitors</p>
-        </div>
-        <div class="icon">
-          <i class="ion ion-pie-graph"></i>
-        </div>
-        <a href="#" class="small-box-footer">
-          More info <i class="fa fa-arrow-circle-right"></i>
-        </a>
-      </div>
-    </div>
-    <!-- ./col -->
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
-    </div>
+  </div>
 </div>

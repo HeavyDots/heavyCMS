@@ -6,6 +6,8 @@ use Yii;
 use yii\base\Model;
 use yii\web\Controller;
 use yii\web\HttpException;
+use yii\web\UploadedFile;
+use yii\web\Response;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
@@ -26,7 +28,7 @@ class BlogPostController extends MultiLingualController
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'create', 'update'],
+                        'actions' => ['index', 'create', 'update', 'upload-image'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -35,7 +37,7 @@ class BlogPostController extends MultiLingualController
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    //'update' => ['post'],
+                    'upload-image' => ['post'],
                 ],
             ],
         ];
@@ -61,10 +63,7 @@ class BlogPostController extends MultiLingualController
 	public function actionCreate()
 	{
 		$blogPost = new BlogPost;
-        //Avoid saving an unwanted translation. It must be a bug on translatable behavior
-        $blogPost->detachBehavior('translatable');
         $blogPost->save();
-        Yii::$app->session->setFlash('success', Yii::t('app', "New Blog Post created successfully"));
         return $this->redirect(['update', 'id'=>$blogPost->id]);
 
 	}
@@ -74,21 +73,35 @@ class BlogPostController extends MultiLingualController
 		$blogPost = $this->findBlogPost($id);
         $translations = $blogPost->initializeTranslations();
         Model::loadMultiple($translations, $_POST);
-        //Avoid saving an unwanted translation. It must be a bug on translatable behavior
-        $blogPost->detachBehavior('translatable');
         if ($blogPost->load($_POST) &&
             Model::loadMultiple($translations, $_POST) &&
             Model::validateMultiple($translations) &&
             $blogPost->save())
         {
             $blogPost->saveTranslations($translations);
-            Yii::$app->session->setFlash('success', Yii::t('app', "Blog Post updated successfully"));
+            $blogPost->uploadedFeaturedImage = UploadedFile::getInstance($blogPost, 'uploadedFeaturedImage');
+            if($blogPost->saveFeaturedImageToDisk()){
+                Yii::$app->session->setFlash('success', Yii::t('app', 'Blog Post updated successfully'));
+            }
+            else{
+                Yii::$app->session->setFlash('error', Yii::t('app', 'There was some error uploading the blog post Image'));
+            }
             return $this->redirect(['index']);
         }
 
         return $this->render('update', compact('blogPost', 'translations'));
 
 	}
+
+    public function actionUploadImage($blogPostId){
+        if (Yii::$app->request->isAjax) {
+            $blogPost = $this->findBlogPost($blogPostId);
+            $image = UploadedFile::getInstanceByName('fileUploaded');
+            Yii::$app->response->format = Response::FORMAT_JSON;
+
+            return ['url' => $blogPost->saveImageToDisk($image)];
+        }
+    }
 
 	protected function findBlogPost($id)
 	{

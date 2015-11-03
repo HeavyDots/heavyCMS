@@ -3,6 +3,8 @@
 namespace common\models\base;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\behaviors\BlameableBehavior;
 use common\components\TranslateableBehavior;
 
 /**
@@ -47,6 +49,12 @@ class BlogPost extends \yii\db\ActiveRecord
                     'text',
                 ]
             ],
+            'timestamp' => [
+                'class' => TimestampBehavior::className(),
+            ],
+            [
+            'class' => BlameableBehavior::className(),
+            ],
         ];
     }
 
@@ -67,6 +75,7 @@ class BlogPost extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('model', 'ID'),
+            'featured_image' => Yii::t('model', 'Featured Image'),
             'is_published' => Yii::t('model', 'Is Published'),
             'created_by' => Yii::t('model', 'Created By'),
             'updated_by' => Yii::t('model', 'Updated By'),

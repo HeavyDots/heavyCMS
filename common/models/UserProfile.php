@@ -29,6 +29,7 @@ class UserProfile extends BaseUserProfile
 
 
     public function init(){
+        parent::init();
         $this->avatarFullDirectory = Yii::$app->params['backendUploadDirectory'] . $this->avatarDirectory;
         $this->avatarURL = sprintf('%s%s%s',
                             Yii::$app->params['backendURL'],
@@ -39,7 +40,7 @@ class UserProfile extends BaseUserProfile
 
     public function attributeLabels(){
         $parentAttributeLabels = parent::attributeLabels();
-        $parentAttributeLabels['uploadedAvatar'] = Yii::t('app', 'Avatar');
+        $parentAttributeLabels['uploadedAvatar'] = Yii::t('model', 'Avatar');
         return $parentAttributeLabels;
     }
 
@@ -50,7 +51,7 @@ class UserProfile extends BaseUserProfile
 
     /*TODO: Extract save model avatar name. This function must save images on disk and nothing more. */
     public function saveAvatarToDisk(){
-        $uploadedOK = false;
+        $uploadedOK = true;
         if (isset($this->uploadedAvatar)) {
             $stringToHash = sprintf('%d-%s%s-%s.%s',
                                         $this->id,
@@ -67,6 +68,9 @@ class UserProfile extends BaseUserProfile
                 $this->avatar = $hashedFileName;
                 $this->save();
                 $uploadedOK = true;
+            }
+            else{
+                $uploadedOK = false;
             }
         }
 

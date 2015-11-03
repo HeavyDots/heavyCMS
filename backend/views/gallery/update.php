@@ -5,4 +5,6 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Galleries'), 'url' =
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
+<?= $this->render('_content-header'); ?>
+
 <?= $this->render('_form', compact('gallery')); ?>
