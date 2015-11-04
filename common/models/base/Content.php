@@ -4,6 +4,8 @@ namespace common\models\base;
 
 use Yii;
 use common\components\TranslateableBehavior;
+use yii\behaviors\TimestampBehavior;
+use yii\behaviors\BlameableBehavior;
 
 /**
  * This is the base-model class for table "content".
@@ -45,6 +47,12 @@ class Content extends \yii\db\ActiveRecord
                 'translationAttributes' => [
                     'text',
                 ]
+            ],
+            'timestamp' => [
+                'class' => TimestampBehavior::className(),
+            ],
+            [
+            'class' => BlameableBehavior::className(),
             ],
         ];
     }

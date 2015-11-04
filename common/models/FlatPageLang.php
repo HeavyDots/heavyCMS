@@ -13,19 +13,4 @@ use \common\models\base\FlatPageLang as BaseFlatPageLang;
  */
 class FlatPageLang extends BaseFlatPageLang
 {
-    public function behaviors()
-    {
-        return [
-            [
-                'class' => SluggableBehavior::className(),
-                'attribute' => 'anchor',
-            ],
-            'timestamp' => [
-                'class' => TimestampBehavior::className(),
-            ],
-            [
-            'class' => BlameableBehavior::className(),
-            ],
-        ];
-    }
 }

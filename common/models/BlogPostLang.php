@@ -13,19 +13,4 @@ use \common\models\base\BlogPostLang as BaseBlogPostLang;
  */
 class BlogPostLang extends BaseBlogPostLang
 {
-    public function behaviors()
-    {
-        return [
-            [
-                'class' => SluggableBehavior::className(),
-                'attribute' => 'title',
-            ],
-            'timestamp' => [
-                'class' => TimestampBehavior::className(),
-            ],
-            [
-            'class' => BlameableBehavior::className(),
-            ],
-        ];
-    }
 }

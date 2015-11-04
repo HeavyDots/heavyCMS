@@ -3,6 +3,9 @@
 namespace common\models\base;
 
 use Yii;
+use yii\behaviors\SluggableBehavior;
+use yii\behaviors\TimestampBehavior;
+use yii\behaviors\BlameableBehavior;
 
 /**
  * This is the base-model class for table "flat_page_lang".
@@ -33,6 +36,22 @@ class FlatPageLang extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'flat_page_lang';
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => SluggableBehavior::className(),
+                'attribute' => 'anchor',
+            ],
+            'timestamp' => [
+                'class' => TimestampBehavior::className(),
+            ],
+            [
+            'class' => BlameableBehavior::className(),
+            ],
+        ];
     }
 
     /**

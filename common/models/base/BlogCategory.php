@@ -3,16 +3,16 @@
 namespace common\models\base;
 
 use Yii;
-use yii\behaviors\SluggableBehavior;
+use common\components\TranslateableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\behaviors\BlameableBehavior;
 
+
 /**
- * This is the base-model class for table "gallery".
+ * This is the base-model class for table "blog_category".
  *
  * @property integer $id
- * @property string $name
- * @property string $slug
+ * @property string $identifier
  * @property integer $created_by
  * @property integer $updated_by
  * @property string $created_at
@@ -20,9 +20,9 @@ use yii\behaviors\BlameableBehavior;
  *
  * @property \common\models\User $createdBy
  * @property \common\models\User $updatedBy
- * @property \common\models\GalleryImage[] $galleryImages
+ * @property \common\models\BlogPost[] $blogPosts
  */
-class Gallery extends \yii\db\ActiveRecord
+class BlogCategory extends \yii\db\ActiveRecord
 {
 
 
@@ -32,15 +32,24 @@ class Gallery extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'gallery';
+        return 'blog_category';
     }
-
+    /**
+     * @inheritdoc
+     */
     public function behaviors()
     {
         return [
-            [
-                'class' => SluggableBehavior::className(),
-                'attribute' => 'name',
+            'translatable' => [
+                'class' => TranslateableBehavior::className(),
+                // in case you renamed your relation, you can setup its name
+                // 'relation' => 'translations',
+                'translationAttributes' => [
+                    'name',
+                    'slug',
+                    'description',
+                    'meta_description'
+                ]
             ],
             'timestamp' => [
                 'class' => TimestampBehavior::className(),
@@ -57,10 +66,10 @@ class Gallery extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
+            [['identifier'], 'required'],
             [['created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
-            [['name', 'slug'], 'string', 'max' => 255],
-            [['name'], 'unique']
+            [['identifier'], 'string', 'max' => 255],
+            [['identifier'], 'unique'],
         ];
     }
 
@@ -71,8 +80,7 @@ class Gallery extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('model', 'ID'),
-            'name' => Yii::t('model', 'Name'),
-            'slug' => Yii::t('model', 'Slug'),
+            'identifier' => Yii::t('model', 'Identifier'),
             'created_by' => Yii::t('model', 'Created By'),
             'updated_by' => Yii::t('model', 'Updated By'),
             'created_at' => Yii::t('model', 'Created At'),
@@ -99,11 +107,18 @@ class Gallery extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getGalleryImages()
+    public function getBlogPosts()
     {
-        return $this->hasMany(\common\models\GalleryImage::className(), ['gallery_id' => 'id']);
+        return $this->hasMany(\common\models\BlogPost::className(), ['blog_category_id' => 'id']);
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTranslations()
+    {
+        return $this->hasMany(\common\models\BlogCategoryLang::className(), ['blog_category_id' => 'id']);
+    }
 
 
 

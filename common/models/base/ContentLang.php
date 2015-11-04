@@ -3,6 +3,8 @@
 namespace common\models\base;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\behaviors\BlameableBehavior;
 
 /**
  * This is the base-model class for table "content_lang".
@@ -31,6 +33,18 @@ class ContentLang extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'content_lang';
+    }
+
+    public function behaviors()
+    {
+        return [
+            'timestamp' => [
+                'class' => TimestampBehavior::className(),
+            ],
+            [
+            'class' => BlameableBehavior::className(),
+            ],
+        ];
     }
 
     /**

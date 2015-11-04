@@ -1,6 +1,7 @@
 <?php
 use common\helpers\Translate;
 use frontend\widgets\Gallery;
+use common\helpers\Configuration;
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
@@ -10,7 +11,7 @@ $this->title = 'My Yii Application';
     <div class="jumbotron">
         <?= Translate::t('index', 'texto1')?>
         <h1>Congratulationss! <?= Yii::t('frontend/index', 'probandoss') ?></h1>
-
+        <?= Configuration::get('fasd-asd-afs-fs') ?>
         <p class="lead">You have successfully created your Yii-powered application.</p>
 
         <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>

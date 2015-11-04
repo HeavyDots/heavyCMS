@@ -15,7 +15,11 @@ use yii\bootstrap\ActiveForm;
             ]);
         ?>
         <div class="box-body col-md-7">
-            <?= $form->field($globalConfiguration, 'name')->textInput(['maxlength' => true]) ?>
+            <?php if ($globalConfiguration->isNewRecord): ?>
+                <?= $form->field($globalConfiguration, 'name')->textInput(['maxlength' => true]) ?>
+            <?php else: ?>
+                <?= $form->field($globalConfiguration, 'name')->textInput(['readOnly' => true]) ?>
+            <?php endif ?>
             <?= $form->field($globalConfiguration, 'value')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="clearfix"></div>

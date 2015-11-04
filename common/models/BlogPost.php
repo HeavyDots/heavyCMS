@@ -2,6 +2,7 @@
 /*TODO: Make better organization of blog post image folders */
 /*TODO: Generalize upload of one image to a Trait, to use it on: User Profile (avatar) and BlogPost (featured_image) */
 /*TODO: Allow creation of subdirectories when uploading an image */
+/*TODO: Add support for tags */
 namespace common\models;
 
 use Yii;

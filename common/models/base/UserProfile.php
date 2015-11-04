@@ -3,6 +3,7 @@
 namespace common\models\base;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the base-model class for table "user_profile".
@@ -28,6 +29,13 @@ class UserProfile extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'user_profile';
+    }
+
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
     }
 
     /**

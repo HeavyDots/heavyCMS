@@ -20,14 +20,6 @@ class UserProfile extends BaseUserProfile
     protected $defaultAvatar;
     public $uploadedAvatar;
 
-    public function behaviors()
-    {
-        return [
-            TimestampBehavior::className(),
-        ];
-    }
-
-
     public function init(){
         parent::init();
         $this->avatarFullDirectory = Yii::$app->params['backendUploadDirectory'] . $this->avatarDirectory;
@@ -63,7 +55,7 @@ class UserProfile extends BaseUserProfile
             $fileFullPath = $this->avatarFullDirectory . $hashedFileName;
             $this->uploadedAvatar->saveAs($fileFullPath);
 
-            /*TODO: Make better controll over upload errors */
+            /*TODO: Make better control over upload errors */
             if ($this->uploadedAvatar->error==0) {
                 $this->avatar = $hashedFileName;
                 $this->save();

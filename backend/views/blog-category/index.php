@@ -6,7 +6,7 @@ use yii\grid\ActionColumn;
 use dmstr\widgets\Alert;
 
 
-$this->title = Yii::t('app', 'Global Configuration');
+$this->title = Yii::t('app', 'Blog Categories');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <p class="pull-left">
     <?= Html::a('<i class="glyphicon glyphicon-plus"></i> ' .
-        Yii::t('app', 'Add New Configuration'),
+        Yii::t('app', 'Add New Blog Category'),
         'create', [
                 'class' => 'btn btn-primary',
     ]); ?>
@@ -25,20 +25,18 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="clearfix"></div>
 
 <?= GridView::widget([
-    'dataProvider' => $globalConfigurationProvider,
-    'filterModel' => $globalConfigurationSearch,
-    'id' => 'manage-galleries-grid',
+    'dataProvider' => $blogCategoryProvider,
+    'filterModel' => $blogCategorySearch,
+    'id' => 'content-grid',
     'tableOptions' => ['class' => 'table table-striped table-bordered box box-primary'],
     'columns' => [
         [
             'attribute' => 'name',
             'format' => 'raw',
-            'value' => function($globalConfiguration){
-                return Html::a($globalConfiguration->name, ['update', 'id'=>$globalConfiguration->id]);
+            'value' => function($blogCategory){
+                return Html::a($blogCategory->name, ['update', 'id'=>$blogCategory->id]);
             }
         ],
-        'slug',
-        'value',
         'created_at:datetime',
         'updated_at:datetime',
         [

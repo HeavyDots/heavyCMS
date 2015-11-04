@@ -12,15 +12,4 @@ use \common\models\base\ContentLang as BaseContentLang;
  */
 class ContentLang extends BaseContentLang
 {
-    public function behaviors()
-    {
-        return [
-            'timestamp' => [
-                'class' => TimestampBehavior::className(),
-            ],
-            [
-            'class' => BlameableBehavior::className(),
-            ],
-        ];
-    }
 }

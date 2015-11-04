@@ -24,18 +24,6 @@ class GalleryImage extends BaseGalleryImage
                                     $this->uploadDirectory);
     }
 
-    public function behaviors()
-    {
-        return [
-            'timestamp' => [
-                'class' => TimestampBehavior::className(),
-            ],
-            [
-            'class' => BlameableBehavior::className(),
-            ],
-        ];
-    }
-
     public function getFileFullPath(){
         return $this->uploadFullDirectory . $this->file_name;
     }

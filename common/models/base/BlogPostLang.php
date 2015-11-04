@@ -3,6 +3,9 @@
 namespace common\models\base;
 
 use Yii;
+use yii\behaviors\SluggableBehavior;
+use yii\behaviors\TimestampBehavior;
+use yii\behaviors\BlameableBehavior;
 
 /**
  * This is the base-model class for table "blog_post_lang".
@@ -36,6 +39,22 @@ class BlogPostLang extends \yii\db\ActiveRecord
         return 'blog_post_lang';
     }
 
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => SluggableBehavior::className(),
+                'attribute' => 'title',
+            ],
+            'timestamp' => [
+                'class' => TimestampBehavior::className(),
+            ],
+            [
+            'class' => BlameableBehavior::className(),
+            ],
+        ];
+    }
+
     /**
      * @inheritdoc
      */
@@ -43,7 +62,7 @@ class BlogPostLang extends \yii\db\ActiveRecord
     {
         return [
             [['blog_post_id', 'language'], 'required'],
-            [['blog_post_id', 'slug', 'language', 'title', 'meta_description', 'text'],
+            [['blog_post_id', 'language', 'title', 'meta_description', 'text'],
                 'required',
                 'on'=>'mainLanguage'
             ],
@@ -62,7 +81,7 @@ class BlogPostLang extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('model', 'ID'),
             'slug' => Yii::t('model', 'Slug'),
-            'blog_post_id' => Yii::t('model', 'Blog Post ID'),
+            'blog_post_id' => Yii::t('model', 'Blog Post'),
             'language' => Yii::t('model', 'Language'),
             'title' => Yii::t('model', 'Title'),
             'meta_description' => Yii::t('model', 'Meta Description'),

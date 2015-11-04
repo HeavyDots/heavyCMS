@@ -3,6 +3,8 @@
 namespace common\models\base;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\behaviors\BlameableBehavior;
 use common\components\TranslateableBehavior;
 
 /**
@@ -47,6 +49,12 @@ class FlatPage extends \yii\db\ActiveRecord
                     'meta_description',
                     'anchor',
                 ]
+            ],
+            'timestamp' => [
+                'class' => TimestampBehavior::className(),
+            ],
+            [
+            'class' => BlameableBehavior::className(),
             ],
         ];
     }

@@ -6,7 +6,6 @@ use yii\web\UrlManager;
 
 class MultiLingualUrlManager extends UrlManager
 {
-    /* FIXME: If I'm on this page: http://admin.heavycms.dev/slider/update?id=3 when changing the language on the drop down, the URL is not correct, it lacks of ?id parameter */
     public function createUrl($params)
     {
         if ($this->selectedLanguageIsNotTheDefalutLanguage()

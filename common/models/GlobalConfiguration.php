@@ -1,5 +1,4 @@
 <?php
-
 namespace common\models;
 
 use Yii;
@@ -13,19 +12,4 @@ use \common\models\base\GlobalConfiguration as BaseGlobalConfiguration;
  */
 class GlobalConfiguration extends BaseGlobalConfiguration
 {
-    public function behaviors()
-    {
-        return [
-            [
-                'class' => SluggableBehavior::className(),
-                'attribute' => 'name',
-            ],
-            'timestamp' => [
-                'class' => TimestampBehavior::className(),
-            ],
-            [
-            'class' => BlameableBehavior::className(),
-            ],
-        ];
-    }
 }

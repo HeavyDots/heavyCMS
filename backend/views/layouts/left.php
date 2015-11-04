@@ -43,7 +43,15 @@ use yii\helpers\Html;
                     [
                         'label' => Yii::t('app', 'Blog'),
                         'icon' => 'fa fa-book fa-lg',
-                        'url' => ['blog-post/index']
+                        'url' => '#',
+                        'items' => [
+                                    ['label' => Yii::t('app', 'Posts'),
+                                     'icon' => 'fa fa-pencil-square-o',
+                                     'url' => ['blog-post/index']],
+                                     ['label' => Yii::t('app', 'Categories'),
+                                     'icon' => 'fa fa-folder-open-o',
+                                     'url' => ['blog-category/index']],
+                                ],
                     ],
                     [
                         'label' => Yii::t('app', 'Translate UI'),

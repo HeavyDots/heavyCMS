@@ -5,7 +5,7 @@
     </a>
     <ul class="dropdown-menu" role="menu">
         <?php foreach ($supportedLanguages as $language): ?>
-        <li>
+        <li class="<?= $language['class']?>">
             <a href="<?= $language['url'] ?>">
                 <?= $language['name'] ?>
             </a>

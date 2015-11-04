@@ -3,6 +3,8 @@
 namespace common\models\base;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\behaviors\BlameableBehavior;
 
 /**
  * This is the base-model class for table "gallery_image".
@@ -31,6 +33,18 @@ class GalleryImage extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'gallery_image';
+    }
+
+    public function behaviors()
+    {
+        return [
+            'timestamp' => [
+                'class' => TimestampBehavior::className(),
+            ],
+            [
+            'class' => BlameableBehavior::className(),
+            ],
+        ];
     }
 
     /**

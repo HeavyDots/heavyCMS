@@ -13,19 +13,4 @@ use common\models\base\Gallery as BaseGallery;
  */
 class Gallery extends BaseGallery
 {
-    public function behaviors()
-    {
-        return [
-            [
-                'class' => SluggableBehavior::className(),
-                'attribute' => 'name',
-            ],
-            'timestamp' => [
-                'class' => TimestampBehavior::className(),
-            ],
-            [
-            'class' => BlameableBehavior::className(),
-            ],
-        ];
-    }
 }

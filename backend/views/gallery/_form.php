@@ -1,15 +1,11 @@
 <?php
 /*TODO: Add possibility of deactivate/activate Gallery image, and delete Gallery image. Deactivate is a Must Have feature, delete is a Good To Have feature */
-/*TODO: Delete debug data: $gallery->getImageNextPosition(); and 'hideInput' => false,*/
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use kartik\file\FileInput;
 use kartik\sortinput\SortableInput;
 ?>
 
-<?=
-    $gallery->getImageNextPosition();
-?>
 <div class="gallery-form">
     <div class="box box-primary">
         <div class="box-header with-border">
@@ -31,7 +27,7 @@ use kartik\sortinput\SortableInput;
                         'name' => 'galleryImagesOrder',
                         'items' => $gallery->getGalleryImagesForSortableWidget(),
                         'value' => $gallery->getOrderOfGalleryImagesForSortableWidget(),
-                        'hideInput' => false,
+                        'hideInput' => true,
                         'sortableOptions' => [
                             'type' => 'grid',
                         ],

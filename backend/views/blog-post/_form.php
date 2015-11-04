@@ -6,6 +6,8 @@ use yii\bootstrap\Tabs;
 use kartik\file\FileInput;
 
 use backend\widgets\LanguageTabs;
+
+use common\models\BlogCategory;
 ?>
 
 <div class="blog-post-form">
@@ -21,6 +23,7 @@ use backend\widgets\LanguageTabs;
             ]);
         ?>
         <div class="box-body col-md-7">
+            <?= $form->field($blogPost, 'blog_category_id')->dropDownList(BlogCategory::getMappedArray()) ?>
             <?php if (!$blogPost->isNewRecord): ?>
                 <?=
                     LanguageTabs::widget([

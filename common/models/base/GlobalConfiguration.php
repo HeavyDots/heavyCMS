@@ -3,6 +3,9 @@
 namespace common\models\base;
 
 use Yii;
+use yii\behaviors\SluggableBehavior;
+use yii\behaviors\TimestampBehavior;
+use yii\behaviors\BlameableBehavior;
 
 /**
  * This is the base-model class for table "global_configuration".
@@ -30,6 +33,22 @@ class GlobalConfiguration extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'global_configuration';
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => SluggableBehavior::className(),
+                'attribute' => 'name',
+            ],
+            'timestamp' => [
+                'class' => TimestampBehavior::className(),
+            ],
+            [
+            'class' => BlameableBehavior::className(),
+            ],
+        ];
     }
 
     /**

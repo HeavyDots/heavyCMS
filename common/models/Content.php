@@ -14,17 +14,4 @@ use common\models\traits\Translation;
 class Content extends BaseContent
 {
     use Translation;
-
-    public function behaviors()
-    {
-        $newBehaviors = [
-            'timestamp' => [
-                'class' => TimestampBehavior::className(),
-            ],
-            [
-            'class' => BlameableBehavior::className(),
-            ],
-        ];
-        return array_merge(parent::behaviors(), $newBehaviors);
-    }
 }

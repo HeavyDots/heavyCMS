@@ -8,21 +8,19 @@ use yii\behaviors\TimestampBehavior;
 use yii\behaviors\BlameableBehavior;
 
 /**
- * This is the base-model class for table "gallery".
+ * This is the base-model class for table "blog_category_lang".
  *
  * @property integer $id
+ * @property integer $blog_category_id
+ * @property string $language
  * @property string $name
  * @property string $slug
- * @property integer $created_by
- * @property integer $updated_by
- * @property string $created_at
- * @property string $updated_at
+ * @property string $description
+ * @property string $meta_description
  *
- * @property \common\models\User $createdBy
- * @property \common\models\User $updatedBy
- * @property \common\models\GalleryImage[] $galleryImages
+ * @property \common\models\BlogCategory $blogCategory
  */
-class Gallery extends \yii\db\ActiveRecord
+class BlogCategoryLang extends \yii\db\ActiveRecord
 {
 
 
@@ -32,7 +30,7 @@ class Gallery extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'gallery';
+        return 'blog_category_lang';
     }
 
     public function behaviors()
@@ -57,10 +55,16 @@ class Gallery extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
+            [['blog_category_id', 'language'], 'required'],
+            [['blog_category_id', 'language', 'name'],
+                'required',
+                'on'=>'mainLanguage'
+            ],
+            [['blog_category_id'], 'integer'],
             [['created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
-            [['name', 'slug'], 'string', 'max' => 255],
-            [['name'], 'unique']
+            [['description'], 'string'],
+            [['language'], 'string', 'max' => 6],
+            [['name', 'slug', 'meta_description'], 'string', 'max' => 255]
         ];
     }
 
@@ -71,8 +75,12 @@ class Gallery extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('model', 'ID'),
+            'blog_category_id' => Yii::t('model', 'Blog Category'),
+            'language' => Yii::t('model', 'Language'),
             'name' => Yii::t('model', 'Name'),
             'slug' => Yii::t('model', 'Slug'),
+            'description' => Yii::t('model', 'Description'),
+            'meta_description' => Yii::t('model', 'Meta Description'),
             'created_by' => Yii::t('model', 'Created By'),
             'updated_by' => Yii::t('model', 'Updated By'),
             'created_at' => Yii::t('model', 'Created At'),
@@ -83,25 +91,9 @@ class Gallery extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCreatedBy()
+    public function getBlogCategory()
     {
-        return $this->hasOne(\common\models\User::className(), ['id' => 'created_by']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getUpdatedBy()
-    {
-        return $this->hasOne(\common\models\User::className(), ['id' => 'updated_by']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getGalleryImages()
-    {
-        return $this->hasMany(\common\models\GalleryImage::className(), ['gallery_id' => 'id']);
+        return $this->hasOne(\common\models\BlogCategory::className(), ['id' => 'blog_category_id']);
     }
 
 
