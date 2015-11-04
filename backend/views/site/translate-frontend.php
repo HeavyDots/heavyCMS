@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => Yii::t('app', 'Message Translations'),
                 'format' => 'raw',
                 'headerOptions' => [
-                    'width' => '400',
+                    'width' => '600',
                 ],
                 'value' => function ($model, $key, $index, $column) {
                     return $this->render('_message-tabs', [
