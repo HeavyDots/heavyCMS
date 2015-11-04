@@ -21,7 +21,7 @@ $this->title = 'HeavyCMS';
             <i class="fa fa-files-o"></i>
           </div>
           <?= Html::a(Yii::t('app', 'Create your own Pages').' <i class="fa fa-arrow-circle-right"></i>',
-                          $url = 'flat-page/index',
+                          $url = ['flat-page/index'],
                           ['class' => 'small-box-footer']);
           ?>
           </div>
@@ -36,7 +36,7 @@ $this->title = 'HeavyCMS';
             <i class="fa fa-indent"></i>
           </div>
           <?= Html::a(Yii::t('app', 'Create great Content').' <i class="fa fa-arrow-circle-right"></i>',
-                          $url = 'content/index',
+                          $url = ['content/index'],
                           ['class' => 'small-box-footer']);
           ?>
         </div>
@@ -51,7 +51,7 @@ $this->title = 'HeavyCMS';
             <i class="fa fa-image"></i>
           </div>
           <?= Html::a(Yii::t('app', 'Upload awesome Images').' <i class="fa fa-arrow-circle-right"></i>',
-                          $url = 'gallery/index',
+                          $url = ['gallery/index'],
                           ['class' => 'small-box-footer']);
           ?>
         </div>
@@ -66,7 +66,7 @@ $this->title = 'HeavyCMS';
             <i class="fa fa-book"></i>
           </div>
           <?= Html::a(Yii::t('app', 'Write interesting Blog Posts').' <i class="fa fa-arrow-circle-right"></i>',
-                          $url = 'blog-post/index',
+                          $url = ['blog-post/index'],
                           ['class' => 'small-box-footer']);
           ?>
         </div>

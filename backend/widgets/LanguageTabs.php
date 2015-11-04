@@ -29,6 +29,7 @@ class LanguageTabs extends Widget{
         foreach ($this->translations as $index => $translation) {
             $fieldHasError = $this->fieldHasError($translation);
             $label = $this->getLabelForTab($translation);
+
             $this->tabItems[] = [
                 'label' => $label,
                 'content' => $this->getTabContent($translation, $index, $translation->language),
@@ -40,7 +41,11 @@ class LanguageTabs extends Widget{
     }
 
     public function run(){
-        $label = Html::label($this->model->getAttributeLabel($this->fieldName), $this->fieldName, ['class' => 'control-label']);
+/*        var_dump($this->fieldName);
+        var_dump($this->model->getAttributeLabel($this->fieldName));die;*/
+        //$label = Html::label($this->model->getAttributeLabel($this->fieldName), $this->fieldName, ['class' => 'control-label']);
+        //var_dump($this->model);die;
+        $label = Html::activeLabel($this->translations[0], $this->fieldName, ['class' => 'control-label']);
         $tabs = Tabs::widget([
             'encodeLabels' => false,
             'items' => $this->tabItems,
@@ -48,7 +53,7 @@ class LanguageTabs extends Widget{
                 'class' => 'translation-tabs'
             ],
         ]);
-        $content = Html::tag('div', $label.$tabs, ['class' => 'form-group nav-tabs-custom']);
+        $content = Html::tag('div', $label.$tabs, ['class' => 'form-group nav-tabs-custom language-tabs']);
         return $content;
     }
 
@@ -129,12 +134,12 @@ class LanguageTabs extends Widget{
     }
 
     private function linkClass($translation, $fieldHasError){
-        $linkClass = '';
+        $linkClass = $translation->language;
         if($fieldHasError){
-            $linkClass = 'text-red';
+            $linkClass .= ' text-red';
         }
         else if($this->isEmptyField($translation)){
-            $linkClass = 'text-muted';
+            $linkClass .= ' text-muted';
         }
         return $linkClass;
     }

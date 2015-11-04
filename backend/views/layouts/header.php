@@ -1,4 +1,5 @@
 <?php
+use yii\helpers\Url;
 use yii\helpers\Html;
 use backend\widgets\LanguageDropdown;
 /* @var $this \yii\web\View */
@@ -7,7 +8,7 @@ use backend\widgets\LanguageDropdown;
 
 <header class="main-header">
 
-    <?= Html::a('<span class="logo-mini">CMS</span><span class="logo-lg">' . Yii::$app->name . '</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
+    <?= Html::a('<span class="logo-mini">CMS</span><span class="logo-lg">' . Yii::$app->name . '</span>', Url::toRoute(['site/index']), ['class' => 'logo']) ?>
 
     <nav class="navbar navbar-static-top" role="navigation">
 

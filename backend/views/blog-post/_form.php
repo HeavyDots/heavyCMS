@@ -39,6 +39,7 @@ use common\models\BlogCategory;
                         'model' => $blogPost,
                         'fieldName' => 'meta_description',
                         'translations' => $translations,
+                        'numberOfRows' => 3,
                     ]);
                 ?>
                 <?=

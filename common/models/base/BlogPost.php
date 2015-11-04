@@ -75,6 +75,7 @@ class BlogPost extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('model', 'ID'),
+            'blog_category_id' => Yii::t('model', 'Blog Category ID'),
             'featured_image' => Yii::t('model', 'Featured Image'),
             'is_published' => Yii::t('model', 'Is Published'),
             'created_by' => Yii::t('model', 'Created By'),
