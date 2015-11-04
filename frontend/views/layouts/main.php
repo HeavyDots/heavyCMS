@@ -59,7 +59,8 @@ AppAsset::register($this);
     ?>
     <div class="container">
         <?= LanguageDropdown::widget() ?>
-        <?= FlatPageList::widget(['htmlClass' => 'nav navbar-nav navbar-right']) ?>
+        <?= FlatPageList::widget(['htmlClass' => 'nav navbar-nav navbar-right',
+                                    'activeLiClass' => 'selected']) ?>
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>

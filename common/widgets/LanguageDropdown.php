@@ -9,6 +9,7 @@ class LanguageDropdown extends Widget{
 
     public $supportedLanguages = [];
     public $activeClass = '';
+    public $selectedLanguage = [];
 
     public function init(){
         parent::init();
@@ -21,10 +22,12 @@ class LanguageDropdown extends Widget{
             $this->supportedLanguages[$localeId]['name'] = $languageName;
             $this->supportedLanguages[$localeId]['url'] = $this->generateURLToSelectedLanguage();
             $this->supportedLanguages[$localeId]['class'] = $this->getClass($localeId, $currentLanguage);
+            $this->setSelectedLanguage($localeId, $currentLanguage);
         }
         $this->returnToCurrentLanguage($currentLanguage);
 
-        return $this->render('_language-dropdown', ['supportedLanguages'=>$this->supportedLanguages]);
+        return $this->render('_language-dropdown', ['supportedLanguages'=>$this->supportedLanguages,
+                                                    'selectedLanguage'=>$this->selectedLanguage]);
     }
 
     private function changeLanguageToCreateUrlWithUrlManager($localeId){
@@ -43,6 +46,16 @@ class LanguageDropdown extends Widget{
     }
 
     private function getClass($localeId, $currentLanguage){
-        return ($localeId == $currentLanguage) ? $this->activeClass : '';
+        return $this->isSelectedLanguage($localeId, $currentLanguage) ? $this->activeClass : null;
+    }
+
+    private function isSelectedLanguage($localeId, $currentLanguage){
+        return ($localeId == $currentLanguage);
+    }
+
+    private function setSelectedLanguage($localeId, $currentLanguage){
+        if ($this->isSelectedLanguage($localeId, $currentLanguage)) {
+            $this->selectedLanguage = $this->supportedLanguages[$localeId];
+        }
     }
 }

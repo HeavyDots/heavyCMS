@@ -1,6 +1,6 @@
 <li class="dropdown notifications-menu">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        <?= Yii::t('widget', 'Languages') ?>
+        <?= $selectedLanguage['name'] ?>
     </a>
     <ul class="dropdown-menu">
         <li class="header"><?= Yii::t('widget', 'Select Language')?></li>
