@@ -1,7 +1,7 @@
 <?php
 
 $this->title = Yii::t('app', 'Create Content');
-$this->params['breadcrumbs'][] = ['label' => 'Contents', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Contents'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
