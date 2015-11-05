@@ -62,6 +62,11 @@ return [
                 '<language>/<controller>/<id>' => '<controller>',
             ],
         ],
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'viewPath' => '@frontend/mail',
+        ],
+
     ],
     'params' => $params,
 ];
