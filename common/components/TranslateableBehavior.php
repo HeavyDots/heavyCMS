@@ -85,18 +85,29 @@ class TranslateableBehavior extends Behavior
             return $this->_models[$name];
         }
         // default language fallback
-        if (!isset($this->_models[$this->getLanguage()][$name]) ||
+        /*!isset($this->_models[$this->getLanguage()][$name]) ||
             empty($this->_models[$this->getLanguage()][$name]) ||
-            $this->_models[$this->getLanguage()][$name]=='<p><br></p>')
+            $this->_models[$this->getLanguage()][$name]=='<p><br></p>'*/
+        if (!$this->modelHasTranslation($this->getLanguage(), $name))
         {
-            $fallbackLanguage = isset(Yii::$app->params['fallbackLanguage']) ?
-                                        Yii::$app->params['fallbackLanguage'] :
-                                        Yii::$app->params['appMainLanguage'];
-            $translation = $this->loadTranslation($fallbackLanguage);
+            $fallbackLanguage = isset(Yii::$app->params['fallbackLanguage']) ? Yii::$app->params['fallbackLanguage'] : null;
+            if (isset($fallbackLanguage)) {
+                $translation = $this->getTranslation($fallbackLanguage);
+                if(!$this->modelHasTranslation($fallbackLanguage, $name)){
+                    $translation = $this->loadTranslation(Yii::$app->params['appMainLanguage']);
+                }
+            }
+
             return $translation->{$name};
         }
         $model = $this->getTranslation();
         return $model->$name;
+    }
+
+    private function modelHasTranslation($language, $attributeName){
+       return (isset($this->_models[$language][$attributeName]) &&
+        !empty($this->_models[$language][$attributeName]) &&
+        $this->_models[$language][$attributeName]!='<p><br></p>');
     }
 
     /**
