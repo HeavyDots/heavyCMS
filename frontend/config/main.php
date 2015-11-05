@@ -43,15 +43,17 @@ return [
                 ],
             ],
         ],
-        /*TODO: Add slash on languages home, i.e: /es-ES
+        /*  NOTE: About slash suffix
             https://github.com/yiisoft/yii2/issues/7670
+            https://github.com/yiisoft/yii2/issues/1807
+            http://stackoverflow.com/questions/28018061/yii2-url-mapping-suffix
         */
         'urlManager' => [
             'class'             => common\components\MultiLingualUrlManager::className(),
             'enablePrettyUrl'   => true,
             'showScriptName'    => false, // false - means that index.php will not be part of the URLs
             'rules' => [
-                '/<language:[a-z]{2}-[A-Z]{2}>/' => '/site/index/',
+                ['pattern'=>'/<language:[a-z]{2}-[A-Z]{2}>','route'=>'site/index','suffix'=>'/'],
                 '<language>/<action>' => 'site/<action>',
                 '/' => 'site/index',
                 '<action>' => 'site/<action>',

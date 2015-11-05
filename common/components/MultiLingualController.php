@@ -25,6 +25,9 @@ class MultiLingualController extends \yii\web\Controller
         if ($this->languageIsNotSupported&&!$action instanceof \yii\web\ErrorAction) {
             throw new HttpException(404, 'The requested page does not exist.');
         }
+        if ($this->existIndexActionOnUrl()) {
+            $this->redirectToUrlWithoutActionOnUrl($action);
+        }
         if ($this->isLanguageGetTheDefaultLanguage()){
             $this->redirectToUrlWithNoLanguage($action);
         }
@@ -33,6 +36,20 @@ class MultiLingualController extends \yii\web\Controller
 
     private function isLanguageGetSupported($languageGet){
         return in_array($languageGet, array_keys(Yii::$app->params['supportedLanguages']));
+    }
+
+    private function existIndexActionOnUrl(){
+        $exist = false;
+        if (Yii::$app->controller->getRoute()=='site/index' &&
+            (strpos(Yii::$app->request->url, 'site')||strpos(Yii::$app->request->url, 'index')))
+        {
+            $exist = true;
+        }
+        return $exist;
+    }
+
+    private function redirectToUrlWithoutActionOnUrl($action){
+        $this->redirect([$action->id], $statusCode = 301);
     }
 
     private function isLanguageGetTheDefaultLanguage(){

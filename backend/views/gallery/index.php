@@ -36,7 +36,6 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index']];
             }
         ],
         'slug',
-        'created_by',
         'created_at:datetime',
         'updated_at:datetime',
         [

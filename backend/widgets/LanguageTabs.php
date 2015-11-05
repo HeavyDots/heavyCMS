@@ -41,10 +41,6 @@ class LanguageTabs extends Widget{
     }
 
     public function run(){
-/*        var_dump($this->fieldName);
-        var_dump($this->model->getAttributeLabel($this->fieldName));die;*/
-        //$label = Html::label($this->model->getAttributeLabel($this->fieldName), $this->fieldName, ['class' => 'control-label']);
-        //var_dump($this->model);die;
         $label = Html::activeLabel($this->translations[0], $this->fieldName, ['class' => 'control-label']);
         $tabs = Tabs::widget([
             'encodeLabels' => false,
