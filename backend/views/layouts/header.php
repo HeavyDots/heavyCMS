@@ -36,7 +36,7 @@ use backend\widgets\LanguageDropdown;
 
                             <p>
                                 <?= Yii::$app->user->identity->fullName ?>
-                                <small>Member since Nov. 2012</small>
+                                <small><?= Html::encode(Yii::t('app', 'Great to see you again!')); ?></small>
                             </p>
                         </li>
                         <!-- Menu Footer-->
@@ -52,7 +52,7 @@ use backend\widgets\LanguageDropdown;
                             </div>
                             <div class="pull-right">
                                 <?= Html::a(
-                                    'Sign out',
+                                    Yii::t('app', 'Sign out'),
                                     ['/site/logout'],
                                     ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
                                 ) ?>
