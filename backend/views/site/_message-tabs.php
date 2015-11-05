@@ -21,4 +21,6 @@ use backend\widgets\LanguageTabs;
                 'showLaguageCodeAsLabel' => true,
             ]);
         ?>
+        <?php $model->setLanguage(Yii::$app->params['appMainLanguage']) ?>
+        <p><?= Yii::$app->params['supportedLanguages'][Yii::$app->params['appMainLanguage']] ?>: <?=$model->translation?></p>
 <?php ActiveForm::end() ?>

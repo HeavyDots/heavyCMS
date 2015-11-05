@@ -85,9 +85,6 @@ class TranslateableBehavior extends Behavior
             return $this->_models[$name];
         }
         // default language fallback
-        /*!isset($this->_models[$this->getLanguage()][$name]) ||
-            empty($this->_models[$this->getLanguage()][$name]) ||
-            $this->_models[$this->getLanguage()][$name]=='<p><br></p>'*/
         if (!$this->modelHasTranslation($this->getLanguage(), $name))
         {
             $fallbackLanguage = isset(Yii::$app->params['fallbackLanguage']) ? Yii::$app->params['fallbackLanguage'] : null;

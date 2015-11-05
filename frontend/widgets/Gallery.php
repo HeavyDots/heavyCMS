@@ -22,6 +22,7 @@ class Gallery extends Widget{
         $htmlGallery = '';
         if (isset($this->gallery)) {
             $galleryImages = $this->gallery->getGalleryImages()
+                                ->where(['is_active' => true])
                                 ->orderBy(['sort_order' => SORT_ASC])
                                 ->all();
             if (count($galleryImages)>1) {
