@@ -7,8 +7,10 @@ return [
     'supportedLanguages' => ['en-US' => 'English',
                              'es-ES' => 'Español',
                              'fr-FR' => 'Français'],
-    'appMainLanguage' => 'en-US',
     'frontendLanguages' => ['en-US' => 'English',
                             'es-ES' => 'Español',
                             'fr-FR' => 'Français'],
+    'appMainLanguage' => 'en-US',
+    //set only if fallback Language will be different from appMainLanguage
+    'fallbackLanguage' => 'es-ES',
 ];
