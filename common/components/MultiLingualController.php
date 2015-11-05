@@ -25,7 +25,7 @@ class MultiLingualController extends \yii\web\Controller
         if ($this->languageIsNotSupported&&!$action instanceof \yii\web\ErrorAction) {
             throw new HttpException(404, 'The requested page does not exist.');
         }
-        if ($this->existIndexActionOnUrl()) {
+        if ($this->existIndexActionOnUrl() && $this->allowRedirectionOfSiteIndexAction()){
             $this->redirectToUrlWithoutActionOnUrl($action);
         }
         if ($this->isLanguageGetTheDefaultLanguage()){
@@ -46,6 +46,11 @@ class MultiLingualController extends \yii\web\Controller
             $exist = true;
         }
         return $exist;
+    }
+
+    private function allowRedirectionOfSiteIndexAction(){
+        return (isset(Yii::$app->params['allowRedirectionOfSiteIndexAction']) &&
+                    Yii::$app->params['allowRedirectionOfSiteIndexAction']);
     }
 
     private function redirectToUrlWithoutActionOnUrl($action){

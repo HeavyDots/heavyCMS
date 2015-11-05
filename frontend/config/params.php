@@ -7,4 +7,6 @@ return [
     'appMainLanguage' => 'es-ES',
     //set only if fallback Language will be different from appMainLanguage
     'fallbackLanguage' => 'en-US',
+    //redirect index, site/index and site, to /
+    'allowRedirectionOfSiteIndexAction' => true,
 ];
