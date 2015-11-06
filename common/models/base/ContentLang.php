@@ -57,6 +57,10 @@ class ContentLang extends \yii\db\ActiveRecord
             [['content_id', 'language', 'text'], 'required', 'on' => 'mainLanguage'],
             [['content_id', 'created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
             [['text'], 'string'],
+            [['text'], 'compare', 'compareValue'=>'<p><br></p>', 'operator'=>'!=',
+                        'on'=>'mainLanguage',
+                        'message'=>Yii::t('yii', '{attribute} cannot be blank.')
+            ],
             [['language'], 'string', 'max' => 6]
         ];
     }

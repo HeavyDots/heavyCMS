@@ -22,19 +22,23 @@ class LanguageTabs extends Widget{
     public $showLaguageCodeAsLabel = false;
     public $allowHTMLEditorToUploadImages = false;
     public $uploadImageUrl = '';
-    private $formHasErrors = false;
-    private $tabItems = [];
+    private $_anyTabWithError = false;
+    private $_anyTranslationWithError = false;
+    private $_tabItems = [];
 
     public function init(){
         foreach ($this->translations as $index => $translation) {
-            $fieldHasError = $this->fieldHasError($translation);
+            $languageTabHasError = $this->languageTabHasError($translation);
             $label = $this->getLabelForTab($translation);
+            if (!$translation->validate()) {
+                $this->_anyTranslationWithError = true;
+            }
 
-            $this->tabItems[] = [
+            $this->_tabItems[] = [
                 'label' => $label,
                 'content' => $this->getTabContent($translation, $index, $translation->language),
-                'active' => $this->isActiveTab($translation, $fieldHasError),
-                'linkOptions' => ['class' => $this->linkClass($translation, $fieldHasError)],
+                'active' => $this->isActiveTab($translation, $languageTabHasError),
+                'linkOptions' => ['class' => $this->linkClass($translation, $languageTabHasError)],
             ];
         }
         parent::init();
@@ -44,7 +48,7 @@ class LanguageTabs extends Widget{
         $label = Html::activeLabel($this->translations[0], $this->fieldName, ['class' => 'control-label']);
         $tabs = Tabs::widget([
             'encodeLabels' => false,
-            'items' => $this->tabItems,
+            'items' => $this->_tabItems,
             'options' => [
                 'class' => 'translation-tabs'
             ],
@@ -113,25 +117,25 @@ class LanguageTabs extends Widget{
     }
 
 
-    private function isActiveTab($translation, $fieldHasError){
+    private function isActiveTab($translation, $languageTabHasError){
         $isMainLanguage = strtolower($translation->language) == strtolower(Yii::$app->params['appMainLanguage']);
         $isActiveLanguage = strtolower($translation->language) == strtolower(Yii::$app->language);
-        return (($fieldHasError && $isMainLanguage) ||
-                $isActiveLanguage && !$this->formHasErrors
+        return (($languageTabHasError && $isMainLanguage) ||
+                ($isActiveLanguage && !$this->_anyTabWithError && !$this->_anyTranslationWithError)
                );
     }
 
-    private function fieldHasError($translation){
-        $fieldHasError = (count($this->form->validate($translation, [$this->fieldName])) > 0);
-        if ($fieldHasError) {
-            $this->formHasErrors = true;
+    private function languageTabHasError($translation){
+        $languageTabHasError = (count($this->form->validate($translation, [$this->fieldName])) > 0);
+        if ($languageTabHasError) {
+            $this->_anyTabWithError = true;
         }
-        return $fieldHasError;
+        return $languageTabHasError;
     }
 
-    private function linkClass($translation, $fieldHasError){
+    private function linkClass($translation, $languageTabHasError){
         $linkClass = $translation->language;
-        if($fieldHasError){
+        if($languageTabHasError){
             $linkClass .= ' text-red';
         }
         else if($this->isEmptyField($translation)){

@@ -68,6 +68,10 @@ class BlogPostLang extends \yii\db\ActiveRecord
             ],
             [['blog_post_id', 'created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
             [['text'], 'string'],
+            [['text'], 'compare', 'compareValue'=>'<p><br></p>', 'operator'=>'!=',
+                        'on'=>'mainLanguage',
+                        'message'=>Yii::t('yii', '{attribute} cannot be blank.')
+            ],
             [['slug', 'title', 'meta_description'], 'string', 'max' => 255],
             [['language'], 'string', 'max' => 6]
         ];

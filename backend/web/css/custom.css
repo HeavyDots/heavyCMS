@@ -38,13 +38,22 @@
     height: 160px;
 }
 
-/* TODO: Extract translation-tabs to a Widget Asset */
+/* TODO: Extract translation-tabs/language-tabs to a Widget Asset */
 .translation-tabs li{
     font-weight: bold;
 }
 
-
-/* TABs */
-.nav-tabs-custom{
+.language-tabs.nav-tabs-custom{
     background: none !important;
+}
+
+.language-tabs.nav-tabs-custom>.nav-tabs>li>a:hover{
+    color: inherit;
+    text-decoration: underline;
+}
+
+.language-tabs.nav-tabs-custom>.nav-tabs>li.active>a,
+.language-tabs.nav-tabs-custom>.nav-tabs>li.active:hover>a{
+    text-decoration: none;
+    color: #444;
 }
