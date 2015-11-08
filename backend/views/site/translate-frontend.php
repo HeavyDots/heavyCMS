@@ -19,11 +19,30 @@ $this->params['breadcrumbs'][] = $this->title;
         'tableOptions' => ['class' => 'table table-striped table-bordered box box-primary'],
         'columns' => [
             [
+                'attribute' => 'category',
+                'contentOptions' => [
+                    'class' => 'text-center',
+                ],
+                'headerOptions' => [
+                    'width' => '100',
+                ],
+                'filter' => Html::activeDropDownList($sourceMessageSearch, 'category',
+                                    SourceMessage::getAllCategoriesAsArray(),
+                                    [
+                                        'class'=>'form-control',
+                                        'prompt' => Yii::t('app','All')
+                                    ]
+                                ),
+            ],
+            [
                 'attribute' => 'message',
                 'format' => 'raw',
                 'contentOptions' => [
                     'class' => 'source-message',
-                ]
+                ],
+                'headerOptions' => [
+                    'width' => '150',
+                ],
             ],
             [
                 'label' => Yii::t('app', 'Message Translations'),
@@ -39,31 +58,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         'column'    => $column,
                     ]);
                 },
-            ],
-            [
-                'attribute' => 'category',
-                'contentOptions' => [
-                    'class' => 'text-center',
-                ],
-                'filter' => Html::activeDropDownList($sourceMessageSearch, 'category',
-                                    SourceMessage::getAllCategoriesAsArray(),
-                                    [
-                                        'class'=>'form-control',
-                                        'prompt' => Yii::t('app','All')
-                                    ]
-                                ),
-            ],
-            [
-                'class' => ActionColumn::className(),
-                'template' => '{save}',
-                'buttons' => [
-                    'save' => function ($url, $sourceMessageSearch, $key) {
-                        return Html::a('<i class="glyphicon glyphicon-floppy-disk"></i> ' . Yii::t('app', 'Save'), '#', [
-                            'class'                 => 'btn btn-success btn-translation-save',
-                            'title'                 => Yii::t('app', 'Save'),
-                        ]);
-                    },
-                ],
             ],
         ]
 

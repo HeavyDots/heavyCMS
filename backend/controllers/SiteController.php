@@ -83,17 +83,14 @@ class SiteController extends MultiLingualController
         }
 
         $translations = $sourceMessage->initializeTranslations();
+        $message = Yii::t('app', 'Error');
         if ( SourceMessage::loadMultiple($translations, Yii::$app->getRequest()->post())
              && SourceMessage::validateMultiple($translations) )
         {
             $sourceMessage->saveTranslations($translations);;
-            Yii::$app->session->setFlash('success', Yii::t('app', 'Translations saved successfully'));
+            $message = Yii::t('app', 'Saved');
         }
-        else{
-            Yii::$app->session->setFlash('error', Yii::t('app', 'Error saving translation'));
-        }
-
-        return $this->redirect(['translate-frontend']);
+        return $message;
     }
 
     public function actionUserProfile(){

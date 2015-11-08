@@ -2,10 +2,26 @@
     "use strict";
 
     $(document).ready(function () {
-        $('.btn-translation-save').on('click', function(event){
-            event.preventDefault();
-            var key = $(this).parent().parent().data('key');
-            $('[data-key="' + key + '"] form').submit();
+        $('.translate-message-form').on('submit', function(event){
+        event.preventDefault();
+        var form = $(this);
+
+        $.ajax({
+               type: "POST",
+               url: form.attr('action'),
+               data: form.serialize(), // serializes the form's elements.
+               form: form,
+               success: function(data)
+               {
+                   debugger;
+                   this.form.find('.btn-success').html(data);
+                   this.form.find('.btn-success').removeClass('btn-success').addClass('btn-primary')
+               },
+               error: function(data)
+               {
+                   debugger;
+               }
+             });
         });
 
         /*TODO: extract to LanguageTabs Widget*/
