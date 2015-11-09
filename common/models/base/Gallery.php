@@ -72,7 +72,7 @@ class Gallery extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('model', 'ID'),
             'name' => Yii::t('model', 'Name'),
-            'slug' => Yii::t('model', 'Slug'),
+            'slug' => Yii::t('model', 'Identifier'),
             'created_by' => Yii::t('model', 'Created By'),
             'updated_by' => Yii::t('model', 'Updated By'),
             'created_at' => Yii::t('model', 'Created At'),

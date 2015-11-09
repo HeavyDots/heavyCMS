@@ -6,6 +6,8 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\Url;
+use yii\helpers\StringHelper;
 use common\models\base\BlogPost as BaseBlogPost;
 use common\models\traits\Translation;
 
@@ -21,6 +23,15 @@ class BlogPost extends BaseBlogPost
     protected $featuredImageURL;
     protected $defaultFeaturedImage;
     public $uploadedFeaturedImage;
+
+    public static function findBySlug($slug, $language = null){
+        $language = isset($language) ? $language : Yii::$app->language;
+        return self::find()
+                ->joinWith('translations')
+                ->where(['blog_post_lang.slug'=>$slug])
+                ->andWhere(['blog_post_lang.language'=>$language])
+                ->one();
+    }
 
     public function init(){
         $this->featuredImageFullDirectory = Yii::$app->params['frontendUploadDirectory'] . $this->featuredImageDirectory;
@@ -77,4 +88,11 @@ class BlogPost extends BaseBlogPost
         return $this->featuredImageURL . $fileName;
     }
 
+    public function getUrl(){
+        return Url::toRoute(['blog/view', 'slug'=>$this->slug]);
+    }
+
+    public function getBriefText(){
+        return StringHelper::truncateWords($this->text, 40);
+    }
 }

@@ -82,6 +82,7 @@ class BlogPost extends \yii\db\ActiveRecord
             'updated_by' => Yii::t('model', 'Updated By'),
             'created_at' => Yii::t('model', 'Created At'),
             'updated_at' => Yii::t('model', 'Updated At'),
+            'title' => Yii::t('model', 'Title')
         ];
     }
 

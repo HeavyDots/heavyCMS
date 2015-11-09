@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <p class="pull-left">
     <?= Html::a('<i class="glyphicon glyphicon-plus"></i> ' .
-        Yii::t('app', 'Add New Blog Post'),
+        Yii::t('app', 'New Post'),
         'create', [
                 'class' => 'btn btn-primary',
     ]); ?>

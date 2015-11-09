@@ -18,7 +18,6 @@ use backend\widgets\LanguageTabs;
             ]);
         ?>
         <div class="box-body col-md-7">
-            <?= $form->field($flatPage, 'url')->textInput(['maxlength' => true]) ?>
             <?php if (!$flatPage->isNewRecord): ?>
                 <?=
                     LanguageTabs::widget([
@@ -46,6 +45,7 @@ use backend\widgets\LanguageTabs;
                     ]);
                 ?>
             <?php endif ?>
+            <?= $form->field($flatPage, 'url')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="clearfix"></div>
         <div class="box-footer">

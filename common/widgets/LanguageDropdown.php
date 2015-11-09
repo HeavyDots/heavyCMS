@@ -5,6 +5,8 @@ use Yii;
 use yii\helpers\Url;
 use yii\base\Widget;
 
+use common\models\BlogPost;
+
 class LanguageDropdown extends Widget{
 
     public $supportedLanguages = [];
@@ -20,7 +22,7 @@ class LanguageDropdown extends Widget{
         foreach (Yii::$app->params['supportedLanguages'] as $localeId => $languageName) {
             $this->changeLanguageToCreateUrlWithUrlManager($localeId);
             $this->supportedLanguages[$localeId]['name'] = $languageName;
-            $this->supportedLanguages[$localeId]['url'] = $this->generateURLToSelectedLanguage();
+            $this->supportedLanguages[$localeId]['url'] = $this->generateURLForSelectedLanguage($currentLanguage);
             $this->supportedLanguages[$localeId]['class'] = $this->getClass($localeId, $currentLanguage);
             $this->setSelectedLanguage($localeId, $currentLanguage);
         }
@@ -38,10 +40,15 @@ class LanguageDropdown extends Widget{
         Yii::$app->language = $currentLanguage;
     }
 
-    private function generateURLToSelectedLanguage(){
+    private function generateURLForSelectedLanguage($currentLanguage){
         $params = Yii::$app->request->queryParams;
         unset($params['language']);
         $route = array_merge([Yii::$app->controller->getRoute()], $params);
+        if (Yii::$app->controller->getRoute()=='blog/view') {
+            $blogPost = BlogPost::findBySlug($params['slug'], $currentLanguage);
+            $params['slug'] = $blogPost->slug;
+            $route = array_merge([Yii::$app->controller->getRoute()], $params);
+        }
         return Url::toRoute($route);
     }
 

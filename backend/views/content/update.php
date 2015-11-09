@@ -1,6 +1,6 @@
 <?php
 
-$this->title = Yii::t('app', 'Update Content') . ' ' . $content->name;
+$this->title = Yii::t('app', 'Update Block') . ' ' . $content->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Content'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

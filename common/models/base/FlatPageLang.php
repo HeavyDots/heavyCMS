@@ -77,7 +77,7 @@ class FlatPageLang extends \yii\db\ActiveRecord
             'id' => Yii::t('model', 'ID'),
             'flat_page_id' => Yii::t('model', 'Flat Page ID'),
             'language' => Yii::t('model', 'Language'),
-            'title' => Yii::t('model', 'Title'),
+            'title' => Yii::t('model', 'Name'),
             'meta_description' => Yii::t('model', 'Meta Description'),
             'anchor' => Yii::t('model', 'Anchor'),
             'created_by' => Yii::t('model', 'Created By'),

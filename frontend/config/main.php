@@ -54,6 +54,10 @@ return [
             'showScriptName'    => false, // false - means that index.php will not be part of the URLs
             'rules' => [
                 ['pattern'=>'/<language:[a-z]{2}-[A-Z]{2}>','route'=>'site/index','suffix'=>'/'],
+                ['pattern'=>'/<language:[a-z]{2}-[A-Z]{2}>/blog','route'=>'blog/index','suffix'=>'/'],
+                ['pattern'=>'/blog','route'=>'blog/index','suffix'=>'/'],
+                '<language>/blog/<slug>' => 'blog/view',
+                'blog/<slug>' => 'blog/view',
                 '<language>/<action>' => 'site/<action>',
                 '/' => 'site/index',
                 '<action>' => 'site/<action>',

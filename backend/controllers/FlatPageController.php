@@ -4,7 +4,6 @@ namespace backend\controllers;
 
 use Yii;
 use yii\base\Model;
-use yii\web\Controller;
 use yii\web\HttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;

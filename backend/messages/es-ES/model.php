@@ -39,6 +39,7 @@ return [
     'Featured Image' => 'Imagen Destacada',
     'File Name' => 'Nombre del Fichero',
     'Flat Page ID' => 'Página',
+    'Page' => 'Página',
     'Gallery ID' => 'Galería',
     'Identifier' => 'Identificador',
     'Is Active' => 'Está Activo',

@@ -6,7 +6,7 @@ use yii\grid\ActionColumn;
 use dmstr\widgets\Alert;
 
 
-$this->title = Yii::t('app', 'Contents');
+$this->title = Yii::t('app', 'Content');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <p class="pull-left">
     <?= Html::a('<i class="glyphicon glyphicon-plus"></i> ' .
-        Yii::t('app', 'Add New Content'),
+        Yii::t('app', 'Add New Block'),
         'create', [
                 'class' => 'btn btn-primary',
     ]); ?>
@@ -33,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'flatPage',
         [
             'attribute' => 'name',
+            'label' => Yii::t('app', 'Block'),
             'format' => 'raw',
             'value' => function($content){
                 return Html::a($content->name, ['update', 'id'=>$content->id]);
