@@ -5,6 +5,8 @@ namespace backend\models;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\Url;
+
 use \common\models\Gallery as CommonGallery;
 use \common\models\GalleryImage;
 
@@ -77,9 +79,20 @@ class Gallery extends CommonGallery
                             ->orderBy(['id' => SORT_ASC])
                             ->all();
         foreach ($galleryImages as $galleryImage) {
+            $image = Html::img($galleryImage->url);
+            $deleteButton = Html::a('',
+                    '', [
+                    'class' => 'btn btn-danger btn-xs glyphicon glyphicon-remove delete-gallery-image',
+                    'data' => [
+                        'message' => Yii::t('app', 'Are you sure you want to delete this Image?'),
+                        'url' => Url::toRoute(['gallery/delete-image', 'id'=>$galleryImage->id])
+                    ],
+                ]);
+
             $galleryImagesArray[$galleryImage->id] = [
-                    'content' => Html::img($galleryImage->url),
-                    'disabled' => !$galleryImage->is_active];
+                'content' => $image.$deleteButton,
+                'disabled' => !$galleryImage->is_active
+            ];
         }
         return $galleryImagesArray;
     }

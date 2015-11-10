@@ -77,20 +77,22 @@ class SiteController extends MultiLingualController
     }
 
     public function actionSaveTranslation($id){
-        $sourceMessage = SourceMessage::findOne($id);
-        if (!isset($sourceMessage)) {
-            throw new HttpException(404, Yii::t('app','The requested page does not exist.'));
+        if (Yii::$app->request->isAjax) {
+            try{
+                $sourceMessage = SourceMessage::findOne($id);
+                $translations = $sourceMessage->initializeTranslations();
+                if ( SourceMessage::loadMultiple($translations, Yii::$app->getRequest()->post())
+                     && SourceMessage::validateMultiple($translations) )
+                {
+                    $sourceMessage->saveTranslations($translations);;
+                    $message = Yii::t('app', 'Saved');
+                }
+            }
+            catch(Exception $e){
+                $message = Yii::t('app', 'Error');
+            }
+            return $message;
         }
-
-        $translations = $sourceMessage->initializeTranslations();
-        $message = Yii::t('app', 'Error');
-        if ( SourceMessage::loadMultiple($translations, Yii::$app->getRequest()->post())
-             && SourceMessage::validateMultiple($translations) )
-        {
-            $sourceMessage->saveTranslations($translations);;
-            $message = Yii::t('app', 'Saved');
-        }
-        return $message;
     }
 
     public function actionUserProfile(){

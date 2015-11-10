@@ -10,6 +10,7 @@ use yii\web\HttpException;
 use common\components\MultiLingualController;
 use backend\models\Gallery;
 use common\models\GallerySearch;
+use common\models\GalleryImage;
 
 class GalleryController extends MultiLingualController{
 
@@ -20,7 +21,7 @@ class GalleryController extends MultiLingualController{
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'create', 'update'],
+                        'actions' => ['index', 'create', 'update', 'delete-image'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -29,7 +30,7 @@ class GalleryController extends MultiLingualController{
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    //'update' => ['post'],
+                    'delete-image' => ['post'],
                 ],
             ],
         ];
@@ -74,6 +75,19 @@ class GalleryController extends MultiLingualController{
             return $this->redirect(['index']);
         }
         return $this->render('update', compact('gallery'));
+    }
+
+    public function actionDeleteImage($id){
+        if (Yii::$app->request->isAjax) {
+            try {
+                $galleryImage = GalleryImage::findOne($id);
+                $galleryImage->delete();
+                $message = Yii::t('app', 'Image deleted Successfully');
+            } catch (\Exception $e) {
+                $message = (isset($e->errorInfo[2]))?$e->errorInfo[2]:$e->getMessage();
+            }
+            return $message;
+        }
     }
 
     protected function findGallery($id){
