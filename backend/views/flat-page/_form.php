@@ -18,33 +18,31 @@ use backend\widgets\LanguageTabs;
             ]);
         ?>
         <div class="box-body col-md-7">
-            <?php if (!$flatPage->isNewRecord): ?>
-                <?=
-                    LanguageTabs::widget([
-                        'form' => $form,
-                        'model' => $flatPage,
-                        'fieldName' => 'title',
-                        'translations' => $translations,
-                    ]);
-                ?>
-                <?=
-                    LanguageTabs::widget([
-                        'form' => $form,
-                        'model' => $flatPage,
-                        'fieldName' => 'meta_description',
-                        'translations' => $translations,
-                        'numberOfRows' => 2,
-                    ]);
-                ?>
-                <?=
-                    LanguageTabs::widget([
-                        'form' => $form,
-                        'model' => $flatPage,
-                        'fieldName' => 'anchor',
-                        'translations' => $translations,
-                    ]);
-                ?>
-            <?php endif ?>
+            <?=
+                LanguageTabs::widget([
+                    'form' => $form,
+                    'model' => $flatPage,
+                    'fieldName' => 'title',
+                    'translations' => $translations,
+                ]);
+            ?>
+            <?=
+                LanguageTabs::widget([
+                    'form' => $form,
+                    'model' => $flatPage,
+                    'fieldName' => 'meta_description',
+                    'translations' => $translations,
+                    'numberOfRows' => 2,
+                ]);
+            ?>
+            <?=
+                LanguageTabs::widget([
+                    'form' => $form,
+                    'model' => $flatPage,
+                    'fieldName' => 'anchor',
+                    'translations' => $translations,
+                ]);
+            ?>
             <?= $form->field($flatPage, 'url')->textInput(['maxlength' => true]) ?>
             <?= $form->field($flatPage, 'is_active')->checkbox(); ?>
         </div>

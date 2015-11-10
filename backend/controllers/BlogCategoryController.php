@@ -58,11 +58,22 @@ class BlogCategoryController extends MultiLingualController
         return $this->render('index', compact('blogCategorySearch', 'blogCategoryProvider'));
     }
 
+    /*TODO: Generalize duplicated code on actionCreate and actionUpdate */
     public function actionCreate()
     {
         $blogCategory = new BlogCategory;
-        $blogCategory->save();
-        return $this->redirect(['update', 'id'=>$blogCategory->id]);
+        $translations = $blogCategory->initializeTranslations();
+
+        if (Model::loadMultiple($translations, $_POST) &&
+            Model::validateMultiple($translations) &&
+            $blogCategory->save())
+        {
+            $blogCategory->saveTranslations($translations);
+            Yii::$app->session->setFlash('success', Yii::t('app', "Blog Category {$blogCategory->name} created successfully"));
+            return $this->redirect(['index']);
+        }
+
+        return $this->render('create', compact('blogCategory', 'translations'));
 
     }
 

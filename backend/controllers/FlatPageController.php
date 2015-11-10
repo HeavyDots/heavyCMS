@@ -57,15 +57,24 @@ class FlatPageController extends MultiLingualController
 		return $this->render('index', compact('flatPageSearch', 'flatPageProvider'));
 	}
 
+    /*TODO: Generalize duplicated code on actionCreate and actionUpdate */
 	public function actionCreate()
 	{
 		$flatPage = new FlatPage;
-        if ($flatPage->load($_POST) && $flatPage->save()){
-            Yii::$app->session->setFlash('success', Yii::t('app', "New Page {$flatPage} created successfully"));
-            return $this->redirect(['update', 'id' => $flatPage->id]);
+        $translations = $flatPage->initializeTranslations();
+
+        if ($flatPage->load($_POST) &&
+            Model::loadMultiple($translations, $_POST) &&
+            Model::validateMultiple($translations) &&
+            $flatPage->save())
+        {
+            $flatPage->saveTranslations($translations);
+            Yii::$app->session->setFlash('success', Yii::t('app', "Page {$flatPage} created successfully"));
+            return $this->redirect(['index']);
         }
 
-        return $this->render('create', compact('flatPage'));
+        return $this->render('create', compact('flatPage', 'translations'));
+
 	}
 
 	public function actionUpdate($id)

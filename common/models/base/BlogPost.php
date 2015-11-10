@@ -64,7 +64,7 @@ class BlogPost extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['is_published'], 'integer'],
+            [['is_published', 'blog_category_id'], 'integer'],
         ];
     }
 
@@ -84,6 +84,15 @@ class BlogPost extends \yii\db\ActiveRecord
             'updated_at' => Yii::t('model', 'Updated At'),
             'title' => Yii::t('model', 'Title')
         ];
+    }
+
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBlogCategory()
+    {
+        return $this->hasOne(\common\models\BlogCategory::className(), ['id' => 'blog_category_id']);
     }
 
     /**

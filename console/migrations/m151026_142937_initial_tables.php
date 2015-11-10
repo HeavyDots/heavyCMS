@@ -21,7 +21,6 @@ class m151026_142937_initial_tables extends Migration
               `created_at` int(10) unsigned NOT NULL,
               `updated_at` int(10) unsigned NOT NULL,
               PRIMARY KEY (`id`),
-              UNIQUE KEY `identifier` (`identifier`),
               FOREIGN KEY (`created_by`) REFERENCES `user` (`id`),
               FOREIGN KEY (`updated_by`) REFERENCES `user` (`id`)
             );

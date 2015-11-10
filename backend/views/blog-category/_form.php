@@ -22,34 +22,32 @@ use backend\widgets\LanguageTabs;
         ?>
 
         <div class="box-body col-md-7">
-            <?php if (!$blogCategory->isNewRecord): ?>
-                <?=
-                    LanguageTabs::widget([
-                        'form' => $form,
-                        'model' => $blogCategory,
-                        'fieldName' => 'name',
-                        'translations' => $translations,
-                    ]);
-                ?>
-                <?=
-                    LanguageTabs::widget([
-                        'form' => $form,
-                        'model' => $blogCategory,
-                        'fieldName' => 'description',
-                        'translations' => $translations,
-                        'numberOfRows' => 10,
-                        'isHTMLEditor' => true,
-                    ]);
-                ?>
-                <?=
-                    LanguageTabs::widget([
-                        'form' => $form,
-                        'model' => $blogCategory,
-                        'fieldName' => 'meta_description',
-                        'translations' => $translations,
-                    ]);
-                ?>
-            <?php endif ?>
+            <?=
+                LanguageTabs::widget([
+                    'form' => $form,
+                    'model' => $blogCategory,
+                    'fieldName' => 'name',
+                    'translations' => $translations,
+                ]);
+            ?>
+            <?=
+                LanguageTabs::widget([
+                    'form' => $form,
+                    'model' => $blogCategory,
+                    'fieldName' => 'description',
+                    'translations' => $translations,
+                    'numberOfRows' => 10,
+                    'isHTMLEditor' => true,
+                ]);
+            ?>
+            <?=
+                LanguageTabs::widget([
+                    'form' => $form,
+                    'model' => $blogCategory,
+                    'fieldName' => 'meta_description',
+                    'translations' => $translations,
+                ]);
+            ?>
         </div>
         <div class="clearfix"></div>
         <div class="box-footer">

@@ -43,7 +43,7 @@ return [
     'Gallery ID' => 'Galería',
     'Identifier' => 'Identificador',
     'Is Active' => 'Está Activo',
-    'Is Published' => 'Está Publicado',
+    'Is Published' => 'Publicado',
     'Language' => 'Idioma',
     'Lastname' => 'Apellido',
     'Name' => 'Nombre',

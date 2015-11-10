@@ -22,18 +22,16 @@ use common\models\FlatPage;
         <div class="box-body col-md-7">
             <?= $form->field($content, 'flat_page_id')->dropDownList(FlatPage::getMappedArray()) ?>
             <?= $form->field($content, 'name')->textInput(['maxlength' => true]) ?>
-            <?php if (!$content->isNewRecord): ?>
-                <?=
-                    LanguageTabs::widget([
-                        'form' => $form,
-                        'model' => $content,
-                        'fieldName' => 'text',
-                        'translations' => $translations,
-                        'numberOfRows' => 10,
-                        'isHTMLEditor' => true,
-                    ]);
-                ?>
-            <?php endif ?>
+            <?=
+                LanguageTabs::widget([
+                    'form' => $form,
+                    'model' => $content,
+                    'fieldName' => 'text',
+                    'translations' => $translations,
+                    'numberOfRows' => 10,
+                    'isHTMLEditor' => true,
+                ]);
+            ?>
         </div>
          <?php //echo $form->errorSummary($content); ?>
         <div class="clearfix"></div>

@@ -63,7 +63,7 @@ class Content extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['flat_page_id', 'name'], 'required'],
+            [['name'], 'required'],
             [['flat_page_id', 'created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
             [['name'], 'string', 'max' => 255],
             [['name', 'flat_page_id'],

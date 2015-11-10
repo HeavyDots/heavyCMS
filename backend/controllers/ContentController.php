@@ -58,15 +58,22 @@ class ContentController extends MultiLingualController
 		return $this->render('index', compact('contentSearch', 'contentProvider'));
 	}
 
+    /*TODO: Generalize duplicated code on actionCreate and actionUpdate */
 	public function actionCreate()
 	{
 		$content = new Content;
-        if ($content->load($_POST) && $content->save()) {
-            Yii::$app->session->setFlash('success', Yii::t('app', "New Content {$content->name} created successfully"));
-            return $this->redirect(['update', 'id'=>$content->id]);
+        $translations = $content->initializeTranslations();
+        if ($content->load($_POST) &&
+            Model::loadMultiple($translations, $_POST) &&
+            Model::validateMultiple($translations) &&
+            $content->save())
+        {
+            $content->saveTranslations($translations);
+            Yii::$app->session->setFlash('success', Yii::t('app', "Content {$content->name} created successfully"));
+            return $this->redirect(['index']);
         }
 
-        return $this->render('create', compact('content'));
+        return $this->render('create', compact('content', 'translations'));
 	}
 
 	public function actionUpdate($id)

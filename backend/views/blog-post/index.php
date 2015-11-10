@@ -37,6 +37,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 return Html::a($blogPost->title, ['update', 'id'=>$blogPost->id]);
             }
         ],
+        'is_published:boolean',
+        [
+            'attribute' => 'blogCategory.name',
+            'label' => Yii::t('app', 'Blog Category')
+        ],
         'created_at:datetime',
         'updated_at:datetime',
         [

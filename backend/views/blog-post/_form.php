@@ -24,37 +24,35 @@ use common\models\BlogCategory;
         ?>
         <div class="box-body col-md-7">
             <?= $form->field($blogPost, 'blog_category_id')->dropDownList(BlogCategory::getMappedArray()) ?>
-            <?php if (!$blogPost->isNewRecord): ?>
-                <?=
-                    LanguageTabs::widget([
-                        'form' => $form,
-                        'model' => $blogPost,
-                        'fieldName' => 'title',
-                        'translations' => $translations,
-                    ]);
-                ?>
-                <?=
-                    LanguageTabs::widget([
-                        'form' => $form,
-                        'model' => $blogPost,
-                        'fieldName' => 'meta_description',
-                        'translations' => $translations,
-                        'numberOfRows' => 3,
-                    ]);
-                ?>
-                <?=
-                    LanguageTabs::widget([
-                        'form' => $form,
-                        'model' => $blogPost,
-                        'fieldName' => 'text',
-                        'translations' => $translations,
-                        'numberOfRows' => 10,
-                        'isHTMLEditor' => true,
-                        'allowHTMLEditorToUploadImages' => true,
-                        'uploadImageUrl' => Url::toRoute(['/blog-post/upload-image', 'blogPostId' => $blogPost->id]),
-                    ]);
-                ?>
-            <?php endif ?>
+            <?=
+                LanguageTabs::widget([
+                    'form' => $form,
+                    'model' => $blogPost,
+                    'fieldName' => 'title',
+                    'translations' => $translations,
+                ]);
+            ?>
+            <?=
+                LanguageTabs::widget([
+                    'form' => $form,
+                    'model' => $blogPost,
+                    'fieldName' => 'meta_description',
+                    'translations' => $translations,
+                    'numberOfRows' => 3,
+                ]);
+            ?>
+            <?=
+                LanguageTabs::widget([
+                    'form' => $form,
+                    'model' => $blogPost,
+                    'fieldName' => 'text',
+                    'translations' => $translations,
+                    'numberOfRows' => 10,
+                    'isHTMLEditor' => true,
+                    'allowHTMLEditorToUploadImages' => true,
+                    'uploadImageUrl' => Url::toRoute(['/blog-post/upload-image', 'blogPostId' => $blogPost->id]),
+                ]);
+            ?>
             <?=
                 $form->field($blogPost, 'is_published')->checkbox();
             ?>

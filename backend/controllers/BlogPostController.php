@@ -60,12 +60,29 @@ class BlogPostController extends MultiLingualController
 		return $this->render('index', compact('blogPostSearch', 'blogPostProvider'));
 	}
 
+    /*TODO: Generalize duplicated code on actionCreate and actionUpdate */
 	public function actionCreate()
 	{
-		$blogPost = new BlogPost;
-        $blogPost->save();
-        return $this->redirect(['update', 'id'=>$blogPost->id]);
+        $blogPost = new BlogPost();
+        $translations = $blogPost->initializeTranslations();
+        Model::loadMultiple($translations, $_POST);
+        if ($blogPost->load($_POST) &&
+            Model::loadMultiple($translations, $_POST) &&
+            Model::validateMultiple($translations) &&
+            $blogPost->save())
+        {
+            $blogPost->saveTranslations($translations);
+            $blogPost->uploadedFeaturedImage = UploadedFile::getInstance($blogPost, 'uploadedFeaturedImage');
+            if($blogPost->saveFeaturedImageToDisk()){
+                Yii::$app->session->setFlash('success', Yii::t('app', 'Blog Post created successfully'));
+            }
+            else{
+                Yii::$app->session->setFlash('error', Yii::t('app', 'There was some error uploading the blog post Image'));
+            }
+            return $this->redirect(['index']);
+        }
 
+        return $this->render('create', compact('blogPost', 'translations'));
 	}
 
 	public function actionUpdate($id)
@@ -90,7 +107,6 @@ class BlogPostController extends MultiLingualController
         }
 
         return $this->render('update', compact('blogPost', 'translations'));
-
 	}
 
     public function actionUploadImage($blogPostId){

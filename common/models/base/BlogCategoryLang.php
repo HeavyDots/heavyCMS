@@ -55,8 +55,8 @@ class BlogCategoryLang extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['blog_category_id', 'language'], 'required'],
-            [['blog_category_id', 'language', 'name'],
+            [['language'], 'required'],
+            [['language', 'name'],
                 'required',
                 'on'=>'mainLanguage'
             ],
