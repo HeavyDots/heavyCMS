@@ -19,6 +19,11 @@ class FlatPage extends BaseFlatPage
         return ArrayHelper::map($models, 'id', 'title');
     }
 
+    public function getRoute(){
+        $url = ($this->url == 'blog') ? [$this->url.'/index'] : ['site/'.$this->url];
+        return $url;
+    }
+
     public function __toString(){
         return $this->url;
     }

@@ -38,6 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             }
         ],
         'title',
+        'is_active:boolean',
         'created_at:datetime',
         'updated_at:datetime',
         [

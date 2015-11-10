@@ -13,7 +13,9 @@ class FlatPageList extends Widget{
     public $htmlClass = '';
 
     public function init(){
-        $this->flatPageList = FlatPage::find()->all();
+        $this->flatPageList = FlatPage::find()
+                                ->where(['is_active'=>true])
+                                ->all();
         parent::init();
     }
 
@@ -24,7 +26,7 @@ class FlatPageList extends Widget{
                                     $class = ($flatPage->url == Yii::$app->controller->action->id) ?
                                             $this->activeLiClass :
                                             null;
-            return Html::tag('li', Html::a($flatPage->anchor, [$flatPage->url]), ['class'=>$class]);
+            return Html::tag('li', Html::a($flatPage->anchor, $flatPage->getRoute()), ['class'=>$class]);
         }]);
     }
 }

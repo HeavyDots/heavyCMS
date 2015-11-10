@@ -31,13 +31,12 @@ $this->params['breadcrumbs'][] = $this->title;
     'tableOptions' => ['class' => 'table table-striped table-bordered box box-primary'],
     'columns' => [
         [
-            'attribute' => 'identifier',
+            'attribute' => 'name',
             'format' => 'raw',
             'value' => function($blogCategory){
-                return Html::a($blogCategory->identifier, ['update', 'id'=>$blogCategory->id]);
+                return Html::a($blogCategory->name, ['update', 'id'=>$blogCategory->id]);
             }
         ],
-        'name',
         'created_at:datetime',
         'updated_at:datetime',
         [

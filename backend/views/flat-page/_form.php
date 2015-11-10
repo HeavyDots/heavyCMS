@@ -46,6 +46,7 @@ use backend\widgets\LanguageTabs;
                 ?>
             <?php endif ?>
             <?= $form->field($flatPage, 'url')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($flatPage, 'is_active')->checkbox(); ?>
         </div>
         <div class="clearfix"></div>
         <div class="box-footer">

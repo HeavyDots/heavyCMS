@@ -63,10 +63,6 @@ class BlogCategoryLang extends \yii\db\ActiveRecord
             [['blog_category_id'], 'integer'],
             [['created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
             [['description'], 'string'],
-            [['description'], 'compare', 'compareValue'=>'<p><br></p>', 'operator'=>'!=',
-                        'on'=>'mainLanguage',
-                        'message'=>Yii::t('yii', '{attribute} cannot be blank.')
-            ],
             [['language'], 'string', 'max' => 6],
             [['name', 'slug', 'meta_description'], 'string', 'max' => 255]
         ];

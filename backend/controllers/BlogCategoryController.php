@@ -61,20 +61,17 @@ class BlogCategoryController extends MultiLingualController
     public function actionCreate()
     {
         $blogCategory = new BlogCategory;
-        if ($blogCategory->load($_POST) && $blogCategory->save()) {
-            Yii::$app->session->setFlash('success', Yii::t('app', "New Blog Category {$blogCategory->name} created successfully"));
-            return $this->redirect(['update', 'id'=>$blogCategory->id]);
-        }
+        $blogCategory->save();
+        return $this->redirect(['update', 'id'=>$blogCategory->id]);
 
-        return $this->render('create', compact('blogCategory'));
     }
 
     public function actionUpdate($id)
     {
         $blogCategory = $this->findBlogCategory($id);
         $translations = $blogCategory->initializeTranslations();
-        if ($blogCategory->load($_POST) &&
-            Model::loadMultiple($translations, $_POST) &&
+
+        if (Model::loadMultiple($translations, $_POST) &&
             Model::validateMultiple($translations) &&
             $blogCategory->save())
         {

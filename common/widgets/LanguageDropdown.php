@@ -43,11 +43,17 @@ class LanguageDropdown extends Widget{
     private function generateURLForSelectedLanguage($currentLanguage){
         $params = Yii::$app->request->queryParams;
         unset($params['language']);
-        $route = array_merge([Yii::$app->controller->getRoute()], $params);
-        if (Yii::$app->controller->getRoute()=='blog/view') {
+        $routeYii = Yii::$app->controller->getRoute();
+        $route = array_merge([$routeYii], $params);
+        /*TODO: Refactor this code, it's not semantic */
+        if ($routeYii=='blog/view') {
             $blogPost = BlogPost::findBySlug($params['slug'], $currentLanguage);
             $params['slug'] = $blogPost->slug;
-            $route = array_merge([Yii::$app->controller->getRoute()], $params);
+            if (BlogPost::findBySlug($params['slug'], Yii::$app->language)===null) {
+                $routeYii = 'blog/index';
+                $params = [];
+            }
+            $route = array_merge([$routeYii], $params);
         }
         return Url::toRoute($route);
     }

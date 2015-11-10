@@ -20,10 +20,8 @@ use backend\widgets\LanguageTabs;
                 'options' => ['enctype'=>'multipart/form-data'],
             ]);
         ?>
+
         <div class="box-body col-md-7">
-            <?=
-                $form->field($blogCategory, 'identifier')->textInput();
-            ?>
             <?php if (!$blogCategory->isNewRecord): ?>
                 <?=
                     LanguageTabs::widget([

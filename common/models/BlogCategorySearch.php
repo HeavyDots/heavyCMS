@@ -19,7 +19,6 @@ public function rules()
 {
 return [
 [['id', 'created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
-            [['identifier'], 'safe'],
 ];
 }
 
@@ -62,8 +61,6 @@ $query->andFilterWhere([
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
-
-        $query->andFilterWhere(['like', 'identifier', $this->identifier]);
 
 return $dataProvider;
 }

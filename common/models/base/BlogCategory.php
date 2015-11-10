@@ -12,7 +12,6 @@ use yii\behaviors\BlameableBehavior;
  * This is the base-model class for table "blog_category".
  *
  * @property integer $id
- * @property string $identifier
  * @property integer $created_by
  * @property integer $updated_by
  * @property string $created_at
@@ -66,10 +65,7 @@ class BlogCategory extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['identifier'], 'required'],
             [['created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
-            [['identifier'], 'string', 'max' => 255],
-            [['identifier'], 'unique'],
         ];
     }
 
@@ -80,7 +76,6 @@ class BlogCategory extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('model', 'ID'),
-            'identifier' => Yii::t('model', 'Identifier'),
             'created_by' => Yii::t('model', 'Created By'),
             'updated_by' => Yii::t('model', 'Updated By'),
             'created_at' => Yii::t('model', 'Created At'),
