@@ -43,7 +43,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'updated_at:datetime',
         [
             'class' => ActionColumn::className(),
-            'template' => '{update}',
+            'template' => '{update}{view}',
+            'buttons' => [
+                'view' => function($url, $flatPage, $key){
+                    return Html::a('<span class="glyphicon glyphicon-eye-open"></span>',
+                                    $flatPage->getFullUrl(),
+                                    ['target'=>'_blank']);
+                }
+            ],
         ],
     ]
 ]);
