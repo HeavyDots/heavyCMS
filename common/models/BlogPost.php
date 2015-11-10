@@ -88,6 +88,11 @@ class BlogPost extends BaseBlogPost
         return $this->featuredImageURL . $fileName;
     }
 
+    /*TODO: remove double slash i.e.: http://heavycms.dev//site/contact*/
+    public function getFullUrl(){
+        return Yii::$app->params['frontendURL'] . $this->getUrl();
+    }
+
     public function getUrl(){
         return Url::toRoute(['blog/view', 'slug'=>$this->slug]);
     }

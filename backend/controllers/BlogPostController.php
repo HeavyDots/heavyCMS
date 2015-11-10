@@ -28,7 +28,7 @@ class BlogPostController extends MultiLingualController
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'create', 'update', 'upload-image'],
+                        'actions' => ['index', 'create', 'update', 'upload-image', 'delete'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -108,6 +108,19 @@ class BlogPostController extends MultiLingualController
 
         return $this->render('update', compact('blogPost', 'translations'));
 	}
+
+    public function actionDelete($id){
+        try {
+            $blogPost = $this->findBlogPost($id);
+            $blogPostTitle = $blogPost->title;
+            $blogPost->delete();
+            Yii::$app->getSession()->setFlash('success', Yii::t('app', "Blog Post {$blogPostTitle} deleted successfully"));
+        } catch (\Exception $e) {
+            $msg = (isset($e->errorInfo[2]))?$e->errorInfo[2]:$e->getMessage();
+            Yii::$app->getSession()->setFlash('error', $msg);
+        }
+        return $this->redirect(['index']);
+    }
 
     public function actionUploadImage($blogPostId){
         if (Yii::$app->request->isAjax) {

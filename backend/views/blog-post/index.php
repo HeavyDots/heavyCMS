@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'updated_at:datetime',
         [
             'class' => ActionColumn::className(),
-            'template' => '{update}',
+            'template' => '{update}{delete}',
         ],
     ]
 ]);
