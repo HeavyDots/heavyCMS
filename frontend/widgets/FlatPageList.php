@@ -15,6 +15,7 @@ class FlatPageList extends Widget{
     public function init(){
         $this->flatPageList = FlatPage::find()
                                 ->where(['is_active'=>true])
+                                ->andWhere(['display_on_menu'=>true])
                                 ->all();
         parent::init();
     }

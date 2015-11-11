@@ -39,6 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         'title',
         'is_active:boolean',
+        'display_on_menu:boolean',
         'created_at:datetime',
         'updated_at:datetime',
         [

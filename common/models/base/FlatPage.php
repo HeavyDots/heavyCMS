@@ -64,7 +64,7 @@ class FlatPage extends \yii\db\ActiveRecord
     {
         return [
             [['url'], 'required'],
-            [['is_active', 'created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
+            [['is_active', 'display_on_menu', 'created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
             [['url'], 'string', 'max' => 255],
             [['url'], 'unique']
         ];
@@ -79,6 +79,7 @@ class FlatPage extends \yii\db\ActiveRecord
             'id' => Yii::t('model', 'ID'),
             'url' => Yii::t('model', 'Url'),
             'is_active' => Yii::t('model', 'Is Active'),
+            'display_on_menu' => Yii::t('model', 'Display on Menu'),
             'created_by' => Yii::t('model', 'Created By'),
             'updated_by' => Yii::t('model', 'Updated By'),
             'created_at' => Yii::t('model', 'Created At'),

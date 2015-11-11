@@ -133,7 +133,7 @@ class m151026_142937_initial_tables extends Migration
             CREATE TABLE `flat_page` (
               `id` int(11) NOT NULL AUTO_INCREMENT,
               `url` varchar(255) NOT NULL,
-              `is_active` tinyint(1) NOT NULL DEFAULT '1'
+              `is_active` tinyint(1) NOT NULL DEFAULT '1',
               `created_by` int(11) NOT NULL,
               `updated_by` int(11) NOT NULL,
               `created_at` int(10) unsigned NOT NULL,

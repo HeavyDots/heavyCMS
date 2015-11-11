@@ -4,6 +4,8 @@ use yii\bootstrap\ActiveForm;
 use yii\bootstrap\Tabs;
 
 use backend\widgets\LanguageTabs;
+/*TODO: Autocheck is_active when user activate display_on_menu.
+        Deactivate display_on_menu when user deactivate is_active */
 ?>
 
 <div class="flat-page-form">
@@ -45,6 +47,7 @@ use backend\widgets\LanguageTabs;
             ?>
             <?= $form->field($flatPage, 'url')->textInput(['maxlength' => true]) ?>
             <?= $form->field($flatPage, 'is_active')->checkbox(); ?>
+            <?= $form->field($flatPage, 'display_on_menu')->checkbox(); ?>
         </div>
         <div class="clearfix"></div>
         <div class="box-footer">
