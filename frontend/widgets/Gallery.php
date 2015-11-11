@@ -25,10 +25,12 @@ class Gallery extends Widget{
                                 ->where(['is_active' => true])
                                 ->orderBy(['sort_order' => SORT_ASC])
                                 ->all();
-            if (count($galleryImages)>1) {
+
+            $numberOfImages = count($galleryImages);
+            if ($numberOfImages>1) {
                 $htmlGallery = $this->generateHtmlForMultipleImages($galleryImages);
             }
-            else{
+            else if ($numberOfImages===1){
                 $htmlGallery = $this->generateHtmlForSingleImage($galleryImages[0]);
             }
         }

@@ -1,10 +1,13 @@
 <?php
+/* TODO: Extract urlManager to a file, like we did on frontend config/main.php*/
 $params = array_merge(
     require(__DIR__ . '/../../common/config/params.php'),
     require(__DIR__ . '/../../common/config/params-local.php'),
     require(__DIR__ . '/params.php'),
     require(__DIR__ . '/params-local.php')
 );
+
+$urlManagerFrontend = require(__DIR__ . '/../../frontend/config/urlManager.php');
 
 return [
     'id' => 'app-backend',
@@ -62,6 +65,7 @@ return [
                 '<language>/<controller>/<id>' => '<controller>',
             ],
         ],
+        'urlManagerFrontend' => $urlManagerFrontend,
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             'viewPath' => '@backend/mail',

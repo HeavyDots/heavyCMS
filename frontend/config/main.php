@@ -5,6 +5,7 @@ $params = array_merge(
     require(__DIR__ . '/params.php'),
     require(__DIR__ . '/params-local.php')
 );
+$urlManager = require(__DIR__ . '/urlManager.php');
 
 return [
     'id' => 'app-frontend',
@@ -48,24 +49,7 @@ return [
             https://github.com/yiisoft/yii2/issues/1807
             http://stackoverflow.com/questions/28018061/yii2-url-mapping-suffix
         */
-        'urlManager' => [
-            'class'             => common\components\MultiLingualUrlManager::className(),
-            'enablePrettyUrl'   => true,
-            'showScriptName'    => false, // false - means that index.php will not be part of the URLs
-            'rules' => [
-                ['pattern'=>'/<language:[a-z]{2}-[A-Z]{2}>','route'=>'site/index','suffix'=>'/'],
-                ['pattern'=>'/<language:[a-z]{2}-[A-Z]{2}>/blog','route'=>'blog/index','suffix'=>'/'],
-                ['pattern'=>'/blog','route'=>'blog/index','suffix'=>'/'],
-                '<language>/blog/<slug>' => 'blog/view',
-                'blog/<slug>' => 'blog/view',
-                '<language>/<action>' => 'site/<action>',
-                '/' => 'site/index',
-                '<action>' => 'site/<action>',
-                '<language>/<controller>/<action>/<id>' => '<controller>/<action>',
-                '<language>/<controller>/<action>' => '<controller>/<action>',
-                '<language>/<controller>/<id>' => '<controller>',
-            ],
-        ],
+        'urlManager' => $urlManager,
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             'viewPath' => '@frontend/mail',

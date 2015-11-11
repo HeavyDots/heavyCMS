@@ -20,9 +20,8 @@ class FlatPage extends BaseFlatPage
         return ArrayHelper::map($models, 'id', 'title');
     }
 
-    /*TODO: remove double slash i.e.: http://heavycms.dev//site/contact*/
     public function getFullUrl(){
-        return Yii::$app->params['frontendURL'] . $this->getUrl();
+        return substr(Yii::$app->params['frontendURL'], 0, -1) . Yii::$app->urlManagerFrontend->createUrl($this->getRoute());
     }
 
     public function getUrl(){
