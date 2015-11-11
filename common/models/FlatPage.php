@@ -25,11 +25,11 @@ class FlatPage extends BaseFlatPage
     }
 
     public function getUrl(){
-        return Url::toRoute($this->route);
+        return Url::toRoute([$this->route]);
     }
 
     public function getRoute(){
-        $url = ($this->url == 'blog') ? ['blog/index'] : ['site/'.$this->url];
+        $url = ($this->url == 'blog') ? 'blog/index' : 'site/'.$this->url;
         return $url;
     }
 

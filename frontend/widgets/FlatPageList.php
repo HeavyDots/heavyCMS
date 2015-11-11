@@ -24,10 +24,10 @@ class FlatPageList extends Widget{
         return Html::ul($this->flatPageList, [
                                 'class' => $this->htmlClass,
                                 'item' => function ($flatPage, $index){
-                                    $class = ($flatPage->url == Yii::$app->controller->action->id) ?
+                                    $class = ($flatPage->route == Yii::$app->requestedRoute) ?
                                             $this->activeLiClass :
                                             null;
-            return Html::tag('li', Html::a($flatPage->anchor, $flatPage->getRoute()), ['class'=>$class]);
+            return Html::tag('li', Html::a($flatPage->anchor, [$flatPage->getRoute()]), ['class'=>$class]);
         }]);
     }
 }
