@@ -15,6 +15,7 @@ class ContactForm extends Model
     public $email;
     public $body;
     public $body_more; //fake field. Honeypot.
+    public $phone;
     public $verifyCode;
 
     /**
@@ -24,7 +25,7 @@ class ContactForm extends Model
     {
         return [
             // name, email subject and body are required
-            [['name', 'email', 'body'], 'required'],
+            [['name', 'email', 'body', 'phone'], 'required'],
             // email has to be a valid email address
             ['email', 'email'],
             // verifyCode needs to be entered correctly
