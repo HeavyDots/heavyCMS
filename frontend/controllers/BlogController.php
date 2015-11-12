@@ -26,6 +26,9 @@ class BlogController extends MultiLingualController{
 
         $blogPostProvider = new ActiveDataProvider([
             'query' => $query,
+                'pagination' => [
+                    'pageSize' => 10,
+                ],
         ]);
 
         return $this->render('index', compact('flatPage', 'blogPostProvider'));
@@ -52,9 +55,12 @@ class BlogController extends MultiLingualController{
 
         $blogPostProvider = new ActiveDataProvider([
             'query' => $query,
+                'pagination' => [
+                    'pageSize' => 10,
+                ],
         ]);
 
-        return $this->render('category-index', compact('flatPage', 'blogPostProvider'));
+        return $this->render('category-index', compact('flatPage', 'blogPostProvider', 'blogCategory'));
     }
 
     protected function findFlatPage($slug)
@@ -82,12 +88,35 @@ class BlogController extends MultiLingualController{
 
     protected function findBlogCategory($slug)
     {
-        $blogCategory = BlogCategory::find()
+        /*TODO: Clean Messy Code*/
+        $blogCategoryCurrentLanguage = BlogCategory::find()
                     ->joinWith('translations')
                     ->where(['blog_category_lang.slug'=>$slug])
                     ->andWhere(['blog_category_lang.language'=>Yii::$app->language])
                     ->one();
-
+        $blogCategory = $blogCategoryCurrentLanguage;
+        /*Fallback language*/
+        if (!isset($blogCategory)){
+            $blogCategory = BlogCategory::find()
+                    ->joinWith('translations')
+                    ->where(['blog_category_lang.slug'=>$slug])
+                    ->andWhere(['blog_category_lang.language'=>Yii::$app->params['fallbackLanguage']])
+                    ->one();
+            if (isset($blogCategory)&&$slug!=$blogCategory->slug) {
+                $blogCategory = $blogCategoryCurrentLanguage;
+            }
+        }
+        /*Main language*/
+        if (!isset($blogCategory)){
+            $blogCategory = BlogCategory::find()
+                    ->joinWith('translations')
+                    ->where(['blog_category_lang.slug'=>$slug])
+                    ->andWhere(['blog_category_lang.language'=>Yii::$app->params['appMainLanguage']])
+                    ->one();
+            if (isset($blogCategory)&&$slug!=$blogCategory->slug) {
+                $blogCategory = $blogCategoryCurrentLanguage;
+            }
+        }
         if (!isset($blogCategory)) {
             throw new HttpException(404, Yii::t('app','The requested page does not exist.'));
         }
