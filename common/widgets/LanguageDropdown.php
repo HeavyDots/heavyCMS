@@ -57,12 +57,9 @@ class LanguageDropdown extends Widget{
             $route = array_merge([$routeYii], $params);
         }
         else if ($routeYii=='blog/category-index'){
-            $blogCategory = BlogCategory::findBySlug($params['slug'], $currentLanguage);
+            $blogCategory = BlogCategory::findBySlug($params['slug']);
+            $blogCategory->setLanguage(Yii::$app->language);
             $params['slug'] = $blogCategory->slug;
-            if (BlogCategory::findBySlug($params['slug'], Yii::$app->language)===null) {
-                $routeYii = 'blog/index';
-                $params = [];
-            }
             $route = array_merge([$routeYii], $params);
         }
         else if ($routeYii=='site/error'){
@@ -72,7 +69,6 @@ class LanguageDropdown extends Widget{
         }
         return Url::toRoute($route);
     }
-
     private function getClass($localeId, $currentLanguage){
         return $this->isSelectedLanguage($localeId, $currentLanguage) ? $this->activeClass : null;
     }

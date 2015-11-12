@@ -24,7 +24,7 @@ class FlatPageList extends Widget{
         return Html::ul($this->flatPageList, [
                                 'class' => $this->htmlClass,
                                 'item' => function ($flatPage, $index){
-                                    $class = ($flatPage->route == Yii::$app->requestedRoute) ?
+                                    $class = $flatPage->matchRequestedRoute() ?
                                             $this->activeLiClass :
                                             null;
             return Html::tag('li', Html::a($flatPage->anchor, [$flatPage->getRoute()]), ['class'=>$class]);

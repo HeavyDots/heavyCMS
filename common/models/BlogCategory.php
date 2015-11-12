@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
 use common\models\base\BlogCategory as BaseBlogCategory;
 use common\models\traits\Translation;
@@ -19,12 +20,14 @@ class BlogCategory extends BaseBlogCategory
         return ArrayHelper::map($models, 'id', 'name');
     }
 
-    public static function findBySlug($slug, $language = null){
-        $language = isset($language) ? $language : Yii::$app->language;
+    public static function findBySlug($slug){
         return self::find()
                 ->joinWith('translations')
                 ->where(['blog_category_lang.slug'=>$slug])
-                ->andWhere(['blog_category_lang.language'=>$language])
                 ->one();
+    }
+
+    public function getUrl(){
+        return Url::toRoute(['blog/category-index', 'slug'=>$this->slug]);
     }
 }

@@ -20,6 +20,14 @@ class FlatPage extends BaseFlatPage
         return ArrayHelper::map($models, 'id', 'title');
     }
 
+    public function matchRequestedRoute(){
+        $requestedRouteCanBeFoundInThisFlatPage = Yii::$app->requestedRoute == $this->route;
+        if (Yii::$app->controller->id=='blog'&&$this->url=='blog') {
+            $requestedRouteCanBeFoundInThisFlatPage = true;
+        }
+        return $requestedRouteCanBeFoundInThisFlatPage;
+    }
+
     public function getFullUrl(){
         return substr(Yii::$app->params['frontendURL'], 0, -1) . Yii::$app->urlManagerFrontend->createUrl($this->getRoute());
     }
