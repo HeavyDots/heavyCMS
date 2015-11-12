@@ -18,4 +18,13 @@ class BlogCategory extends BaseBlogCategory
         $models = self::find()->all();
         return ArrayHelper::map($models, 'id', 'name');
     }
+
+    public static function findBySlug($slug, $language = null){
+        $language = isset($language) ? $language : Yii::$app->language;
+        return self::find()
+                ->joinWith('translations')
+                ->where(['blog_category_lang.slug'=>$slug])
+                ->andWhere(['blog_category_lang.language'=>$language])
+                ->one();
+    }
 }

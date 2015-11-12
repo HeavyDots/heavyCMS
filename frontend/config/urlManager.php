@@ -9,6 +9,8 @@ return [
         ['pattern'=>'/blog','route'=>'blog/index','suffix'=>'/'],
         '<language>/blog/<slug>' => 'blog/view',
         'blog/<slug>' => 'blog/view',
+        '<language>/blog/category/<slug>' => 'blog/category-index',
+        'blog/category/<slug>' => 'blog/category-index',
         '<language>/<action>' => 'site/<action>',
         '/' => 'site/index',
         '<action>' => 'site/<action>',

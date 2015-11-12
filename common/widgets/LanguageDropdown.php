@@ -6,6 +6,7 @@ use yii\helpers\Url;
 use yii\base\Widget;
 
 use common\models\BlogPost;
+use common\models\BlogCategory;
 
 class LanguageDropdown extends Widget{
 
@@ -45,7 +46,7 @@ class LanguageDropdown extends Widget{
         unset($params['language']);
         $routeYii = Yii::$app->controller->getRoute();
         $route = array_merge([$routeYii], $params);
-        /*TODO: Refactor this code, it's not semantic */
+        /*TODO: Refactor this code, it's not semantic an it's messy */
         if ($routeYii=='blog/view') {
             $blogPost = BlogPost::findBySlug($params['slug'], $currentLanguage);
             $params['slug'] = $blogPost->slug;
@@ -53,6 +54,20 @@ class LanguageDropdown extends Widget{
                 $routeYii = 'blog/index';
                 $params = [];
             }
+            $route = array_merge([$routeYii], $params);
+        }
+        else if ($routeYii=='blog/category-index'){
+            $blogCategory = BlogCategory::findBySlug($params['slug'], $currentLanguage);
+            $params['slug'] = $blogCategory->slug;
+            if (BlogCategory::findBySlug($params['slug'], Yii::$app->language)===null) {
+                $routeYii = 'blog/index';
+                $params = [];
+            }
+            $route = array_merge([$routeYii], $params);
+        }
+        else if ($routeYii=='site/error'){
+            $routeYii = 'site/index';
+            $params = [];
             $route = array_merge([$routeYii], $params);
         }
         return Url::toRoute($route);
