@@ -57,7 +57,8 @@ class ContactForm extends Model
             return Yii::$app->mailer->compose(['html' => 'contact-html', 'text' => 'contact-text'],
                                                                     ['name' => $this->name,
                                                                     'email' => $this->email,
-                                                                    'body' => $this->body])
+                                                                    'body' => $this->body,
+                                                                    'phone' => $this->phone])
                 ->setTo($email)
                 ->setFrom([$this->email => $this->name])
                 ->setSubject(Yii::t('mail', 'New message from Contact Form'))
