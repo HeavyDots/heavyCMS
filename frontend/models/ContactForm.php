@@ -43,7 +43,7 @@ class ContactForm extends Model
             'email' => Yii::t('contact', 'email'),
             'subject' => Yii::t('contact', 'subject'),
             'body' => Yii::t('contact', 'body'),
-            'body' => Yii::t('contact', 'phone'),
+            'phone' => Yii::t('contact', 'phone'),
             'verifyCode' => Yii::t('contact', 'verifyCode'),
         ];
     }
