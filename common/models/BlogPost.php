@@ -98,6 +98,6 @@ class BlogPost extends BaseBlogPost
     }
 
     public function getBriefText(){
-        return StringHelper::truncateWords($this->text, 40);
+        return StringHelper::truncateWords($this->text, 40, $suffix = '...', $asHtml = true);
     }
 }
