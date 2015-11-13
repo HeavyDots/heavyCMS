@@ -10,7 +10,6 @@ $this->title = 'My Yii Application';
 
     <div class="jumbotron">
         <?= Translate::t('index', 'texto1')?>
-        <h1>Congratulationss! <?= Yii::t('frontend/index', 'probandoss') ?></h1>
         <?= Configuration::get('fasd-asd-afs-fs') ?>
         <p class="lead">You have successfully created your Yii-powered application.</p>
 
