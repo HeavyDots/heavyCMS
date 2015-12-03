@@ -66,7 +66,7 @@ class ContactForm extends Model
                                                                     'phone' => $this->phone])
                 ->setTo($email)
                 ->setFrom([$this->email => $this->name])
-                ->setSubject(Yii::t('mail', 'New message from Contact Form'))
+                ->setSubject(Yii::$app->name . ': ' . Yii::t('mail', 'New message from Contact Form'))
                 ->setTextBody($this->body)
                 ->send();
         }

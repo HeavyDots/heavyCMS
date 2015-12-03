@@ -11,7 +11,6 @@ $urlManagerFrontend = require(__DIR__ . '/../../frontend/config/urlManager.php')
 
 return [
     'id' => 'app-backend',
-    'name' => 'HeavyCMS',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],

@@ -29,7 +29,7 @@ class FlatPage extends BaseFlatPage
     }
 
     public function getFullUrl(){
-        return substr(Yii::$app->params['frontendURL'], 0, -1) . Yii::$app->urlManagerFrontend->createUrl($this->getRoute());
+        return substr(Yii::$app->params['frontendURL'], 0, -1) . Yii::$app->urlManagerFrontend->createUrl([$this->getRoute()]);
     }
 
     public function getUrl(){

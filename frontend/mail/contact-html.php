@@ -40,7 +40,7 @@
                     <br>
                     <br>
                     <span style="font-size: 24px;"><?=Yii::t('mail', 'New Message')?></span><br><br>
-                    <?= Yii::t('mail', '{name} ({email} {phone}) has sent the following message using the contact form', compact('name', 'email'))?>:
+                    <?= Yii::t('mail', '{name} ({email} {phone}) has sent the following message using the contact form', compact('name', 'email', 'phone'))?>:
                     <br>
                     <br>
                     <br>
