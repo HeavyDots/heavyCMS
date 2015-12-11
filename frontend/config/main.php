@@ -42,6 +42,18 @@ return [
                                                 ],*/
 
                 ],
+                /*
+                    NOTE: We need to set the 'app' category with DB config.
+                    By default, yii2 use PhpMessageSource on 'app' category.
+                    More info: https://github.com/lajax/yii2-translate-manager/issues/27#issuecomment-143311318
+                */
+                'app' => [
+                    'class' => yii\i18n\DbMessageSource::className(),
+                    'sourceLanguage' => 'en-US',
+                    'forceTranslation' => true,
+                    'sourceMessageTable' => '{{%source_message}}',
+                    'messageTable' => '{{%translated_message}}',
+                ],
             ],
         ],
         /*  NOTE: About slash suffix
