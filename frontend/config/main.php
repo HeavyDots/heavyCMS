@@ -56,6 +56,9 @@ return [
                 ],
             ],
         ],
+        'assetManager' => [
+            'bundles' => YII_ENV_PROD ? require(__DIR__ . '/assets-prod.php') : '',
+        ],
         /*  NOTE: About slash suffix
             https://github.com/yiisoft/yii2/issues/7670
             https://github.com/yiisoft/yii2/issues/1807
