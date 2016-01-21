@@ -13,7 +13,9 @@ class FlatPageController extends MultiLingualController{
 
     public function actionIndex($slug, $url){
         /* Create code to render the view for each $url */
+
         echo "{$slug}";
+        return $this->render('//site/index');
     }
 
 }

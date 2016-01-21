@@ -5,6 +5,7 @@ use Yii;
 use yii\helpers\Url;
 use yii\base\Widget;
 
+use common\models\FlatPage;
 use common\models\BlogPost;
 use common\models\BlogCategory;
 
@@ -56,13 +57,22 @@ class LanguageDropdown extends Widget{
             }
             $route = array_merge([$routeYii], $params);
         }
-        else if ($routeYii=='blog/category-index'){
+        elseif ($routeYii=='blog/category-index'){
             $blogCategory = BlogCategory::findBySlug($params['slug']);
             $blogCategory->setLanguage(Yii::$app->language);
             $params['slug'] = $blogCategory->slug;
             $route = array_merge([$routeYii], $params);
         }
-        else if ($routeYii=='site/error'){
+        elseif ($routeYii=='flat-page/index'){
+            $flatPage = FlatPage::findBySlug($params['slug'], $currentLanguage);
+            $params['slug'] = isset($flatPage) ? $flatPage->slug : '';
+            if (FlatPage::findBySlug($params['slug'], Yii::$app->language)===null) {
+                $routeYii = 'site/index';
+                $params = [];
+            }
+            $route = array_merge([$routeYii], $params);
+        }
+        elseif ($routeYii=='site/error'){
             $routeYii = 'site/index';
             $params = [];
             $route = array_merge([$routeYii], $params);

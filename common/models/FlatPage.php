@@ -22,6 +22,16 @@ class FlatPage extends BaseFlatPage
 
     public static function findBySlug($slug, $language = null){
         $language = isset($language) ? $language : Yii::$app->language;
+        return self::find()
+            ->joinWith('translations')
+            ->where(['flat_page_lang.slug'=>$slug])
+            ->andWhere(['flat_page_lang.language'=>$language])
+            ->one();
+    }
+
+    /* TODO: Enhance the algo, and refactor */
+    public static function findBySlugFallback($slug, $language = null){
+        $language = isset($language) ? $language : Yii::$app->language;
         $flatPageCurrentLanguage = self::find()
                 ->joinWith('translations')
                 ->where(['flat_page_lang.slug'=>$slug])

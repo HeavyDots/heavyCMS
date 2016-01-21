@@ -44,11 +44,12 @@ class FlatPageUrlRule extends Object implements UrlRuleInterface
                 $slug = $matches[3];
                 $language = $matches[1];
             }
-            $flatPage = FlatPage::findBySlug($slug, $language);
+            $flatPage = FlatPage::findBySlugFallback($slug, $language);
 
             if(isset($flatPage)) {
                 $params['slug'] = $slug;
                 $params['url'] = $flatPage->url;
+                $params['language'] = $language;
                 return ['flat-page/index', $params];
             }
         }
