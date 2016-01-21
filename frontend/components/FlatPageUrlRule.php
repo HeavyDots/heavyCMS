@@ -15,6 +15,9 @@ class FlatPageUrlRule extends Object implements UrlRuleInterface
     public function createUrl($manager, $route, $params)
     {
         if ($route === 'flat-page/index') {
+            if (isset($params['language'], $params['slug'])) {
+                return $params['language'] . '/' . $params['slug'];
+            }
             if (isset($params['slug'])) {
                 return $params['slug'];
             }

@@ -27,7 +27,7 @@ class FlatPageList extends Widget{
                                     $class = $flatPage->matchRequestedRoute() ?
                                             $this->activeLiClass :
                                             null;
-            return Html::tag('li', Html::a($flatPage->anchor, [$flatPage->getRoute()]), ['class'=>$class]);
+            return Html::tag('li', Html::a($flatPage->anchor, $flatPage->getRoute()), ['class'=>$class]);
         }]);
     }
 }

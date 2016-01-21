@@ -22,11 +22,32 @@ class FlatPage extends BaseFlatPage
 
     public static function findBySlug($slug, $language = null){
         $language = isset($language) ? $language : Yii::$app->language;
-        return self::find()
+        $flatPageCurrentLanguage = self::find()
                 ->joinWith('translations')
                 ->where(['flat_page_lang.slug'=>$slug])
                 ->andWhere(['flat_page_lang.language'=>$language])
                 ->one();
+        $flatPage = $flatPageCurrentLanguage;
+
+        /*Fallback language*/
+        if (!isset($flatPage)){
+            $flatPage = FlatPage::find()
+                ->joinWith('translations')
+                ->where(['flat_page_lang.slug'=>$slug])
+                ->andWhere(['flat_page_lang.language'=>Yii::$app->params['fallbackLanguage']])
+                ->one();
+        }
+
+        /*Main language*/
+        if (!isset($flatPage)){
+            $flatPage = FlatPage::find()
+                ->joinWith('translations')
+                ->where(['flat_page_lang.slug'=>$slug])
+                ->andWhere(['flat_page_lang.language'=>Yii::$app->params['appMainLanguage']])
+                ->one();
+        }
+
+        return $flatPage;
     }
 
     public function matchRequestedRoute(){
@@ -42,12 +63,18 @@ class FlatPage extends BaseFlatPage
     }
 
     public function getUrl(){
-        return Url::toRoute([$this->route]);
+        return Url::toRoute($this->route);
     }
 
     public function getRoute(){
-        $url = ($this->url == 'blog') ? 'blog/index' : $this->slug;
-        return $url;
+        $route = ['flat-page/index', 'slug' => $this->slug];
+        if ($this->url == 'blog') {
+            $route = ['blog/index'];
+        }
+        elseif ($this->url == 'index') {
+            $route = ['site/index'];
+        }
+        return $route;
     }
 
     public function __toString(){
