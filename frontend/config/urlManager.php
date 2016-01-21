@@ -11,6 +11,7 @@ return [
         'blog/<slug>' => 'blog/view',
         '<language>/blog/category/<slug>' => 'blog/category-index',
         'blog/category/<slug>' => 'blog/category-index',
+        ['class' => 'frontend\components\FlatPageUrlRule'],
         '<language>/<action>' => 'site/<action>',
         '/' => 'site/index',
         '<action>' => 'site/<action>',

@@ -20,6 +20,15 @@ class FlatPage extends BaseFlatPage
         return ArrayHelper::map($models, 'id', 'title');
     }
 
+    public static function findBySlug($slug, $language = null){
+        $language = isset($language) ? $language : Yii::$app->language;
+        return self::find()
+                ->joinWith('translations')
+                ->where(['flat_page_lang.slug'=>$slug])
+                ->andWhere(['flat_page_lang.language'=>$language])
+                ->one();
+    }
+
     public function matchRequestedRoute(){
         $requestedRouteCanBeFoundInThisFlatPage = Yii::$app->requestedRoute == $this->route;
         if (Yii::$app->controller->id=='blog'&&$this->url=='blog') {
@@ -37,7 +46,7 @@ class FlatPage extends BaseFlatPage
     }
 
     public function getRoute(){
-        $url = ($this->url == 'blog') ? 'blog/index' : 'site/'.$this->url;
+        $url = ($this->url == 'blog') ? 'blog/index' : $this->slug;
         return $url;
     }
 
