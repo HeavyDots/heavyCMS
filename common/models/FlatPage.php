@@ -20,6 +20,11 @@ class FlatPage extends BaseFlatPage
         return ArrayHelper::map($models, 'id', 'title');
     }
 
+    public static function getUrlFor($flatPageUrl){
+        $flatPage = FlatPage::findOne(['url' => $flatPageUrl]);
+        return isset($flatPage) ? $flatPage->getUrl() : '#';
+    }
+
     public static function findBySlug($slug, $language = null){
         $language = isset($language) ? $language : Yii::$app->language;
         return self::find()
