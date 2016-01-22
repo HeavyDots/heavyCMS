@@ -45,7 +45,6 @@ class FlatPageUrlRule extends Object implements UrlRuleInterface
                 $language = $matches[1];
             }
             $flatPage = FlatPage::findBySlugFallback($slug, $language);
-
             if(isset($flatPage)) {
                 $params['slug'] = $slug;
                 $params['url'] = $flatPage->url;

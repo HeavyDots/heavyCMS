@@ -65,11 +65,13 @@ class LanguageDropdown extends Widget{
             $route = array_merge([$routeYii], $params);
         }
         elseif ($controllerName=='flat-page'&&Yii::$app->id=='app-frontend'){
-            $flatPage = FlatPage::findBySlug($params['slug'], $currentLanguage);
-            $params['slug'] = isset($flatPage) ? $flatPage->slug : '';
-            if (FlatPage::findBySlug($params['slug'], Yii::$app->language)===null) {
-                $routeYii = 'site/index';
+            $flatPage = FlatPage::findBySlugFallback($params['slug'], $currentLanguage);
+            if (isset($flatPage)) {
+                $params['slug'] = $flatPage->slug;
+            }
+            else{
                 $params = [];
+                $routeYii = 'site/index';
             }
             $route = array_merge([$routeYii], $params);
         }

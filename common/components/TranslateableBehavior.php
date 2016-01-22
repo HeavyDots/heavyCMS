@@ -102,7 +102,7 @@ class TranslateableBehavior extends Behavior
         return $model->$name;
     }
 
-    private function modelHasTranslation($language, $attributeName){
+    public function modelHasTranslation($language, $attributeName){
        return (isset($this->_models[$language][$attributeName]) &&
         !empty($this->_models[$language][$attributeName]) &&
         $this->_models[$language][$attributeName]!='<p><br></p>');

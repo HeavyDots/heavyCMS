@@ -25,6 +25,29 @@ class FlatPage extends BaseFlatPage
         return isset($flatPage) ? $flatPage->getUrl() : '#';
     }
 
+    public static function findBySlugFallback($slug, $currentLanguage = null) {
+        $currentLanguage = isset($currentLanguage) ? $currentLanguage : Yii::$app->language;
+        $flatPageCurrentLanguage = self::findBySlug($slug, $currentLanguage);
+        if (isset($flatPageCurrentLanguage)) {
+            return $flatPageCurrentLanguage;
+        }
+
+        $flatPageFallbackLanguage = self::findBySlug($slug, Yii::$app->params['fallbackLanguage']);
+        if (isset($flatPageFallbackLanguage)&&!$flatPageFallbackLanguage->modelHasTranslation($currentLanguage, 'slug')) {
+            return $flatPageFallbackLanguage;
+        }
+
+        $flatPageMainLanguage = self::findBySlug($slug, Yii::$app->params['appMainLanguage']);
+        if (isset($flatPageMainLanguage)
+            &&!$flatPageMainLanguage->modelHasTranslation($currentLanguage, 'slug')
+            &&!$flatPageMainLanguage->modelHasTranslation(Yii::$app->params['fallbackLanguage'], 'slug')
+        ) {
+            return $flatPageMainLanguage;
+        }
+
+        return null;
+    }
+
     public static function findBySlug($slug, $language = null){
         $language = isset($language) ? $language : Yii::$app->language;
         return self::find()
@@ -32,37 +55,6 @@ class FlatPage extends BaseFlatPage
             ->where(['flat_page_lang.slug'=>$slug])
             ->andWhere(['flat_page_lang.language'=>$language])
             ->one();
-    }
-
-    /* TODO: Enhance the algo, and refactor */
-    public static function findBySlugFallback($slug, $language = null){
-        $language = isset($language) ? $language : Yii::$app->language;
-        $flatPageCurrentLanguage = self::find()
-                ->joinWith('translations')
-                ->where(['flat_page_lang.slug'=>$slug])
-                ->andWhere(['flat_page_lang.language'=>$language])
-                ->one();
-        $flatPage = $flatPageCurrentLanguage;
-
-        /*Fallback language*/
-        if (!isset($flatPage)){
-            $flatPage = FlatPage::find()
-                ->joinWith('translations')
-                ->where(['flat_page_lang.slug'=>$slug])
-                ->andWhere(['flat_page_lang.language'=>Yii::$app->params['fallbackLanguage']])
-                ->one();
-        }
-
-        /*Main language*/
-        if (!isset($flatPage)){
-            $flatPage = FlatPage::find()
-                ->joinWith('translations')
-                ->where(['flat_page_lang.slug'=>$slug])
-                ->andWhere(['flat_page_lang.language'=>Yii::$app->params['appMainLanguage']])
-                ->one();
-        }
-
-        return $flatPage;
     }
 
     public function matchRequestedRoute(){
