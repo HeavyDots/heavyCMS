@@ -69,15 +69,15 @@ class FlatPage extends BaseFlatPage
     }
 
     public function getFullUrl(){
-        return substr(Yii::$app->params['frontendURL'], 0, -1) . Yii::$app->urlManagerFrontend->createUrl([$this->getRoute()]);
+        return substr(Yii::$app->params['frontendURL'], 0, -1) . Yii::$app->urlManagerFrontend->createUrl($this->getRoute());
     }
 
     public function getUrl(){
-        return Url::toRoute($this->route);
+        return Url::toRoute($this->getRoute());
     }
 
     public function getRoute(){
-        $route = ['flat-page/index', 'slug' => $this->slug];
+        $route = ['flat-page/select', 'slug' => $this->slug];
         if ($this->url == 'blog') {
             $route = ['blog/index'];
         }
