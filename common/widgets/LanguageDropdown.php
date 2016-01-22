@@ -44,6 +44,7 @@ class LanguageDropdown extends Widget{
 
     private function generateURLForSelectedLanguage($currentLanguage){
         $params = Yii::$app->request->queryParams;
+        $controllerName = Yii::$app->controller->getUniqueId();
         unset($params['language']);
         $routeYii = Yii::$app->controller->getRoute();
         $route = array_merge([$routeYii], $params);
@@ -63,7 +64,7 @@ class LanguageDropdown extends Widget{
             $params['slug'] = $blogCategory->slug;
             $route = array_merge([$routeYii], $params);
         }
-        elseif ($routeYii=='flat-page/select'){
+        elseif ($controllerName=='flat-page'&&Yii::$app->id=='app-frontend'){
             $flatPage = FlatPage::findBySlug($params['slug'], $currentLanguage);
             $params['slug'] = isset($flatPage) ? $flatPage->slug : '';
             if (FlatPage::findBySlug($params['slug'], Yii::$app->language)===null) {
