@@ -58,11 +58,17 @@ class FlatPage extends BaseFlatPage
     }
 
     public function matchRequestedRoute(){
-        $requestedRouteCanBeFoundInThisFlatPage = Yii::$app->requestedRoute == $this->route;
-        if (Yii::$app->controller->id=='blog'&&$this->url=='blog') {
-            $requestedRouteCanBeFoundInThisFlatPage = true;
+        if (Yii::$app->requestedRoute=='site/index'&&$this->url=='index') {
+            return true;
         }
-        return $requestedRouteCanBeFoundInThisFlatPage;
+        if (Yii::$app->controller->id=='blog'&&$this->url=='blog') {
+            return true;
+        }
+
+        $urlSlug = isset(Yii::$app->controller->module->requestedAction->controller->actionParams['slug']) ?
+            Yii::$app->controller->module->requestedAction->controller->actionParams['slug']:
+            null;
+        return $urlSlug == $this->slug;
     }
 
     public function getFullUrl(){
