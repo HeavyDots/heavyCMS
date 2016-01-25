@@ -41,14 +41,14 @@ class FlatPageLang extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            [
+            'sluggable' => [
                 'class' => SluggableBehavior::className(),
                 'attribute' => 'anchor',
             ],
             'timestamp' => [
                 'class' => TimestampBehavior::className(),
             ],
-            [
+            'blameable' => [
             'class' => BlameableBehavior::className(),
             ],
         ];
@@ -67,7 +67,8 @@ class FlatPageLang extends \yii\db\ActiveRecord
             ],
             [['flat_page_id', 'created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
             [['language'], 'string', 'max' => 6],
-            [['title', 'meta_description', 'anchor'], 'string', 'max' => 255]
+            [['title', 'meta_description', 'anchor'], 'string', 'max' => 255],
+            [['slug'], 'safe'],
         ];
     }
 
@@ -80,7 +81,8 @@ class FlatPageLang extends \yii\db\ActiveRecord
             'id' => Yii::t('model', 'ID'),
             'flat_page_id' => Yii::t('model', 'Flat Page ID'),
             'language' => Yii::t('model', 'Language'),
-            'title' => Yii::t('model', 'Name'),
+            'title' => Yii::t('model', 'Title'),
+            'slug' => Yii::t('model', 'Url'),
             'meta_description' => Yii::t('model', 'Meta Description'),
             'anchor' => Yii::t('model', 'Anchor'),
             'created_by' => Yii::t('model', 'Created By'),

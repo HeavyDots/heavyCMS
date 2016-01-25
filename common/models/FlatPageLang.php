@@ -13,4 +13,11 @@ use \common\models\base\FlatPageLang as BaseFlatPageLang;
  */
 class FlatPageLang extends BaseFlatPageLang
 {
+    public function beforeValidate()
+    {
+        if (!$this->isNewRecord) {
+            $this->detachBehavior('sluggable');
+        }
+        return parent::beforeValidate();
+    }
 }

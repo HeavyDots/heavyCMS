@@ -4,8 +4,13 @@ use yii\bootstrap\ActiveForm;
 use yii\bootstrap\Tabs;
 
 use backend\widgets\LanguageTabs;
-/*TODO: Autocheck is_active when user activate display_on_menu.
-        Deactivate display_on_menu when user deactivate is_active */
+/*
+ * TODO: Autocheck is_active when user activate display_on_menu.
+ * TODO: Deactivate display_on_menu when user deactivate is_active
+ * */
+
+/** @var \common\models\FlatPage $flatPage */
+
 ?>
 
 <div class="flat-page-form">
@@ -38,14 +43,26 @@ use backend\widgets\LanguageTabs;
                 ]);
             ?>
             <?=
+            LanguageTabs::widget([
+                'form' => $form,
+                'model' => $flatPage,
+                'fieldName' => 'anchor',
+                'translations' => $translations,
+            ]);
+            ?>
+            <?php if (!$flatPage->isNewRecord): ?>
+                <?=
                 LanguageTabs::widget([
                     'form' => $form,
                     'model' => $flatPage,
-                    'fieldName' => 'anchor',
+                    'fieldName' => 'slug',
                     'translations' => $translations,
                 ]);
-            ?>
-            <?= $form->field($flatPage, 'url')->textInput(['maxlength' => true]) ?>
+                ?>
+            <?php endif; ?>
+            <?php if ($flatPage->isNewRecord): ?>
+                <?= $form->field($flatPage, 'url')->textInput(['maxlength' => true]) ?>
+            <?php endif; ?>
             <?= $form->field($flatPage, 'is_active')->checkbox(); ?>
             <?= $form->field($flatPage, 'display_on_menu')->checkbox(); ?>
         </div>
