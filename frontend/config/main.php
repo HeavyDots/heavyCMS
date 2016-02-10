@@ -37,9 +37,9 @@ return [
                     'forceTranslation' => true,
                     'sourceMessageTable' => '{{%source_message}}',
                     'messageTable' => '{{%translated_message}}',
-                    /*'on missingTranslation' => ['common\components\TranslationEventHandler',
+                    'on missingTranslation' => ['common\components\TranslationEventHandler',
                                                 'handleMissingTranslation'
-                                                ],*/
+                                                ],
 
                 ],
                 /*
@@ -53,6 +53,9 @@ return [
                     'forceTranslation' => true,
                     'sourceMessageTable' => '{{%source_message}}',
                     'messageTable' => '{{%translated_message}}',
+                    'on missingTranslation' => ['common\components\TranslationEventHandler',
+                            'handleMissingTranslation'
+                            ],
                 ],
             ],
         ],

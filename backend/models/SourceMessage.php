@@ -24,4 +24,13 @@ class SourceMessage extends BaseSourceMessage
 
         return $categoriesArray;
     }
+
+    public static function getMessageTranslation($category, $message, $language){
+        return TranslatedMessage::find()
+            ->joinWith('sourceMessage')
+            ->where(['source_message.category'=>$category])
+            ->andWhere(['source_message.message'=>$message])
+            ->andWhere(['language'=>$language])
+            ->one();
+    }
 }
