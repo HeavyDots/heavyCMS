@@ -52,6 +52,9 @@ return [
                 'dmstr\web\AdminLteAsset' => [
                     'skin' => 'skin-red-light',
                 ],
+                'Zelenin\yii\widgets\Summernote\FontawesomeAsset' => [
+                  'sourcePath'=>'@bower/font-awesome',
+                ]
             ],
         ],
         'urlManager' => [
