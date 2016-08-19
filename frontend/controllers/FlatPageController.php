@@ -12,32 +12,23 @@ use common\models\FlatPage;
 class FlatPageController extends MultiLingualController{
 
     public function actionSelect($slug, $url){
-        /* Create code to render the view for each $url
-         * You need to create a view file, under your view folder,
-         * and name the file the same as the $flatPage->url.
-         * i.e.: $url = about-us . You need to create views/flat-page/about-us.php
-         */
-        /*
-         switch ($url) {
-            case 'contact':
-                return Yii::$app->runAction('flat-page/contact');
-                break;
-            case 'accommodation':
-                return Yii::$app->runAction('flat-page/accommodation');
-                break;
-            default:
-                return Yii::$app->runAction('flat-page/common-flat-page', ['url' => $url]);
-                break;
-            }
+      
+        $customActions=array();
+        if (isset(Yii::$app->params['flatPage']) && isset(Yii::$app->params['flatPage']['customActions'])) {
+          $customActions=Yii::$app->params['flatPage']['customActions'];
+        }
+        
+        if (isset($customActions[$url])) {
+          return Yii::$app->runAction($customActions[$url], $_GET);
+        } else {
+          return Yii::$app->runAction('flat-page/common-flat-page', $_GET);
+        }
+      
+    }
 
-            public function actionCommonFlatPage($url){
-                $flatPage = FlatPage::findOne(['url'=>$url]);
-                return $this->render($url, compact('flatPage'));
-            }
-         * */
-
-        echo "{$slug}";
-        return $this->render('//site/index');
+    public function actionCommonFlatPage($url){
+        $flatPage = FlatPage::findOne(['url'=>$url]);
+        return $this->render($url, compact('flatPage'));
     }
 
 }
