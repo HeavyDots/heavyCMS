@@ -57,7 +57,7 @@ class GlobalConfiguration extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'slug', 'value'], 'required'],
+            [['name', 'slug'], 'required'],
             [['created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
             [['name', 'slug', 'value'], 'string', 'max' => 255]
         ];
