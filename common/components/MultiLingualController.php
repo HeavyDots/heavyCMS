@@ -8,6 +8,12 @@ class MultiLingualController extends \yii\web\Controller
 {
     private $languageGet;
     private $languageIsNotSupported;
+    
+    /**
+     * The current active flat page
+     * @var common\models\FlatPage; 
+     */
+    public $flatPage=null;
 
     public function init()
     {

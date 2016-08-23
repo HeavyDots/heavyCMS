@@ -13,6 +13,15 @@ use frontend\widgets\LanguageDropdown;
 use frontend\widgets\FlatPageList;
 
 AppAsset::register($this);
+
+if ($this->context->flatPage) {
+  $this->title = $this->context->flatPage->title;
+  $this->registerMetaTag([
+      'name' => 'description',
+      'content' => $this->context->flatPage->meta_description
+  ]);
+}
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

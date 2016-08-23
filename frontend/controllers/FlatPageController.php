@@ -28,6 +28,7 @@ class FlatPageController extends MultiLingualController{
 
     public function actionCommonFlatPage($url){
         $flatPage = FlatPage::findOne(['url'=>$url]);
+        $this->flatPage=$flatPage;
         return $this->render($url, compact('flatPage'));
     }
 
