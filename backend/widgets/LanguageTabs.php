@@ -28,12 +28,16 @@ class LanguageTabs extends Widget{
 
     public function init(){
         foreach ($this->translations as $index => $translation) {
-            $languageTabHasError = $this->languageTabHasError($translation);
-            $label = $this->getLabelForTab($translation);
-            if (!$translation->validate()) {
-                $this->_anyTranslationWithError = true;
+            $languageTabHasError = false;
+            
+            if (!empty(Yii::$app->request->post())) {
+              $languageTabHasError = $this->languageTabHasError($translation);
+              if (!$translation->validate()) {
+                  $this->_anyTranslationWithError = true;
+              }
             }
-
+            
+            $label = $this->getLabelForTab($translation);
             $this->_tabItems[] = [
                 'label' => $label,
                 'content' => $this->getTabContent($translation, $index, $translation->language),
