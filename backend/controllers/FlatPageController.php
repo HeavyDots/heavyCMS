@@ -63,8 +63,8 @@ class FlatPageController extends MultiLingualController
 		$flatPage = new FlatPage;
         $translations = $flatPage->initializeTranslations();
 
-        if ($flatPage->load($_POST) &&
-            Model::loadMultiple($translations, $_POST) &&
+        if ($flatPage->load(Yii::$app->request->post()) &&
+            Model::loadMultiple($translations, Yii::$app->request->post()) &&
             Model::validateMultiple($translations) &&
             $flatPage->save())
         {
@@ -82,8 +82,8 @@ class FlatPageController extends MultiLingualController
 		$flatPage = $this->findFlatPage($id);
         $translations = $flatPage->initializeTranslations();
 
-        if ($flatPage->load($_POST) &&
-            Model::loadMultiple($translations, $_POST) &&
+        if ($flatPage->load(Yii::$app->request->post()) &&
+            Model::loadMultiple($translations, Yii::$app->request->post()) &&
             Model::validateMultiple($translations) &&
             $flatPage->save())
         {
