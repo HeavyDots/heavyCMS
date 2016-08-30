@@ -100,4 +100,27 @@ class BlogPost extends BaseBlogPost
     public function getBriefText($asHtml = true){
         return StringHelper::truncateWords($this->text, 40, $suffix = '...', $asHtml);
     }
+    
+    public function getAllTags() {
+      $allTags=array();
+      $tags_array=  explode(",", $this->tags_list);
+
+      foreach ($tags_array as $tag) {
+        $tag=trim($tag);
+        if (!empty($tag)) {
+          if (!isset($allTags[$tag])) {
+            $allTags[$tag]=1;
+          } else {
+            $allTags[$tag] = $allTags[$tag] +1;
+          }
+        }
+      }
+      
+      arsort($allTags);
+        
+      $allTags=array_keys($allTags);
+      
+      return $allTags;
+        
+    }
 }

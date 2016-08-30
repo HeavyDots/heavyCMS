@@ -68,7 +68,7 @@ class BlogPostLang extends \yii\db\ActiveRecord
             ],
             [['blog_post_id', 'created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
             [['text'], 'string'],
-            [['slug', 'title', 'meta_title', 'meta_description'], 'string', 'max' => 255],
+            [['slug', 'title', 'meta_title', 'meta_description','tags_list'], 'string', 'max' => 255],
             [['language'], 'string', 'max' => 6]
         ];
     }
@@ -86,6 +86,7 @@ class BlogPostLang extends \yii\db\ActiveRecord
             'title' => Yii::t('model', 'Title'),
             'meta_description' => Yii::t('model', 'Meta Description'),
             'text' => Yii::t('model', 'Text'),
+            'tags_list' => Yii::t('model', 'Tags'),
             'created_by' => Yii::t('model', 'Created By'),
             'updated_by' => Yii::t('model', 'Updated By'),
             'created_at' => Yii::t('model', 'Created At'),

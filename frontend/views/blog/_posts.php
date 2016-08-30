@@ -1,10 +1,11 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
-
+$models=$blogPostProvider->getModels();
 ?>
 
-<?php foreach ($blogPostProvider->getModels() as $post): ?>
+<?php if ($models): ?>
+<?php foreach ($models as $post): ?>
   <article class="blog-post-item">
     <h2 class="title"><?= Html::a($post->title, $post->url, ['title' => $post->title]) ?></h2>
     <p class="text-muted"><?= Yii::t('blog', 'Posted on {0,date,short}',$post->created_at)?></p>
@@ -26,3 +27,6 @@ echo LinkPager::widget([
 ]);
 
 ?>
+<?php else: ?>
+  <p><?= Yii::t('blog', 'No posts found')?></p>
+<?php endif; ?>

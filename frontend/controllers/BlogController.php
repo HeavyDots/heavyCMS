@@ -16,7 +16,7 @@ class BlogController extends MultiLingualController{
   
     public $layout='blog';
 
-    public function actionIndex(){
+    public function actionIndex($tag=null){
         $flatPage = $this->findFlatPage('blog');
         $this->flatPage=$flatPage;
 
@@ -26,6 +26,10 @@ class BlogController extends MultiLingualController{
                 ->andWhere(['<>', 'blog_post_lang.slug', ''])
                 ->andWhere(['blog_post_lang.language' => Yii::$app->language])
                 ->orderBy(['created_at' => SORT_DESC]);
+        
+        if (!empty($tag)) {
+          $query->andFilterWhere(['like', 'tags_list', $tag]);
+        }
 
         $blogPostProvider = new ActiveDataProvider([
           'query' => $query,
@@ -125,6 +129,54 @@ class BlogController extends MultiLingualController{
             throw new HttpException(404, Yii::t('app','The requested page does not exist.'));
         }
         return $blogCategory;
+    }
+    
+    private $allTags=null;
+    
+    /**
+     * TODO: Only translate tags urls if tag is available for the specific language
+     * @param integer $limit
+     * @return array
+     */
+    public function getAllTags($limit=20) {
+      
+      if ($this->allTags==null) {
+        $allTags=array();
+        
+        $query = new \yii\db\Query;
+        $query->select('tags_list')
+        ->from('blog_post_lang')
+        ->innerJoin('blog_post', 'blog_post.id=blog_post_lang.blog_post_id')
+        ->where(['is_published' => true])
+        ->andWhere(['<>', 'blog_post_lang.slug', ''])
+        ->andWhere(['blog_post_lang.language' => Yii::$app->language]);
+        $command = $query->createCommand();
+        $posts = $command->queryAll();
+        
+        foreach ($posts as $post) {
+          $tags_array=  explode(",", $post['tags_list']);
+          
+          foreach ($tags_array as $tag) {
+            $tag=trim($tag);
+            if (!empty($tag)) {
+              if (!isset($allTags[$tag])) {
+                $allTags[$tag]=1;
+              } else {
+                $allTags[$tag] = $allTags[$tag] +1;
+              }
+            }
+          }
+          
+        }
+        
+        arsort($allTags);
+        
+        $this->allTags=array_keys($allTags);
+        
+        $this->allTags=array_slice($this->allTags, 0, $limit);
+      }
+      
+      return $this->allTags;
     }
 
 

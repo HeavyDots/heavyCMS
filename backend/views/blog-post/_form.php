@@ -51,6 +51,16 @@ use common\models\BlogCategory;
                 LanguageTabs::widget([
                     'form' => $form,
                     'model' => $blogPost,
+                    'fieldName' => 'tags_list',
+                    'fieldType'=>'textInput',
+                    'translations' => $translations,
+                ]);
+            ?>
+          
+            <?=
+                LanguageTabs::widget([
+                    'form' => $form,
+                    'model' => $blogPost,
                     'fieldName' => 'meta_title',
                     'translations' => $translations,
                     'numberOfRows' => 3,

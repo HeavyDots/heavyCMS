@@ -19,6 +19,18 @@ $this->registerMetaTag([
   <div class="body">
     <?= $post->text ?>
   </div>
+  <div class="tags">
+    <p class="text-muted">
+      <?= Yii::t('blog', 'Tags') ?>: 
+      <?php 
+      $list=[];
+      foreach ($post->getAllTags() as $tag) {
+        $list[]=Html::a($tag, ['blog/index','tag'=>$tag]);
+      }
+      echo implode(", ", $list);
+      ?>
+    </p>
+  </div>
   
   <div class="comments">
     <?php if (isset(Yii::$app->params['disqus_shortname']) && Yii::$app->params['disqus_shortname']): ?>

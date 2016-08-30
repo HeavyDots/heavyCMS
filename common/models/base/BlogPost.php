@@ -48,6 +48,7 @@ class BlogPost extends \yii\db\ActiveRecord
                     'meta_title',
                     'meta_description',
                     'text',
+                    'tags_list',
                 ]
             ],
             'timestamp' => [
