@@ -17,7 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Anchor' => '',
+    'Anchor' => 'Ancla',
     'Avatar' => '',
     'Email' => '',
     'ID' => '',

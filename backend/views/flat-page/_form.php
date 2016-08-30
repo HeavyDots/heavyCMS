@@ -25,6 +25,28 @@ use backend\widgets\LanguageTabs;
             ]);
         ?>
         <div class="box-body col-md-7">
+            
+            <?=
+            LanguageTabs::widget([
+                'form' => $form,
+                'model' => $flatPage,
+                'fieldName' => 'anchor',
+                'translations' => $translations,
+            ]);
+            ?>
+            <?php if ($flatPage->isNewRecord): ?>
+                <?= $form->field($flatPage, 'url')->textInput(['maxlength' => true]) ?>
+            <?php endif; ?>
+            <?php if (!$flatPage->isNewRecord): ?>
+                <?=
+                LanguageTabs::widget([
+                    'form' => $form,
+                    'model' => $flatPage,
+                    'fieldName' => 'slug',
+                    'translations' => $translations,
+                ]);
+                ?>
+            <?php endif; ?>
             <?=
                 LanguageTabs::widget([
                     'form' => $form,
@@ -42,27 +64,7 @@ use backend\widgets\LanguageTabs;
                     'numberOfRows' => 2,
                 ]);
             ?>
-            <?=
-            LanguageTabs::widget([
-                'form' => $form,
-                'model' => $flatPage,
-                'fieldName' => 'anchor',
-                'translations' => $translations,
-            ]);
-            ?>
-            <?php if (!$flatPage->isNewRecord): ?>
-                <?=
-                LanguageTabs::widget([
-                    'form' => $form,
-                    'model' => $flatPage,
-                    'fieldName' => 'slug',
-                    'translations' => $translations,
-                ]);
-                ?>
-            <?php endif; ?>
-            <?php if ($flatPage->isNewRecord): ?>
-                <?= $form->field($flatPage, 'url')->textInput(['maxlength' => true]) ?>
-            <?php endif; ?>
+            
             <?= $form->field($flatPage, 'is_active')->checkbox(); ?>
             <?= $form->field($flatPage, 'display_on_menu')->checkbox(); ?>
         </div>

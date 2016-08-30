@@ -61,7 +61,7 @@ class FlatPageLang extends \yii\db\ActiveRecord
     {
         return [
             [['language'], 'required'],
-            [['language', 'title', 'meta_description', 'anchor'],
+            [['language', 'anchor'],
                 'required',
                 'on' => 'mainLanguage'
             ],
