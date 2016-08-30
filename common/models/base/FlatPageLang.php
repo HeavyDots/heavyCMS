@@ -13,7 +13,7 @@ use yii\behaviors\BlameableBehavior;
  * @property integer $id
  * @property integer $flat_page_id
  * @property string $language
- * @property string $title
+ * @property string $meta_title
  * @property string $meta_description
  * @property string $anchor
  * @property integer $created_by
@@ -67,7 +67,7 @@ class FlatPageLang extends \yii\db\ActiveRecord
             ],
             [['flat_page_id', 'created_by', 'updated_by', 'created_at', 'updated_at'], 'integer'],
             [['language'], 'string', 'max' => 6],
-            [['title', 'meta_description', 'anchor'], 'string', 'max' => 255],
+            [['meta_title', 'meta_description', 'anchor'], 'string', 'max' => 255],
             [['slug'], 'safe'],
         ];
     }
@@ -81,8 +81,8 @@ class FlatPageLang extends \yii\db\ActiveRecord
             'id' => Yii::t('model', 'ID'),
             'flat_page_id' => Yii::t('model', 'Flat Page ID'),
             'language' => Yii::t('model', 'Language'),
-            'title' => Yii::t('model', 'Title'),
             'slug' => Yii::t('model', 'Url'),
+            'meta_title' => Yii::t('model', 'Meta Title'),
             'meta_description' => Yii::t('model', 'Meta Description'),
             'anchor' => Yii::t('model', 'Anchor'),
             'created_by' => Yii::t('model', 'Created By'),

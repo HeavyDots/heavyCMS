@@ -64,6 +64,7 @@ class BlogPostController extends MultiLingualController
 	public function actionCreate()
 	{
         $blogPost = new BlogPost();
+        $blogPost->is_published=1;
         $translations = $blogPost->initializeTranslations();
         Model::loadMultiple($translations, $_POST);
         if ($blogPost->load($_POST) &&

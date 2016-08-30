@@ -15,7 +15,7 @@ use frontend\widgets\FlatPageList;
 AppAsset::register($this);
 
 if ($this->context->flatPage) {
-  $this->title = $this->context->flatPage->title;
+  $this->title = $this->context->flatPage->meta_title;
   $this->registerMetaTag([
       'name' => 'description',
       'content' => $this->context->flatPage->meta_description

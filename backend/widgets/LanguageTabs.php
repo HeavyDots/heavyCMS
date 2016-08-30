@@ -17,6 +17,8 @@ class LanguageTabs extends Widget{
     public $model;
     public $translations;
     public $fieldName;
+    public $fieldType='textArea'; // textArea, textInput
+    public $class='form-control';
     public $numberOfRows = 1;
     public $isHTMLEditor = false;
     public $showLaguageCodeAsLabel = false;
@@ -70,11 +72,12 @@ class LanguageTabs extends Widget{
     }
 
     private function getTextareaEditor($translation, $index, $language){
+        $fieldType=$this->fieldType;
         return $this->form->field($translation,
                                         "[{$index}]{$this->fieldName}")
-                                    ->textarea([
+                                    ->$fieldType([
                                         'id'    => "{$this->fieldName}-{$language}-translation",
-                                        'class' => 'translation-textarea form-control',
+                                        'class' => $this->class,
                                         'rel'   => $language,
                                         'rows'  => $this->numberOfRows,
                                         ])

@@ -51,7 +51,8 @@ use backend\widgets\LanguageTabs;
                 LanguageTabs::widget([
                     'form' => $form,
                     'model' => $flatPage,
-                    'fieldName' => 'title',
+                    'fieldName' => 'meta_title',
+                    'fieldType' => 'textInput',
                     'translations' => $translations,
                 ]);
             ?>

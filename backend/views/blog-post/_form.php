@@ -29,18 +29,11 @@ use common\models\BlogCategory;
                     'form' => $form,
                     'model' => $blogPost,
                     'fieldName' => 'title',
+                    'fieldType'=>'textInput',
                     'translations' => $translations,
                 ]);
             ?>
-            <?=
-                LanguageTabs::widget([
-                    'form' => $form,
-                    'model' => $blogPost,
-                    'fieldName' => 'meta_description',
-                    'translations' => $translations,
-                    'numberOfRows' => 3,
-                ]);
-            ?>
+            
             <?=
                 LanguageTabs::widget([
                     'form' => $form,
@@ -53,6 +46,26 @@ use common\models\BlogCategory;
                     'uploadImageUrl' => Url::toRoute(['/blog-post/upload-image', 'blogPostId' => $blogPost->id]),
                 ]);
             ?>
+          
+            <?=
+                LanguageTabs::widget([
+                    'form' => $form,
+                    'model' => $blogPost,
+                    'fieldName' => 'meta_title',
+                    'translations' => $translations,
+                    'numberOfRows' => 3,
+                ]);
+            ?>
+            <?=
+                LanguageTabs::widget([
+                    'form' => $form,
+                    'model' => $blogPost,
+                    'fieldName' => 'meta_description',
+                    'translations' => $translations,
+                    'numberOfRows' => 3,
+                ]);
+            ?>
+          
             <?=
                 $form->field($blogPost, 'is_published')->checkbox();
             ?>

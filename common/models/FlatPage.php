@@ -17,7 +17,7 @@ class FlatPage extends BaseFlatPage
 
     public static function getMappedArray(){
         $models = self::find()->all();
-        return ArrayHelper::map($models, 'id', 'title');
+        return ArrayHelper::map($models, 'id', 'anchor');
     }
 
     public static function getUrlFor($flatPageUrl){

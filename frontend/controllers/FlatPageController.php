@@ -29,7 +29,14 @@ class FlatPageController extends MultiLingualController{
     public function actionCommonFlatPage($url){
         $flatPage = FlatPage::findOne(['url'=>$url]);
         $this->flatPage=$flatPage;
-        return $this->render($url, compact('flatPage'));
+        
+        try {
+          return $this->render($url, compact('flatPage'));
+        } catch (\yii\base\InvalidParamException $ex) {
+          Yii::trace("View not found for flatPage {$url}, using default view.");
+        }
+        
+        return $this->render('default_page', compact('flatPage'));
     }
 
 }

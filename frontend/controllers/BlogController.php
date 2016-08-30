@@ -16,6 +16,7 @@ class BlogController extends MultiLingualController{
 
     public function actionIndex(){
         $flatPage = $this->findFlatPage('blog');
+        $this->flatPage=$flatPage;
 
         $query = BlogPost::find()
                 ->joinWith('translations')
