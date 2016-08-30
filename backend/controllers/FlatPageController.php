@@ -60,7 +60,11 @@ class FlatPageController extends MultiLingualController
     /*TODO: Generalize duplicated code on actionCreate and actionUpdate */
 	public function actionCreate()
 	{
-		$flatPage = new FlatPage;
+        $flatPage = new FlatPage;
+        
+        $flatPage->is_active=1;
+        $flatPage->display_on_menu=1;
+        
         $translations = $flatPage->initializeTranslations();
 
         if ($flatPage->load(Yii::$app->request->post()) &&
