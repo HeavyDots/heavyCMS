@@ -1,16 +1,7 @@
 <?php
 use yii\helpers\Html;
+use yii\widgets\LinkPager;
 
 ?>
 
-<div>
-    <?php foreach ($blogPostProvider->getModels() as $post): ?>
-        <article>
-            <h1>
-                <?= Html::a($post->title, $post->url, ['title' => $post->title]) ?>
-            </h1>
-            <?= Html::img($post->getFullUrlFeaturedImage(), ['alt' => $post->title])?>
-            <p><?= $post->briefText ?></p>
-        </article>
-    <?php endforeach ?>
-</div>
+<?= $this->render('_posts', ['blogPostProvider'=> $blogPostProvider] ); ?>

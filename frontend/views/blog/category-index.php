@@ -1,17 +1,12 @@
 <?php
 use yii\helpers\Html;
 
-$this->title = $flatPage->title;
+$this->title = $blogCategory->name;
+$this->registerMetaTag([
+    'name' => 'description',
+    'content' => $blogCategory->meta_description
+]);
+
 ?>
 
-<div>
-    <?php foreach ($blogPostProvider->getModels() as $post): ?>
-        <article>
-            <h1>
-                <?= Html::a($post->title, $post->url, ['title' => $post->title]) ?>
-            </h1>
-            <?= Html::img($post->getFullUrlFeaturedImage(), ['alt' => $post->title])?>
-            <p><?= $post->briefText ?></p>
-        </article>
-    <?php endforeach ?>
-</div>
+<?= $this->render('_posts', ['blogPostProvider'=> $blogPostProvider] ); ?>

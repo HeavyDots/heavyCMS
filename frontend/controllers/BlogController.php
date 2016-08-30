@@ -13,6 +13,8 @@ use common\models\BlogCategory;
 use common\models\FlatPage;
 
 class BlogController extends MultiLingualController{
+  
+    public $layout='blog';
 
     public function actionIndex(){
         $flatPage = $this->findFlatPage('blog');
@@ -26,23 +28,23 @@ class BlogController extends MultiLingualController{
                 ->orderBy(['created_at' => SORT_DESC]);
 
         $blogPostProvider = new ActiveDataProvider([
-            'query' => $query,
-                'pagination' => [
-                    'pageSize' => 10,
-                ],
+          'query' => $query,
+            'pagination' => [
+              'forcePageParam'=>false,
+              'defaultPageSize'=>10,
+            ],
         ]);
 
         return $this->render('index', compact('flatPage', 'blogPostProvider'));
     }
 
     public function actionView($slug){
-        $blogPost = $this->findBlogPost($slug);
+        $post = $this->findBlogPost($slug);
 
-        return $this->render('view', compact('blogPost'));
+        return $this->render('view', compact('post'));
     }
 
     public function actionCategoryIndex($slug){
-        $flatPage = $this->findFlatPage('blog');
         $blogCategory = $this->findBlogCategory($slug);
 
         $query = BlogPost::find()
@@ -55,13 +57,14 @@ class BlogController extends MultiLingualController{
                 ->orderBy(['created_at' => SORT_DESC]);
 
         $blogPostProvider = new ActiveDataProvider([
-            'query' => $query,
-                'pagination' => [
-                    'pageSize' => 10,
-                ],
+          'query' => $query,
+            'pagination' => [
+              'forcePageParam'=>false,
+              'defaultPageSize'=>10,
+            ],
         ]);
 
-        return $this->render('category-index', compact('flatPage', 'blogPostProvider', 'blogCategory'));
+        return $this->render('category-index', compact('blogPostProvider', 'blogCategory'));
     }
 
     protected function findFlatPage($slug)

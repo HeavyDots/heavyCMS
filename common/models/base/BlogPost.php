@@ -45,6 +45,7 @@ class BlogPost extends \yii\db\ActiveRecord
                 'translationAttributes' => [
                     'slug',
                     'title',
+                    'meta_title',
                     'meta_description',
                     'text',
                 ]

@@ -97,7 +97,7 @@ class BlogPost extends BaseBlogPost
         return Url::toRoute(['blog/view', 'slug'=>$this->slug]);
     }
 
-    public function getBriefText(){
-        return StringHelper::truncateWords($this->text, 40, $suffix = '...', $asHtml = true);
+    public function getBriefText($asHtml = true){
+        return StringHelper::truncateWords($this->text, 40, $suffix = '...', $asHtml);
     }
 }
