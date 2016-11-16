@@ -29,7 +29,6 @@ class LanguageDropdown extends Widget{
             $this->setSelectedLanguage($localeId, $currentLanguage);
         }
         $this->returnToCurrentLanguage($currentLanguage);
-
         return $this->render('_language-dropdown', ['supportedLanguages'=>$this->supportedLanguages,
                                                     'selectedLanguage'=>$this->selectedLanguage]);
     }
