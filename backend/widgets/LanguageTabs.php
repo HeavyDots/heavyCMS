@@ -103,7 +103,6 @@ class LanguageTabs extends Widget{
             $toolbar[$index][1][]='picture';
           }
         }
-//        \yii\helpers\VarDumper::dump($toolbar, 10, true); die();
         $callbackOnImageUpload = "function(files) {
           var editorHTML = $(this);
           var data = new FormData();
