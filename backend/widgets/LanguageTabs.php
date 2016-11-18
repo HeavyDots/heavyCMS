@@ -86,12 +86,24 @@ class LanguageTabs extends Widget{
 
     private function getHTMLEditor($translation, $index, $language){
         $toolbar = [
-                ['style', ['bold', 'italic', 'underline', 'clear']],
-                ['font', ['strikethrough', 'superscript', 'subscript']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['misc', ['codeview']],
+          ['style', ['bold', 'italic', 'underline', 'clear']],
+          ['font', ['strikethrough', 'superscript', 'subscript']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['insert', ['link']],
+          ['misc', ['codeview']],
         ];
-        $toolbar = $this->allowHTMLEditorToUploadImages ? array_merge($toolbar, [['insert', ['picture']]]) : $toolbar;
+        if ($this->allowHTMLEditorToUploadImages) {
+          $index=null;
+          foreach ($toolbar as $k => $group) {
+            if ($group[0]==='insert') {
+              $index=$k;
+            }
+          }
+          if ($index !== null) {
+            $toolbar[$index][1][]='picture';
+          }
+        }
+//        \yii\helpers\VarDumper::dump($toolbar, 10, true); die();
         $callbackOnImageUpload = "function(files) {
           var editorHTML = $(this);
           var data = new FormData();
