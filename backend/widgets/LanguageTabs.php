@@ -93,14 +93,14 @@ class LanguageTabs extends Widget{
           ['misc', ['codeview']],
         ];
         if ($this->allowHTMLEditorToUploadImages) {
-          $index=null;
+          $ti=null;
           foreach ($toolbar as $k => $group) {
             if ($group[0]==='insert') {
-              $index=$k;
+              $ti=$k;
             }
           }
-          if ($index !== null) {
-            $toolbar[$index][1][]='picture';
+          if ($ti !== null) {
+            $toolbar[$ti][1][]='picture';
           }
         }
         $callbackOnImageUpload = "function(files) {
