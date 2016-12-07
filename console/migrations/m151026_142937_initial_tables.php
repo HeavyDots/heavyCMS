@@ -23,7 +23,7 @@ class m151026_142937_initial_tables extends Migration
               PRIMARY KEY (`id`),
               FOREIGN KEY (`created_by`) REFERENCES `user` (`id`),
               FOREIGN KEY (`updated_by`) REFERENCES `user` (`id`)
-            );
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
             DROP TABLE IF EXISTS `blog_category_lang`;
             CREATE TABLE `blog_category_lang` (
@@ -45,7 +45,7 @@ class m151026_142937_initial_tables extends Migration
               CONSTRAINT `blog_category_lang_ibfk_1` FOREIGN KEY (`blog_category_id`) REFERENCES `blog_category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
               CONSTRAINT `blog_category_lang_ibfk_2` FOREIGN KEY (`created_by`) REFERENCES `user` (`id`),
               CONSTRAINT `blog_category_lang_ibfk_3` FOREIGN KEY (`updated_by`) REFERENCES `user` (`id`)
-            );
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
             DROP TABLE IF EXISTS `blog_post`;
             CREATE TABLE `blog_post` (
