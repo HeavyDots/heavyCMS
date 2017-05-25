@@ -41,6 +41,7 @@ class GlobalConfiguration extends \yii\db\ActiveRecord
             [
                 'class' => SluggableBehavior::className(),
                 'attribute' => 'name',
+                'immutable' => true,
             ],
             'timestamp' => [
                 'class' => TimestampBehavior::className(),
