@@ -18,7 +18,12 @@ class BlogController extends MultiLingualController{
 
     public function actionIndex($tag=null){
         $flatPage = $this->findFlatPage('blog');
-        $this->flatPage=$flatPage;
+        
+        if (!empty($tag)) {
+          $this->view->title=$tag;
+        } else {
+          $this->flatPage=$flatPage;
+        }  
 
         $query = BlogPost::find()
                 ->joinWith('translations')
@@ -44,12 +49,14 @@ class BlogController extends MultiLingualController{
 
     public function actionView($slug){
         $post = $this->findBlogPost($slug);
+        $this->view->params['blogPost'] = $post; // TODO: HeavyCMS
 
         return $this->render('view', compact('post'));
     }
 
     public function actionCategoryIndex($slug){
         $blogCategory = $this->findBlogCategory($slug);
+        $this->view->params['blogCategory'] = $blogCategory; // TODO: HeavyCMS
 
         $query = BlogPost::find()
                 ->joinWith('translations')
