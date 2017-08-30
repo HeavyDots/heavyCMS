@@ -4,8 +4,16 @@
 /* @var $content string */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 use common\models\BlogCategory;
+
+$this->registerLinkTag([
+    'rel'=>'alternate',
+    'type'=>'application/rss+xml',
+    'title'=>Yii::$app->name,
+    'href'=>Url::to(['blog/feed'], true),
+]);
 
 ?>
 <?php $this->beginContent('@app/views/layouts/main.php'); ?>
