@@ -7,6 +7,8 @@ return [
         ['pattern'=>'/<language:[a-z]{2}-[A-Z]{2}>','route'=>'site/index','suffix'=>'/'],
         ['pattern'=>'/<language:[a-z]{2}-[A-Z]{2}>/blog/tag/<tag>','route'=>'blog/index'],
         'blog/tag/<tag>' => 'blog/index',
+        ['pattern'=>'/<language:[a-z]{2}-[A-Z]{2}>/blog/feed','route'=>'blog/feed','suffix'=>'/'],
+        ['pattern'=>'/blog/feed','route'=>'blog/feed','suffix'=>'/'],
         ['pattern'=>'/<language:[a-z]{2}-[A-Z]{2}>/blog','route'=>'blog/index','suffix'=>'/'],
         ['pattern'=>'/blog','route'=>'blog/index','suffix'=>'/'],
         '<language>/blog/<slug>' => 'blog/view',

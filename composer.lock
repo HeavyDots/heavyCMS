@@ -4,8 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e92f67ef9ed5661b15a192f01a31dfed",
-    "content-hash": "078f6d8ce579ffb398a6d1394c583804",
+    "content-hash": "ebc32665fc070d617203335c6107728b",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -45,7 +44,7 @@
                 "theme",
                 "web"
             ],
-            "time": "2016-07-03 15:21:22"
+            "time": "2016-07-03T15:21:22+00:00"
         },
         {
             "name": "bower-asset/bootstrap",
@@ -429,7 +428,7 @@
                 "markdown",
                 "markdown-extra"
             ],
-            "time": "2015-03-06 05:28:07"
+            "time": "2015-03-06T05:28:07+00:00"
         },
         {
             "name": "cebe/yii2-gravatar",
@@ -472,7 +471,7 @@
                 "gravatar",
                 "yii"
             ],
-            "time": "2013-12-10 17:49:58"
+            "time": "2013-12-10T17:49:58+00:00"
         },
         {
             "name": "cmrcx/phptidy",
@@ -513,7 +512,7 @@
             ],
             "description": "PHP code formatter",
             "homepage": "https://github.com/cmrcx/phptidy",
-            "time": "2015-10-27 09:29:21"
+            "time": "2015-10-27T09:29:21+00:00"
         },
         {
             "name": "dmstr/yii2-adminlte-asset",
@@ -573,7 +572,7 @@
                 "theme",
                 "yii2"
             ],
-            "time": "2016-07-28 03:57:05"
+            "time": "2016-07-28T03:57:05+00:00"
         },
         {
             "name": "dmstr/yii2-bootstrap",
@@ -614,7 +613,7 @@
                 "extension",
                 "yii2"
             ],
-            "time": "2016-04-22 18:33:17"
+            "time": "2016-04-22T18:33:17+00:00"
         },
         {
             "name": "dmstr/yii2-db",
@@ -659,7 +658,7 @@
                 "extension",
                 "yii2"
             ],
-            "time": "2016-07-06 01:00:38"
+            "time": "2016-07-06T01:00:38+00:00"
         },
         {
             "name": "dmstr/yii2-helpers",
@@ -703,7 +702,7 @@
                 "extension",
                 "yii2"
             ],
-            "time": "2016-05-10 17:16:40"
+            "time": "2016-05-10T17:16:40+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -747,7 +746,7 @@
             "keywords": [
                 "html"
             ],
-            "time": "2016-07-16 12:58:58"
+            "time": "2016-07-16T12:58:58+00:00"
         },
         {
             "name": "friendsofphp/php-cs-fixer",
@@ -805,7 +804,7 @@
                 }
             ],
             "description": "A tool to automatically fix PHP code style",
-            "time": "2016-07-22 06:46:28"
+            "time": "2016-07-22T06:46:28+00:00"
         },
         {
             "name": "germanigortcev/yii2-summernote-widget",
@@ -859,7 +858,7 @@
                 "wysiwyg",
                 "yii2"
             ],
-            "time": "2015-12-14 03:25:49"
+            "time": "2015-12-14T03:25:49+00:00"
         },
         {
             "name": "kartik-v/bootstrap-fileinput",
@@ -912,7 +911,7 @@
                 "progress",
                 "upload"
             ],
-            "time": "2016-07-09 12:56:05"
+            "time": "2016-07-09T12:56:05+00:00"
         },
         {
             "name": "kartik-v/yii2-krajee-base",
@@ -963,7 +962,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-05-07 19:45:52"
+            "time": "2016-05-07T19:45:52+00:00"
         },
         {
             "name": "kartik-v/yii2-sortable",
@@ -1010,7 +1009,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2015-06-17 17:34:48"
+            "time": "2015-06-17T17:34:48+00:00"
         },
         {
             "name": "kartik-v/yii2-sortable-input",
@@ -1058,7 +1057,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2014-11-10 18:47:06"
+            "time": "2014-11-10T18:47:06+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-fileinput",
@@ -1113,7 +1112,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-07-23 15:30:48"
+            "time": "2016-07-23T15:30:48+00:00"
         },
         {
             "name": "mikehaertl/php-shellcommand",
@@ -1149,7 +1148,7 @@
             "keywords": [
                 "shell"
             ],
-            "time": "2016-07-16 09:42:31"
+            "time": "2016-07-16T09:42:31+00:00"
         },
         {
             "name": "phpspec/php-diff",
@@ -1187,7 +1186,7 @@
                 }
             ],
             "description": "A comprehensive library for generating differences between two hashable objects (strings or arrays).",
-            "time": "2016-04-07 12:29:16"
+            "time": "2016-04-07T12:29:16+00:00"
         },
         {
             "name": "rmrevin/yii2-fontawesome",
@@ -1238,7 +1237,7 @@
                 "font",
                 "yii"
             ],
-            "time": "2016-05-28 21:18:32"
+            "time": "2016-05-28T21:18:32+00:00"
         },
         {
             "name": "schmunk42/yii2-giiant",
@@ -1294,7 +1293,7 @@
                 "gii",
                 "yii2"
             ],
-            "time": "2016-07-29 09:54:41"
+            "time": "2016-07-29T09:54:41+00:00"
         },
         {
             "name": "sebastian/diff",
@@ -1346,7 +1345,7 @@
             "keywords": [
                 "diff"
             ],
-            "time": "2015-12-08 07:14:41"
+            "time": "2015-12-08T07:14:41+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -1399,7 +1398,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2016-07-08 11:51:25"
+            "time": "2016-07-08T11:51:25+00:00"
         },
         {
             "name": "symfony/console",
@@ -1459,7 +1458,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-07-26 08:04:17"
+            "time": "2016-07-26T08:04:17+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -1519,7 +1518,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2016-07-19 10:45:57"
+            "time": "2016-07-19T10:45:57+00:00"
         },
         {
             "name": "symfony/filesystem",
@@ -1568,7 +1567,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2016-07-20 05:44:26"
+            "time": "2016-07-20T05:44:26+00:00"
         },
         {
             "name": "symfony/finder",
@@ -1617,7 +1616,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2016-06-29 05:41:56"
+            "time": "2016-06-29T05:41:56+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1676,7 +1675,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-05-18 14:26:46"
+            "time": "2016-05-18T14:26:46+00:00"
         },
         {
             "name": "symfony/process",
@@ -1725,7 +1724,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2016-07-28 11:13:48"
+            "time": "2016-07-28T11:13:48+00:00"
         },
         {
             "name": "symfony/stopwatch",
@@ -1774,7 +1773,7 @@
             ],
             "description": "Symfony Stopwatch Component",
             "homepage": "https://symfony.com",
-            "time": "2016-06-29 05:41:56"
+            "time": "2016-06-29T05:41:56+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -1868,7 +1867,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2016-07-11 13:36:42"
+            "time": "2016-07-11T13:36:42+00:00"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -1918,7 +1917,7 @@
                 "bootstrap",
                 "yii2"
             ],
-            "time": "2016-03-17 03:29:28"
+            "time": "2016-03-17T03:29:28+00:00"
         },
         {
             "name": "yiisoft/yii2-composer",
@@ -1965,7 +1964,7 @@
                 "extension installer",
                 "yii2"
             ],
-            "time": "2016-02-06 00:49:24"
+            "time": "2016-02-06T00:49:24+00:00"
         },
         {
             "name": "yiisoft/yii2-gii",
@@ -2018,7 +2017,7 @@
                 "gii",
                 "yii2"
             ],
-            "time": "2016-03-18 14:09:46"
+            "time": "2016-03-18T14:09:46+00:00"
         },
         {
             "name": "yiisoft/yii2-swiftmailer",
@@ -2068,7 +2067,96 @@
                 "swiftmailer",
                 "yii2"
             ],
-            "time": "2016-03-17 03:58:49"
+            "time": "2016-03-17T03:58:49+00:00"
+        },
+        {
+            "name": "zelenin/rss-generator",
+            "version": "2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zelenin/RSS-Generator.git",
+                "reference": "c32e22a61e529fdb0363ea6c3d98d1071f082eee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zelenin/RSS-Generator/zipball/c32e22a61e529fdb0363ea6c3d98d1071f082eee",
+                "reference": "c32e22a61e529fdb0363ea6c3d98d1071f082eee",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Zelenin\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aleksandr Zelenin",
+                    "email": "aleksandr@zelenin.me",
+                    "homepage": "http://zelenin.me",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP class for generating of RSS feeds. Full support of [RSSboard specification](http://www.rssboard.org/rss-specification)",
+            "homepage": "https://github.com/zelenin/RSS-Generator",
+            "keywords": [
+                "feed",
+                "generator",
+                "rss"
+            ],
+            "time": "2014-11-15T00:00:00+00:00"
+        },
+        {
+            "name": "zelenin/yii2-rss",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zelenin/yii2-rss.git",
+                "reference": "5250810b1604df68dbf8cc271a94fa86e31903db"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zelenin/yii2-rss/zipball/5250810b1604df68dbf8cc271a94fa86e31903db",
+                "reference": "5250810b1604df68dbf8cc271a94fa86e31903db",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "~2",
+                "zelenin/rss-generator": "~2.1@stable"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "Zelenin\\yii\\extensions\\Rss\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aleksandr Zelenin",
+                    "email": "aleksandr@zelenin.me",
+                    "homepage": "http://zelenin.me",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Yii2 RSS extension adds RSS-feed to your site",
+            "homepage": "https://github.com/zelenin/yii2-rss",
+            "keywords": [
+                "feed",
+                "rss",
+                "yii2"
+            ],
+            "time": "2015-11-05T20:51:41+00:00"
         }
     ],
     "packages-dev": [
@@ -2118,7 +2206,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2016-04-29 12:21:54"
+            "time": "2016-04-29T12:21:54+00:00"
         },
         {
             "name": "yiisoft/yii2-codeception",
@@ -2163,7 +2251,7 @@
                 "codeception",
                 "yii2"
             ],
-            "time": "2016-03-17 03:41:26"
+            "time": "2016-03-17T03:41:26+00:00"
         },
         {
             "name": "yiisoft/yii2-debug",
@@ -2210,7 +2298,7 @@
                 "debugger",
                 "yii2"
             ],
-            "time": "2016-03-17 03:50:19"
+            "time": "2016-03-17T03:50:19+00:00"
         },
         {
             "name": "yiisoft/yii2-faker",
@@ -2257,7 +2345,7 @@
                 "faker",
                 "yii2"
             ],
-            "time": "2015-03-01 06:22:44"
+            "time": "2015-03-01T06:22:44+00:00"
         }
     ],
     "aliases": [],

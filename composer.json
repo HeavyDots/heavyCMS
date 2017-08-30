@@ -22,7 +22,8 @@
         "dmstr/yii2-adminlte-asset": "2.*",
         "kartik-v/yii2-widget-fileinput": "@dev",
         "kartik-v/yii2-sortable-input": "*",
-        "germanigortcev/yii2-summernote-widget": "dev-master"
+        "germanigortcev/yii2-summernote-widget": "dev-master",
+        "zelenin/yii2-rss": "~0.1"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

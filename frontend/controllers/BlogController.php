@@ -9,6 +9,9 @@ use common\components\MultiLingualController;
 use common\models\BlogPost;
 use common\models\BlogCategory;
 use common\models\FlatPage;
+use common\models\User;
+use yii\helpers\Url;
+use yii\helpers\StringHelper;
 
 class BlogController extends MultiLingualController {
 
@@ -180,4 +183,74 @@ class BlogController extends MultiLingualController {
     return $this->allTags;
   }
 
-}
+  public function actionFeed() {
+    
+    $query = BlogPost::find()
+      ->joinWith('translations')
+      ->joinWith('blogCategory.translations')
+      ->where(['is_published' => true])
+      ->andWhere(['<>', 'blog_post_lang.slug', ''])
+      ->andWhere(['blog_post_lang.language' => Yii::$app->language])
+      ->orderBy(['created_at' => SORT_DESC]);
+
+    $blogPostProvider = new ActiveDataProvider([
+        'query' => $query,
+        'pagination' => [
+            'forcePageParam' => false,
+            'defaultPageSize' => 10,
+        ],
+    ]);
+
+    $response = Yii::$app->getResponse();
+    $headers = $response->getHeaders();
+
+    $headers->set('Content-Type', 'application/rss+xml; charset=utf-8');
+
+    echo \Zelenin\yii\extensions\Rss\RssView::widget([
+        'dataProvider' => $blogPostProvider,
+        'channel' => [
+            'title' => function ($widget, \Zelenin\Feed $feed) {
+              $feed->addChannelTitle(Yii::$app->name);
+            },
+            'link' => Url::toRoute('/', true),
+            'description' => isset(Yii::$app->params['rssFeed']['channel']['description'][Yii::$app->language])?Yii::$app->params['rssFeed']['channel']['description'][Yii::$app->language]:'Latest blog posts',
+            'language' => function ($widget, \Zelenin\Feed $feed) {
+              return Yii::$app->language;
+            },
+            'image' => function ($widget, \Zelenin\Feed $feed) {
+              
+              if (isset(Yii::$app->params['rssFeed']) && isset(Yii::$app->params['rssFeed']['channel']) && isset(Yii::$app->params['rssFeed']['channel']['image'])) {
+                $image=Yii::$app->params['rssFeed']['channel']['image'];
+                $feed->addChannelImage($image['url'], $image['link'], $image['width'], $image['height'], $image['description']);
+              }
+              
+            },
+        ],
+        'items' => [
+            'title' => function ($model, $widget, \Zelenin\Feed $feed) {
+              return $model->meta_title?$model->meta_title:$model->title;
+            },
+            'description' => function ($model, $widget, \Zelenin\Feed $feed) {
+              return StringHelper::truncateWords($model->meta_description, 50);
+            },
+            'link' => function ($model, $widget, \Zelenin\Feed $feed) {
+              return Url::toRoute(['blog/view', 'slug'=>$model->slug], true);
+            },
+              'author' => function ($model, $widget, \Zelenin\Feed $feed) {
+              $author=User::findOne(['id'=>$model->created_by]);
+              return $author->fullName;
+            },
+            'guid' => function ($model, $widget, \Zelenin\Feed $feed) {
+              $date = \DateTime::createFromFormat('U', $model->updated_at);
+              return Url::toRoute(['blog/view', 'slug'=>$model->slug], true) . ' ' . $date->format(DATE_RSS);
+            },
+            'pubDate' => function ($model, $widget, \Zelenin\Feed $feed) {
+              $date = \DateTime::createFromFormat('U', $model->updated_at);
+              return $date->format(DATE_RSS);
+            }
+          ]
+        ]);
+    }
+
+  }
+        
